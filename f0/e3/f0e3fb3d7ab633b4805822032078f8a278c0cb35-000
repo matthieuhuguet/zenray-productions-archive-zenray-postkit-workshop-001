@@ -1,0 +1,70 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Lister les médias de la bibliothèque
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json get /v1/media
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/media:
+    get:
+      tags:
+        - media
+      summary: Lister les médias de la bibliothèque
+      operationId: MediaController_listLibrary
+      parameters:
+        - name: type
+          required: true
+          in: query
+          schema:
+            type: string
+        - name: search
+          required: true
+          in: query
+          schema:
+            type: string
+        - name: page
+          required: true
+          in: query
+          schema:
+            type: string
+        - name: limit
+          required: true
+          in: query
+          schema:
+            type: string
+        - name: includePending
+          required: true
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

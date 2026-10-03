@@ -1,0 +1,109 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Quickstart
+
+> From zero to your first published post.
+
+## 1. Create your account & API key
+
+Sign in to the [PlugKit dashboard](https://plugkit.co/dashboard) with Google,
+GitHub, or email + password. Then open **API Keys → New Key** and copy the key —
+it looks like `sk_...` and is shown **only once**.
+
+<Note>
+  All requests go to `https://api.plugkit.co/v1` and require the header
+  `Authorization: Bearer sk_...`. The key scopes every call to your account.
+</Note>
+
+## 2. Make your first call
+
+List your profiles to confirm the key works:
+
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl https://api.plugkit.co/v1/profiles \
+    -H "Authorization: Bearer sk_your_key"
+  ```
+
+  ```ts TypeScript theme={null}
+  const res = await fetch("https://api.plugkit.co/v1/profiles", {
+    headers: { Authorization: "Bearer sk_your_key" },
+  });
+  const { profiles } = await res.json();
+  ```
+
+  ```python Python theme={null}
+  import requests
+  r = requests.get(
+      "https://api.plugkit.co/v1/profiles",
+      headers={"Authorization": "Bearer sk_your_key"},
+  )
+  print(r.json())
+  ```
+</CodeGroup>
+
+## 3. Create a profile
+
+A profile groups the accounts you connect. Create one and keep its `id`:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/profiles \
+  -H "Authorization: Bearer sk_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{ "name": "My brand" }'
+```
+
+## 4. Connect an account
+
+Start the OAuth flow to link an account (Instagram shown here):
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/connect/instagram?profileId=YOUR_PROFILE_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+You get back an `authUrl` — open it in a browser, approve, and the account is
+created. Every platform has its own page under **Platforms**, and the shared
+model is in [Profiles & accounts](/concepts/profiles-and-accounts). You can also
+do this in two clicks from the dashboard's **Connections** page.
+
+## 5. Publish
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "profileId": "YOUR_PROFILE_ID",
+    "content": "Hello from PlugKit 👋",
+    "accountIds": ["YOUR_ACCOUNT_ID"],
+    "mediaUrls": ["https://example.com/photo.jpg"],
+    "publishNow": true
+  }'
+```
+
+## 6. Read the results
+
+Metrics are collected in the background, so one call covers every account you
+connected:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/analytics/summary" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+<CardGroup cols={2}>
+  <Card title="Explore the full API" icon="code" href="/api-reference">
+    Try every endpoint live in the API Reference playground.
+  </Card>
+
+  <Card title="Skip the code" icon="robot" href="/mcp/overview">
+    Add the MCP server to Claude, Cursor or VS Code and do all of the above by
+    asking for it.
+  </Card>
+</CardGroup>
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

@@ -1,0 +1,94 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Install a playbook
+
+> Creates the automations and sequences the playbook describes, on the accounts you pass. Everything it creates is a normal PlugKit object: edit or delete it afterwards from Campaigns, or remove the whole install in one call.
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json post /v1/playbooks/{slug}/install
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/playbooks/{slug}/install:
+    post:
+      tags:
+        - playbooks
+      summary: Install a playbook
+      description: >-
+        Creates the automations and sequences the playbook describes, on the
+        accounts you pass. Everything it creates is a normal PlugKit object:
+        edit or delete it afterwards from Campaigns, or remove the whole install
+        in one call.
+      operationId: PlaybooksController_install
+      parameters:
+        - name: slug
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallPlaybookDto'
+      responses:
+        '201':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    InstallPlaybookDto:
+      type: object
+      properties:
+        accounts:
+          type: object
+          description: >-
+            The account to use for each slot of the playbook, keyed by slot
+            (`{"account": "acc_123"}`). Every slot listed by `GET
+            /playbooks/{slug}` must be filled.
+          additionalProperties:
+            type: string
+          example:
+            account: clx0account123
+        inputs:
+          type: object
+          description: >-
+            Values for the playbook inputs, keyed by input key. Anything left
+            out falls back to the catalog default, so
+            `{"keyword":"GUIDE","link":"https://…"}` is usually enough.
+          additionalProperties:
+            type: string
+          example:
+            keyword: GUIDE
+            link: https://example.com/guide
+        force:
+          type: boolean
+          description: >-
+            Install again on an account that already runs this playbook. Off by
+            default: two copies send two DMs for a single comment.
+          default: false
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

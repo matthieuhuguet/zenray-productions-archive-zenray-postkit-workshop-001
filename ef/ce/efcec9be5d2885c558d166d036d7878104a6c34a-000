@@ -1,0 +1,176 @@
+# PlugKit
+
+> One API to publish, read, and reply across Instagram, WhatsApp & more — built for AI agents.
+
+- [PlugKit](https://docs.plugkit.co/index.md): One API to publish, read, and reply across every social platform — built for developers and AI agents.
+- [Quickstart](https://docs.plugkit.co/quickstart.md): From zero to your first published post.
+- [Authentication](https://docs.plugkit.co/authentication.md): How PlugKit authenticates the dashboard and your code.
+- [Profiles & accounts](https://docs.plugkit.co/concepts/profiles-and-accounts.md): The data model behind every PlugKit request.
+- [How analytics are collected](https://docs.plugkit.co/concepts/analytics-collection.md): Cadences, freshness, history depth, and what each platform actually exposes.
+- [Plans & billing](https://docs.plugkit.co/concepts/billing.md): What a plan includes, what extra accounts cost, and how per-call platforms are re-billed.
+- [MCP server](https://docs.plugkit.co/mcp/overview.md): Give Claude, ChatGPT, Cursor, VS Code or any MCP client the ability to publish, read and reply on your social accounts.
+- [Connect a client](https://docs.plugkit.co/mcp/clients.md): Add the PlugKit MCP server to Claude, ChatGPT, Claude Code, Cursor, VS Code, or any other MCP client.
+- [Tools & workflows](https://docs.plugkit.co/mcp/tools.md): The 103 tools and 3 ready-made workflows exposed by the PlugKit MCP server.
+- [Instagram](https://docs.plugkit.co/platforms/instagram.md): Publish, DM, moderate comments and read insights on Instagram business accounts.
+- [Facebook](https://docs.plugkit.co/platforms/facebook.md): Publish to a Page, answer Messenger, moderate comments and read insights.
+- [TikTok](https://docs.plugkit.co/platforms/tiktok.md): Publish videos to TikTok via the official Login Kit + Content Posting API.
+- [YouTube](https://docs.plugkit.co/platforms/youtube.md): Upload videos to YouTube via the Google Data API.
+- [X (Twitter)](https://docs.plugkit.co/platforms/x.md): Post tweets with media and read account & tweet analytics.
+- [WhatsApp](https://docs.plugkit.co/platforms/whatsapp.md): Connect a customer's own WhatsApp number and hold two-way conversations.
+- [Telegram](https://docs.plugkit.co/platforms/telegram.md): Post to channels and receive messages with a Telegram bot.
+- [Meta Ads](https://docs.plugkit.co/platforms/meta-ads.md): Run Facebook and Instagram campaigns — campaigns, ad sets, ads, boosts and insights.
+- [Publishing](https://docs.plugkit.co/guides/publishing.md): Publish one post to several platforms, now or later.
+- [Messaging](https://docs.plugkit.co/guides/messaging.md): One inbox across Instagram, Facebook, WhatsApp and Telegram.
+- [Engagement](https://docs.plugkit.co/guides/engagement.md): Comments, replies and mentions across Instagram, Facebook Pages and Threads.
+- [Campaigns](https://docs.plugkit.co/guides/campaigns.md): Turn comments into DMs, broadcast to your inbox, and follow up on a schedule.
+- [Analytics](https://docs.plugkit.co/guides/analytics.md): Cross-platform metrics for every post you publish — and every post you didn't.
+- [Webhooks](https://docs.plugkit.co/guides/webhooks.md): Get told when a post goes live, a message arrives, or an account drops.
+- [List available plans and the extra-account bands](https://docs.plugkit.co/api-reference/billing/list-available-plans-and-the-extra-account-bands.md)
+- [Current plan, account quota and X spend](https://docs.plugkit.co/api-reference/billing/current-plan-account-quota-and-x-spend.md)
+- [Open a Whop checkout to subscribe or change plan](https://docs.plugkit.co/api-reference/billing/open-a-whop-checkout-to-subscribe-or-change-plan.md)
+- [Set (or clear, with null) the monthly cap on X pay-per-call spend, in USD](https://docs.plugkit.co/api-reference/billing/set-or-clear-with-null-the-monthly-cap-on-x-pay-per-call-spend-in-usd.md)
+- [Pay-per-call usage for a month (defaults to current)](https://docs.plugkit.co/api-reference/billing/pay-per-call-usage-for-a-month-defaults-to-current.md)
+- [Whop webhook endpoint (signature-verified)](https://docs.plugkit.co/api-reference/billing/whop-webhook-endpoint-signature-verified.md)
+- [List the workspaces you can act in](https://docs.plugkit.co/api-reference/workspaces/list-the-workspaces-you-can-act-in.md)
+- [List the people with access to this workspace](https://docs.plugkit.co/api-reference/workspaces/list-the-people-with-access-to-this-workspace.md)
+- [Invite someone to this workspace (they get access at their next sign-in with that email)](https://docs.plugkit.co/api-reference/workspaces/invite-someone-to-this-workspace-they-get-access-at-their-next-sign-in-with-that-email.md)
+- [Remove a member, or leave a workspace](https://docs.plugkit.co/api-reference/workspaces/remove-a-member-or-leave-a-workspace.md)
+- [List API keys (without the plaintext value)](https://docs.plugkit.co/api-reference/api-keys/list-api-keys-without-the-plaintext-value.md)
+- [Create an API key (the plaintext value is returned once and never again)](https://docs.plugkit.co/api-reference/api-keys/create-an-api-key-the-plaintext-value-is-returned-once-and-never-again.md)
+- [Replace a key with a new one of the same name and revoke the old one (the plaintext value is returned once)](https://docs.plugkit.co/api-reference/api-keys/replace-a-key-with-a-new-one-of-the-same-name-and-revoke-the-old-one-the-plaintext-value-is-returned-once.md): The stored value is a hash, so an existing key can never be shown again. Rolling it hands back a value you can copy; requests using the old key stop working immediately.
+- [Revoke an API key](https://docs.plugkit.co/api-reference/api-keys/revoke-an-api-key.md)
+- [Check that the API responds (unauthenticated)](https://docs.plugkit.co/api-reference/health/check-that-the-api-responds-unauthenticated.md)
+- [Platforms temporarily closed to new connections, and why](https://docs.plugkit.co/api-reference/platforms/platforms-temporarily-closed-to-new-connections-and-why.md)
+- [List profiles](https://docs.plugkit.co/api-reference/profiles/list-profiles.md)
+- [Create a profile](https://docs.plugkit.co/api-reference/profiles/create-a-profile.md)
+- [Retrieve a profile](https://docs.plugkit.co/api-reference/profiles/retrieve-a-profile.md)
+- [Update a profile](https://docs.plugkit.co/api-reference/profiles/update-a-profile.md)
+- [Delete a profile](https://docs.plugkit.co/api-reference/profiles/delete-a-profile.md)
+- [Update a profile](https://docs.plugkit.co/api-reference/profiles/update-a-profile-1.md)
+- [Connect (or reconnect) a social account](https://docs.plugkit.co/api-reference/accounts/connect-or-reconnect-a-social-account.md)
+- [List connected accounts](https://docs.plugkit.co/api-reference/accounts/list-connected-accounts.md)
+- [Retrieve an account](https://docs.plugkit.co/api-reference/accounts/retrieve-an-account.md)
+- [Disconnect an account](https://docs.plugkit.co/api-reference/accounts/disconnect-an-account.md)
+- [Move everything attached to another account onto this one, then delete it. Used when a reconnection created a second account for the same real profile.](https://docs.plugkit.co/api-reference/accounts/move-everything-attached-to-another-account-onto-this-one-then-delete-it-used-when-a-reconnection-created-a-second-account-for-the-same-real-profile.md)
+- [Permanently delete an already-disconnected account, along with its post targets and conversations](https://docs.plugkit.co/api-reference/accounts/permanently-delete-an-already-disconnected-account-along-with-its-post-targets-and-conversations.md)
+- [Account analytics (unified shape + raw platform payload)](https://docs.plugkit.co/api-reference/accounts/account-analytics-unified-shape-+-raw-platform-payload.md)
+- [What the platform requires the creator to choose before publishing (TikTok: nickname, allowed privacy levels, interaction settings)](https://docs.plugkit.co/api-reference/accounts/what-the-platform-requires-the-creator-to-choose-before-publishing-tiktok:-nickname-allowed-privacy-levels-interaction-settings.md)
+- [List the approved message templates of the account (WhatsApp: the only content allowed past the 24h window)](https://docs.plugkit.co/api-reference/accounts/list-the-approved-message-templates-of-the-account-whatsapp:-the-only-content-allowed-past-the-24h-window.md)
+- [Enable or disable the billable X background work (analytics, inbox sync). Both are off by default: X charges per call, so nothing polls until you say so.](https://docs.plugkit.co/api-reference/accounts/enable-or-disable-the-billable-x-background-work-analytics-inbox-sync-both-are-off-by-default:-x-charges-per-call-so-nothing-polls-until-you-say-so.md)
+- [Recent posts on the account](https://docs.plugkit.co/api-reference/accounts/recent-posts-on-the-account.md)
+- [Analytics for a single post](https://docs.plugkit.co/api-reference/accounts/analytics-for-a-single-post.md)
+- [Comments on a post](https://docs.plugkit.co/api-reference/accounts/comments-on-a-post.md)
+- [Comment on a post](https://docs.plugkit.co/api-reference/accounts/comment-on-a-post.md)
+- [Reply to a comment](https://docs.plugkit.co/api-reference/accounts/reply-to-a-comment.md)
+- [Send a DM directly (without a stored conversation)](https://docs.plugkit.co/api-reference/accounts/send-a-dm-directly-without-a-stored-conversation.md)
+- [Ad account details (currency, status, spend)](https://docs.plugkit.co/api-reference/ads/ad-account-details-currency-status-spend.md)
+- [List campaigns](https://docs.plugkit.co/api-reference/ads/list-campaigns.md)
+- [Create a campaign (paused unless stated)](https://docs.plugkit.co/api-reference/ads/create-a-campaign-paused-unless-stated.md)
+- [Rename, pause, resume or rebudget a campaign](https://docs.plugkit.co/api-reference/ads/rename-pause-resume-or-rebudget-a-campaign.md)
+- [List ad sets](https://docs.plugkit.co/api-reference/ads/list-ad-sets.md)
+- [Create an ad set (audience, budget, schedule)](https://docs.plugkit.co/api-reference/ads/create-an-ad-set-audience-budget-schedule.md)
+- [Rename, pause, resume or rebudget an ad set](https://docs.plugkit.co/api-reference/ads/rename-pause-resume-or-rebudget-an-ad-set.md)
+- [List ads](https://docs.plugkit.co/api-reference/ads/list-ads.md)
+- [Create an ad from an existing creative or an existing Page post](https://docs.plugkit.co/api-reference/ads/create-an-ad-from-an-existing-creative-or-an-existing-page-post.md)
+- [Rename, pause or resume an ad](https://docs.plugkit.co/api-reference/ads/rename-pause-or-resume-an-ad.md)
+- [Promote an existing Page post: creates the campaign, ad set and ad in one call](https://docs.plugkit.co/api-reference/ads/promote-an-existing-page-post:-creates-the-campaign-ad-set-and-ad-in-one-call.md)
+- [Spend and performance for the account, a campaign, an ad set or an ad](https://docs.plugkit.co/api-reference/ads/spend-and-performance-for-the-account-a-campaign-an-ad-set-or-an-ad.md)
+- [Get the OAuth authorization URL to connect an account](https://docs.plugkit.co/api-reference/connect/get-the-oauth-authorization-url-to-connect-an-account.md)
+- [OAuth callback called by the platform after authorization](https://docs.plugkit.co/api-reference/connect/oauth-callback-called-by-the-platform-after-authorization.md)
+- [Subscribe an Instagram account to webhooks (subscribed_apps)](https://docs.plugkit.co/api-reference/connect/subscribe-an-instagram-account-to-webhooks-subscribed_apps.md)
+- [Re-subscribe a Facebook Page to its webhook fields (subscribed_apps)](https://docs.plugkit.co/api-reference/connect/re-subscribe-a-facebook-page-to-its-webhook-fields-subscribed_apps.md): Applies the current field list — including message_echoes, which surfaces replies written from the Meta inbox — to a Page connected before those fields existed. No re-authorization needed.
+- [Re-subscribe a WhatsApp number to its business account webhooks (subscribed_apps)](https://docs.plugkit.co/api-reference/connect/re-subscribe-a-whatsapp-number-to-its-business-account-webhooks-subscribed_apps.md)
+- [Connect a Telegram bot with its @BotFather token](https://docs.plugkit.co/api-reference/connect/connect-a-telegram-bot-with-its-@botfather-token.md)
+- [List conversations](https://docs.plugkit.co/api-reference/inbox/list-conversations.md)
+- [Start (or fetch) a conversation](https://docs.plugkit.co/api-reference/inbox/start-or-fetch-a-conversation.md)
+- [List conversations](https://docs.plugkit.co/api-reference/inbox/list-conversations-1.md)
+- [Start (or fetch) a conversation](https://docs.plugkit.co/api-reference/inbox/start-or-fetch-a-conversation-1.md)
+- [Sync conversations from the platform (live API)](https://docs.plugkit.co/api-reference/inbox/sync-conversations-from-the-platform-live-api.md): Runs a bounded pass immediately (most recent threads and messages) and, the first time, starts a background backfill of the full history. `backfilling: true` means more conversations will keep landing in the inbox for the next few minutes — poll this list to see them arrive.
+- [Sync conversations from the platform (live API)](https://docs.plugkit.co/api-reference/inbox/sync-conversations-from-the-platform-live-api-1.md): Runs a bounded pass immediately (most recent threads and messages) and, the first time, starts a background backfill of the full history. `backfilling: true` means more conversations will keep landing in the inbox for the next few minutes — poll this list to see them arrive.
+- [Mark a conversation as read](https://docs.plugkit.co/api-reference/inbox/mark-a-conversation-as-read.md)
+- [Mark a conversation as read](https://docs.plugkit.co/api-reference/inbox/mark-a-conversation-as-read-1.md)
+- [Retrieve a conversation](https://docs.plugkit.co/api-reference/inbox/retrieve-a-conversation.md)
+- [Retrieve a conversation](https://docs.plugkit.co/api-reference/inbox/retrieve-a-conversation-1.md)
+- [List the messages of a conversation (most recent page first)](https://docs.plugkit.co/api-reference/inbox/list-the-messages-of-a-conversation-most-recent-page-first.md): Returns the latest messages of the thread, rendered oldest-first within the page. Pass `before` (the `nextCursor` of the previous call) to walk further back in time.
+- [Send a message in a conversation](https://docs.plugkit.co/api-reference/inbox/send-a-message-in-a-conversation.md)
+- [List the messages of a conversation (most recent page first)](https://docs.plugkit.co/api-reference/inbox/list-the-messages-of-a-conversation-most-recent-page-first-1.md): Returns the latest messages of the thread, rendered oldest-first within the page. Pass `before` (the `nextCursor` of the previous call) to walk further back in time.
+- [Send a message in a conversation](https://docs.plugkit.co/api-reference/inbox/send-a-message-in-a-conversation-1.md)
+- [List posts](https://docs.plugkit.co/api-reference/posts/list-posts.md)
+- [Create a post (draft, scheduled, or published)](https://docs.plugkit.co/api-reference/posts/create-a-post-draft-scheduled-or-published.md): With `publishNow`, the response returns immediately with `status: "publishing"` and publishing runs in the background. Poll GET /posts/:id to follow it.
+- [Retrieve a post](https://docs.plugkit.co/api-reference/posts/retrieve-a-post.md)
+- [Delete a post (cancels its schedule; does not unpublish anything)](https://docs.plugkit.co/api-reference/posts/delete-a-post-cancels-its-schedule;-does-not-unpublish-anything.md)
+- [Update an unpublished post (content, targets, rescheduling; `scheduledFor: null` unschedules it)](https://docs.plugkit.co/api-reference/posts/update-an-unpublished-post-content-targets-rescheduling;-`scheduledfor:-null`-unschedules-it.md)
+- [Publish an existing post now (scheduled, draft, or retry after a failure)](https://docs.plugkit.co/api-reference/posts/publish-an-existing-post-now-scheduled-draft-or-retry-after-a-failure.md): Returns immediately; the post moves to `publishing` and publishing runs in the background.
+- [Product tagging status of an Instagram account](https://docs.plugkit.co/api-reference/shopping/product-tagging-status-of-an-instagram-account.md): Says whether products can be tagged, and when not, exactly what is missing: no authorization yet, an expired one, a shop Meta has not approved, or a shop with no catalog. Meta is re-checked at most every 6 hours unless `refresh=true`.
+- [Get the Facebook authorization URL that enables product tagging](https://docs.plugkit.co/api-reference/shopping/get-the-facebook-authorization-url-that-enables-product-tagging.md): Product tagging lives on a different Meta API than the Instagram connection PlugKit already holds, so it needs its own authorization. Open the returned URL in a browser and pick the Facebook Page linked to this Instagram account.
+- [OAuth callback for the shopping authorization](https://docs.plugkit.co/api-reference/shopping/oauth-callback-for-the-shopping-authorization.md)
+- [Turn product tagging off for an account](https://docs.plugkit.co/api-reference/shopping/turn-product-tagging-off-for-an-account.md): Removes the authorization PlugKit holds. Posts keep publishing; they just stop carrying product tags.
+- [Search the products of the account’s Instagram shop](https://docs.plugkit.co/api-reference/shopping/search-the-products-of-the-account’s-instagram-shop.md): `q` matches a product name or SKU. Only products Meta has approved can be tagged; the others are returned with their review status so it is clear why they are refused.
+- [Tag products on a published Instagram post or reel](https://docs.plugkit.co/api-reference/shopping/tag-products-on-a-published-instagram-post-or-reel.md): Replaces the product tags of an existing media. Up to 20 tags on a photo (each with x/y coordinates between 0 and 1) and 30 on a video or reel, where coordinates do not apply. Instagram allows 25 tagged posts per 24 hours per account.
+- [Lister les médias de la bibliothèque](https://docs.plugkit.co/api-reference/media/lister-les-médias-de-la-bibliothèque.md)
+- [Supprimer un média de la bibliothèque](https://docs.plugkit.co/api-reference/media/supprimer-un-média-de-la-bibliothèque.md)
+- [Post v1mediaupload](https://docs.plugkit.co/api-reference/media/post-v1mediaupload.md)
+- [Obtenir un lien d'envoi à usage unique (sans en-tête d'autorisation)](https://docs.plugkit.co/api-reference/media/obtenir-un-lien-denvoi-à-usage-unique-sans-en-tête-dautorisation.md)
+- [Page de dépôt du billet (navigateur)](https://docs.plugkit.co/api-reference/media/page-de-dépôt-du-billet-navigateur.md)
+- [Envoyer un fichier avec un lien d'envoi (PUT)](https://docs.plugkit.co/api-reference/media/envoyer-un-fichier-avec-un-lien-denvoi-put.md)
+- [Envoyer un fichier avec un lien d'envoi (POST)](https://docs.plugkit.co/api-reference/media/envoyer-un-fichier-avec-un-lien-denvoi-post.md)
+- [Signaler la fin d'un envoi direct](https://docs.plugkit.co/api-reference/media/signaler-la-fin-dun-envoi-direct.md)
+- [Get v1mediafile](https://docs.plugkit.co/api-reference/media/get-v1mediafile.md)
+- [Headline metrics for a window, with change vs the prior period](https://docs.plugkit.co/api-reference/analytics/headline-metrics-for-a-window-with-change-vs-the-prior-period.md)
+- [Post-level analytics (published here or natively on the platform)](https://docs.plugkit.co/api-reference/analytics/post-level-analytics-published-here-or-natively-on-the-platform.md)
+- [One row per platform over the window](https://docs.plugkit.co/api-reference/analytics/one-row-per-platform-over-the-window.md)
+- [One metric over time, optionally split by platform](https://docs.plugkit.co/api-reference/analytics/one-metric-over-time-optionally-split-by-platform.md)
+- [Weekday × hour engagement grid, read in the given timezone](https://docs.plugkit.co/api-reference/analytics/weekday-×-hour-engagement-grid-read-in-the-given-timezone.md)
+- [How fast engagement accumulates after publishing, by age bucket](https://docs.plugkit.co/api-reference/analytics/how-fast-engagement-accumulates-after-publishing-by-age-bucket.md)
+- [Follower history and growth, per account](https://docs.plugkit.co/api-reference/analytics/follower-history-and-growth-per-account.md)
+- [Refresh now instead of waiting for the next cycle (debounced 15s per account)](https://docs.plugkit.co/api-reference/analytics/refresh-now-instead-of-waiting-for-the-next-cycle-debounced-15s-per-account.md)
+- [List comment-to-DM automations](https://docs.plugkit.co/api-reference/automations/list-comment-to-dm-automations.md)
+- [Create a comment-to-DM automation](https://docs.plugkit.co/api-reference/automations/create-a-comment-to-dm-automation.md)
+- [Retrieve an automation](https://docs.plugkit.co/api-reference/automations/retrieve-an-automation.md)
+- [Update an automation](https://docs.plugkit.co/api-reference/automations/update-an-automation.md)
+- [Delete an automation](https://docs.plugkit.co/api-reference/automations/delete-an-automation.md)
+- [Update an automation](https://docs.plugkit.co/api-reference/automations/update-an-automation-1.md)
+- [Trigger log of an automation](https://docs.plugkit.co/api-reference/automations/trigger-log-of-an-automation.md)
+- [List broadcasts](https://docs.plugkit.co/api-reference/campaigns/list-broadcasts.md)
+- [Create a broadcast](https://docs.plugkit.co/api-reference/campaigns/create-a-broadcast.md)
+- [Count the recipients an audience would reach](https://docs.plugkit.co/api-reference/campaigns/count-the-recipients-an-audience-would-reach.md)
+- [Retrieve a broadcast](https://docs.plugkit.co/api-reference/campaigns/retrieve-a-broadcast.md)
+- [Update a draft or scheduled broadcast](https://docs.plugkit.co/api-reference/campaigns/update-a-draft-or-scheduled-broadcast.md)
+- [Delete a broadcast](https://docs.plugkit.co/api-reference/campaigns/delete-a-broadcast.md)
+- [Update a draft or scheduled broadcast](https://docs.plugkit.co/api-reference/campaigns/update-a-draft-or-scheduled-broadcast-1.md)
+- [Per-recipient delivery log](https://docs.plugkit.co/api-reference/campaigns/per-recipient-delivery-log.md)
+- [Queue the broadcast for sending](https://docs.plugkit.co/api-reference/campaigns/queue-the-broadcast-for-sending.md)
+- [Put a scheduled broadcast back to draft](https://docs.plugkit.co/api-reference/campaigns/put-a-scheduled-broadcast-back-to-draft.md)
+- [List sequences](https://docs.plugkit.co/api-reference/campaigns/list-sequences.md)
+- [Create a follow-up sequence](https://docs.plugkit.co/api-reference/campaigns/create-a-follow-up-sequence.md)
+- [Retrieve a sequence](https://docs.plugkit.co/api-reference/campaigns/retrieve-a-sequence.md)
+- [Update a sequence](https://docs.plugkit.co/api-reference/campaigns/update-a-sequence.md)
+- [Delete a sequence](https://docs.plugkit.co/api-reference/campaigns/delete-a-sequence.md)
+- [Update a sequence](https://docs.plugkit.co/api-reference/campaigns/update-a-sequence-1.md)
+- [Who is in the sequence, and where](https://docs.plugkit.co/api-reference/campaigns/who-is-in-the-sequence-and-where.md)
+- [Enrol a conversation by hand](https://docs.plugkit.co/api-reference/campaigns/enrol-a-conversation-by-hand.md)
+- [Comments, replies and mentions, most recent first](https://docs.plugkit.co/api-reference/engagement/comments-replies-and-mentions-most-recent-first.md): Defaults to what still needs an answer. Each row carries the post it belongs to, so a comment can be read in context.
+- [How much is left to handle, per account](https://docs.plugkit.co/api-reference/engagement/how-much-is-left-to-handle-per-account.md)
+- [Pull comments and mentions from the platforms](https://docs.plugkit.co/api-reference/engagement/pull-comments-and-mentions-from-the-platforms.md): Webhooks already deliver new comments in real time; this catches up after an outage and fills in what a webhook payload leaves out (like counts, hidden state, author).
+- [Reply publicly to a comment, reply or mention](https://docs.plugkit.co/api-reference/engagement/reply-publicly-to-a-comment-reply-or-mention.md)
+- [Hide or unhide a comment](https://docs.plugkit.co/api-reference/engagement/hide-or-unhide-a-comment.md): Hiding keeps the comment visible to its author, who is not notified — it is the reversible move, unlike deleting.
+- [Mark as handled, or put it back in the pile](https://docs.plugkit.co/api-reference/engagement/mark-as-handled-or-put-it-back-in-the-pile.md)
+- [Delete a comment on one of your posts](https://docs.plugkit.co/api-reference/engagement/delete-a-comment-on-one-of-your-posts.md)
+- [List the playbook catalog](https://docs.plugkit.co/api-reference/playbooks/list-the-playbook-catalog.md)
+- [List the playbooks installed on this workspace](https://docs.plugkit.co/api-reference/playbooks/list-the-playbooks-installed-on-this-workspace.md)
+- [Retrieve one playbook, with its inputs and slots](https://docs.plugkit.co/api-reference/playbooks/retrieve-one-playbook-with-its-inputs-and-slots.md)
+- [Install a playbook](https://docs.plugkit.co/api-reference/playbooks/install-a-playbook.md): Creates the automations and sequences the playbook describes, on the accounts you pass. Everything it creates is a normal PlugKit object: edit or delete it afterwards from Campaigns, or remove the whole install in one call.
+- [Remove an installed playbook](https://docs.plugkit.co/api-reference/playbooks/remove-an-installed-playbook.md): Deletes the automations and sequences it created. Pass `keep=resources` to only forget the install and leave them running.
+- [List webhook endpoints](https://docs.plugkit.co/api-reference/webhooks/list-webhook-endpoints.md)
+- [Create a webhook endpoint (the signing secret is returned once)](https://docs.plugkit.co/api-reference/webhooks/create-a-webhook-endpoint-the-signing-secret-is-returned-once.md): Events: post.published, post.partial, post.failed, message.received, message.sent, message.undelivered, account.disconnected, comment.received, comment.dm_sent, broadcast.finished, usage.threshold_reached. Each delivery is signed with `x-plugkit-signature: t=<unix>,v1=<hex>`, the HMAC-SHA256 of `<t>…
+- [Retrieve a webhook endpoint](https://docs.plugkit.co/api-reference/webhooks/retrieve-a-webhook-endpoint.md)
+- [Delete a webhook endpoint](https://docs.plugkit.co/api-reference/webhooks/delete-a-webhook-endpoint.md)
+- [Update a webhook endpoint](https://docs.plugkit.co/api-reference/webhooks/update-a-webhook-endpoint.md)
+- [Recent delivery attempts for this endpoint (debugging)](https://docs.plugkit.co/api-reference/webhooks/recent-delivery-attempts-for-this-endpoint-debugging.md)
+
+## OpenAPI Specs
+
+- [openapi](/api-reference/openapi.json)
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

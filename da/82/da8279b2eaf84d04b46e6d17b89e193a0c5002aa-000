@@ -1,0 +1,137 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Update a sequence
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json patch /v1/sequences/{id}
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/sequences/{id}:
+    patch:
+      tags:
+        - campaigns
+      summary: Update a sequence
+      operationId: SequencesController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSequenceDto'
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    UpdateSequenceDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Relance nouveaux contacts
+        trigger:
+          type: string
+          enum:
+            - conversation_started
+            - comment_automation
+            - story_reply
+            - manual
+          default: conversation_started
+          description: >-
+            `story_reply` enrols the contact when they reply to one of the
+            account stories — the story lead magnet ("reply BETA and I send you
+            the link"). Narrow it with `keywords`.
+        automationId:
+          type: string
+          description: >-
+            Comment-to-DM automation that enrols people, when trigger is
+            `comment_automation`.
+        keywords:
+          description: >-
+            Keywords that filter entry, when trigger is `story_reply`. Empty
+            means every story reply enrols. Case- and accent-insensitive.
+          example:
+            - beta
+          type: array
+          items:
+            type: string
+        matchType:
+          type: string
+          enum:
+            - contains
+            - exact
+            - any
+          default: contains
+          description: How `keywords` are matched against the reply.
+        stopOnReply:
+          type: boolean
+          default: true
+          description: Stop the follow-ups as soon as the contact replies.
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/SequenceStepDto'
+        status:
+          type: string
+          enum:
+            - active
+            - paused
+    SequenceStepDto:
+      type: object
+      properties:
+        delayMinutes:
+          type: number
+          description: >-
+            Wait before this step, counted from the previous one (from enrolment
+            for the first). 0 sends immediately.
+          minimum: 0
+        text:
+          type: string
+        buttonLabel:
+          type: string
+          description: >-
+            Button label under the message (20 chars max shown). Needs
+            `buttonUrl`. Without it the link has to be pasted into the text, and
+            a bare link in a DM is what Meta flags.
+        buttonUrl:
+          type: string
+          description: >-
+            Button destination (https URL). Needs `buttonLabel`. Instagram and
+            Facebook render it as a button template, WhatsApp as a CTA, Telegram
+            as an inline keyboard; if the platform refuses it, the URL is
+            appended to the text instead of being lost.
+      required:
+        - delayMinutes
+        - text
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

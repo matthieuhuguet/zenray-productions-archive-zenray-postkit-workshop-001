@@ -1,0 +1,99 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# X (Twitter)
+
+> Post tweets with media and read account & tweet analytics.
+
+X is a **publishing + analytics** integration via the X API v2 (OAuth 2.0 with
+PKCE, auto-refreshing tokens).
+
+<CardGroup cols={2}>
+  <Card title="Publish" icon="feather">Text, images or video.</Card>
+  <Card title="Analytics" icon="chart-simple">Account & per-tweet metrics.</Card>
+</CardGroup>
+
+## Connect
+
+OAuth 2.0 (PKCE) flow:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/connect/x?profileId=YOUR_PROFILE_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Open the returned `authUrl` and approve. The callback `/connect/x/callback` must
+be registered in your X app's **User authentication settings**.
+
+## Publish a tweet
+
+X accepts **text only**, **1–4 images**, **or** a single video/GIF (media is
+optional):
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "profileId": "PROFILE_ID", "accountIds": ["ACCOUNT_ID"],
+        "content": "We just shipped 🚀", "mediaUrls": ["https://…/image.jpg"], "publishNow": true }'
+```
+
+The response includes the tweet's `platformPostId` and `platformPostUrl`.
+
+## Analytics
+
+X feeds the [analytics store](/guides/analytics) like the other platforms —
+likes, replies, reposts and impressions per post — with two differences that
+follow from X billing every API read.
+
+<Warning>
+  **Nothing is polled until you opt in.** Background analytics on an X account
+  are off by default, per account:
+
+  ```bash theme={null}
+  curl -X PATCH https://api.plugkit.co/v1/accounts/ACCOUNT_ID/x-billing \
+    -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+    -d '{ "analytics": true, "acknowledgeCost": true }'
+  ```
+
+  `acknowledgeCost` is required to turn it on: the call is refused without it,
+  and the refusal carries the rate card so you can show it first. See
+  [Plans & billing](/concepts/billing).
+</Warning>
+
+Once enabled:
+
+* A post is refreshed **at most once a day**, whatever your plan. The hourly
+  window other platforms get would cost \$0.005 per post per hour.
+* **Only posts published through PlugKit are tracked.** Listing your timeline to
+  discover the others would be a billed read per page, forever, to find posts we
+  already know about.
+* Collection stops when your [spend cap](/concepts/billing) is reached.
+  Publishing never does.
+
+A **\$20 monthly cap applies by default**, so this can't run away on its own.
+Raise or lower it to fit:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/billing/spend-cap \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "capUsd": 20 }'
+```
+
+## Pricing
+
+X calls are re-billed at cost — $0.005 a read, $0.015 a post, and **\$0.200 for
+a post containing a URL** (X's own pricing, roughly 13× a normal post). Watch it
+with `GET /v1/usage`; see [Plans & billing](/concepts/billing).
+
+## Not supported
+
+X DMs need elevated paid API access, so messaging isn't exposed here.
+
+## Permissions
+
+Scopes: `tweet.read`, `tweet.write`, `users.read`, `media.write`,
+`offline.access` (for token refresh).
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

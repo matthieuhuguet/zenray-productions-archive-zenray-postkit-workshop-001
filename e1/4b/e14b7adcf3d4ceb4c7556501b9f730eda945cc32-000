@@ -1,0 +1,58 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Replace a key with a new one of the same name and revoke the old one (the plaintext value is returned once)
+
+> The stored value is a hash, so an existing key can never be shown again. Rolling it hands back a value you can copy; requests using the old key stop working immediately.
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json post /v1/api-keys/{id}/roll
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/api-keys/{id}/roll:
+    post:
+      tags:
+        - api-keys
+      summary: >-
+        Replace a key with a new one of the same name and revoke the old one
+        (the plaintext value is returned once)
+      description: >-
+        The stored value is a hash, so an existing key can never be shown again.
+        Rolling it hands back a value you can copy; requests using the old key
+        stop working immediately.
+      operationId: ApiKeysController_roll
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '201':
+          description: ''
+      security:
+        - api-key: []
+components:
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

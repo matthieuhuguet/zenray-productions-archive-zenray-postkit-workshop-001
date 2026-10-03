@@ -1,0 +1,109 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Create a comment-to-DM automation
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json post /v1/comment-automations
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/comment-automations:
+    post:
+      tags:
+        - automations
+      summary: Create a comment-to-DM automation
+      operationId: CommentAutomationsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCommentAutomationDto'
+      responses:
+        '201':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    CreateCommentAutomationDto:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Instagram or Facebook Page account to watch.
+        name:
+          type: string
+          example: Guide lead magnet
+        mediaIds:
+          description: >-
+            Platform media ids to watch (mediaId from get_account_media). Empty
+            = every post on the account, including future ones.
+          type: array
+          items:
+            type: string
+        keywords:
+          description: >-
+            Trigger words. Matching is case- and accent-insensitive. Required
+            unless matchType is `any`.
+          example:
+            - guide
+            - link
+          type: array
+          items:
+            type: string
+        matchType:
+          type: string
+          enum:
+            - contains
+            - exact
+            - any
+          default: contains
+        dmText:
+          type: string
+          description: The DM sent to the commenter.
+        dmButtonLabel:
+          type: string
+          description: >-
+            Button label (20 chars max shown). Empty removes the button, along
+            with dmButtonUrl.
+        dmButtonUrl:
+          type: string
+          description: >-
+            Button destination (https URL). Empty removes the button, along with
+            dmButtonLabel.
+        publicReplyText:
+          type: string
+          description: Optional public reply posted under the comment.
+        oncePerUser:
+          type: boolean
+          default: true
+          description: Send at most one DM per person for this automation.
+      required:
+        - accountId
+        - name
+        - dmText
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

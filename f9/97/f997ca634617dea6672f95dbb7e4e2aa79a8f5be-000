@@ -1,0 +1,66 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Invite someone to this workspace (they get access at their next sign-in with that email)
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json post /v1/workspaces/members
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/workspaces/members:
+    post:
+      tags:
+        - workspaces
+      summary: >-
+        Invite someone to this workspace (they get access at their next sign-in
+        with that email)
+      operationId: WorkspacesController_invite
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InviteMemberDto'
+      responses:
+        '201':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    InviteMemberDto:
+      type: object
+      properties:
+        email:
+          type: string
+          example: teammate@gmail.com
+          description: >-
+            L'adresse avec laquelle l'invité se connecte à PlugKit. Le workspace
+            apparaît dans son sélecteur à sa première connexion sous cette
+            adresse.
+      required:
+        - email
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

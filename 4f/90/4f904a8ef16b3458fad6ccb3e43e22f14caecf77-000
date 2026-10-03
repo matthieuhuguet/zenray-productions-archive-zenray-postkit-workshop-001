@@ -1,0 +1,236 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Update an unpublished post (content, targets, rescheduling; `scheduledFor: null` unschedules it)
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json patch /v1/posts/{id}
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/posts/{id}:
+    patch:
+      tags:
+        - posts
+      summary: >-
+        Update an unpublished post (content, targets, rescheduling;
+        `scheduledFor: null` unschedules it)
+      operationId: PostsController_update
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePostDto'
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    UpdatePostDto:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the post (YouTube).
+        content:
+          type: string
+          description: >-
+            Text / caption of the post. An empty string is accepted only
+            together with `asStory: true` — an Instagram story has no caption.
+        mediaItems:
+          description: Replaces the media of the post.
+          type: array
+          items:
+            $ref: '#/components/schemas/MediaItemDto'
+        mediaUrls:
+          deprecated: true
+          description: Legacy shorthand (see POST /posts).
+          type: array
+          items:
+            type: string
+        accountIds:
+          description: Replaces the target accounts
+          type: array
+          items:
+            type: string
+        platforms:
+          description: Replaces the targets, with their per-platform overrides.
+          type: array
+          items:
+            $ref: '#/components/schemas/PostTargetDto'
+        scheduledFor:
+          type: object
+          description: >-
+            New scheduled date (ISO 8601). `null` unschedules the post, which
+            goes back to draft.
+          nullable: true
+          example: '2027-01-01T12:00:00'
+        timezone:
+          type: string
+          description: IANA timezone of `scheduledFor` (e.g. "Europe/Paris")
+          example: Europe/Paris
+        asDraft:
+          type: boolean
+          description: 'TikTok only: publish as a draft (see POST /posts)'
+        trialReel:
+          type: boolean
+          description: 'Instagram only: publish the video as a trial reel (see POST /posts)'
+        asStory:
+          type: boolean
+          description: >-
+            Instagram only: publish to the story instead of the feed (see POST
+            /posts)
+        trialGraduation:
+          type: string
+          enum:
+            - MANUAL
+            - SS_PERFORMANCE
+          description: 'Instagram only: how a trial reel ends (see POST /posts)'
+        shareToFeed:
+          type: boolean
+          description: >-
+            Instagram only: also show the reel in the account feed (see POST
+            /posts)
+        productTags:
+          description: >-
+            Instagram only: products to tag on the post (see POST /posts). An
+            empty array removes the products the post was carrying.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductTagDto'
+        allowComment:
+          type: boolean
+          description: 'TikTok only: allow comments (see POST /posts)'
+        allowDuet:
+          type: boolean
+          description: 'TikTok only: allow Duets (see POST /posts)'
+        allowStitch:
+          type: boolean
+          description: 'TikTok only: allow Stitches (see POST /posts)'
+        privacy:
+          type: string
+          enum:
+            - public
+            - unlisted
+            - private
+          description: >-
+            Visibility of the published video, on YouTube and TikTok (see POST
+            /posts)
+        tiktokPrivacyLevel:
+          type: string
+          enum:
+            - PUBLIC_TO_EVERYONE
+            - MUTUAL_FOLLOW_FRIENDS
+            - FOLLOWER_OF_CREATOR
+            - SELF_ONLY
+          description: >-
+            TikTok only: the exact privacy level picked by the creator (see POST
+            /posts)
+        promotionalContent:
+          type: boolean
+          description: >-
+            TikTok only: the video promotes the creator's own brand (see POST
+            /posts)
+        paidPartnership:
+          type: boolean
+          description: 'TikTok only: the video is a paid partnership (see POST /posts)'
+    MediaItemDto:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - image
+            - video
+            - gif
+            - document
+          description: Inferred from the URL when omitted.
+        url:
+          type: string
+          example: https://cdn.example.com/photo.jpg
+        altText:
+          type: string
+          description: >-
+            Alternative text (accessibility), applied on every platform that
+            supports it.
+        thumbnail:
+          type: string
+          description: Custom thumbnail / cover image for a video.
+      required:
+        - url
+    PostTargetDto:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Account to publish to
+        customContent:
+          type: string
+          description: >-
+            Text used on this platform instead of the post content (e.g. a
+            shorter version for X).
+        customMedia:
+          description: Media used on this platform instead of the post media.
+          type: array
+          items:
+            $ref: '#/components/schemas/MediaItemDto'
+      required:
+        - accountId
+    ProductTagDto:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: >-
+            Product id from the Instagram shop catalog, as returned by GET
+            /shopping/{accountId}/products.
+        x:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0.5
+          description: >-
+            Horizontal position of the tag on a photo, from 0 (left) to 1
+            (right). Ignored on a video or reel. Defaults to the centre — the
+            creator can move it from the Instagram app.
+        'y':
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0.5
+          description: >-
+            Vertical position of the tag on a photo, from 0 (top) to 1 (bottom).
+            Ignored on a video or reel.
+      required:
+        - productId
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

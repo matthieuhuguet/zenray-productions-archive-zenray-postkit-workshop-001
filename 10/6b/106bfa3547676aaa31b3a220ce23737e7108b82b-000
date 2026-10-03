@@ -1,0 +1,66 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# List the messages of a conversation (most recent page first)
+
+> Returns the latest messages of the thread, rendered oldest-first within the page. Pass `before` (the `nextCursor` of the previous call) to walk further back in time.
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json get /v1/inbox/conversations/{id}/messages
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/inbox/conversations/{id}/messages:
+    get:
+      tags:
+        - inbox
+      summary: List the messages of a conversation (most recent page first)
+      description: >-
+        Returns the latest messages of the thread, rendered oldest-first within
+        the page. Pass `before` (the `nextCursor` of the previous call) to walk
+        further back in time.
+      operationId: MessagesController_getMessages[0]
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+        - name: limit
+          required: true
+          in: query
+          schema:
+            type: string
+        - name: before
+          required: true
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

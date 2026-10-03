@@ -1,0 +1,79 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Enable or disable the billable X background work (analytics, inbox sync). Both are off by default: X charges per call, so nothing polls until you say so.
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json patch /v1/accounts/{id}/x-billing
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/accounts/{id}/x-billing:
+    patch:
+      tags:
+        - accounts
+      summary: >-
+        Enable or disable the billable X background work (analytics, inbox
+        sync). Both are off by default: X charges per call, so nothing polls
+        until you say so.
+      operationId: AccountsController_setXBilling
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/XBillingDto'
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    XBillingDto:
+      type: object
+      properties:
+        analytics:
+          type: boolean
+          description: >-
+            Allow analytics reads on this X account. X charges $0.005 per post
+            read and $0.010 per user read.
+        inboxSync:
+          type: boolean
+          description: >-
+            Allow background inbox polling on this X account. X charges $0.010
+            per DM read.
+        acknowledgeCost:
+          type: boolean
+          description: >-
+            Required to turn either switch ON: confirms the caller has seen what
+            X charges and accepts that these calls are re-billed at cost.
+            Refused without it. Turning a switch OFF never needs it.
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

@@ -1,0 +1,4 @@
+#!/bin/sh
+u="$1"; p="${u#https://docs.plugkit.co/}"
+mkdir -p "pages/$(dirname "$p")"
+curl -sL -m 30 -o "pages/$p" -w "%{http_code}\n" "$u"

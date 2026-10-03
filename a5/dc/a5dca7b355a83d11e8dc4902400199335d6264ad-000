@@ -1,0 +1,81 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Rename, pause, resume or rebudget an ad set
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json patch /v1/ads/{accountId}/adsets/{adSetId}
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/ads/{accountId}/adsets/{adSetId}:
+    patch:
+      tags:
+        - ads
+      summary: Rename, pause, resume or rebudget an ad set
+      operationId: AdsController_updateAdSet
+      parameters:
+        - name: accountId
+          required: true
+          in: path
+          schema:
+            type: string
+        - name: adSetId
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAdSetDto'
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    UpdateAdSetDto:
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+          enum:
+            - ACTIVE
+            - PAUSED
+        dailyBudget:
+          type: number
+          description: Minor units of the account currency.
+        lifetimeBudget:
+          type: number
+          description: Minor units of the account currency.
+        bidAmount:
+          type: number
+          description: Minor units of the account currency.
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

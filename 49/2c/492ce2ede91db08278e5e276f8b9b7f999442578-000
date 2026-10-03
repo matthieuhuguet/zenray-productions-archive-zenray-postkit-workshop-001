@@ -1,0 +1,115 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Instagram
+
+> Publish, DM, moderate comments and read insights on Instagram business accounts.
+
+Instagram is PlugKit's most complete integration: **publishing, messaging,
+comments and analytics**, all through Meta's official *Instagram API with
+Instagram Login*. Requires an Instagram **professional (business or creator)**
+account.
+
+<CardGroup cols={2}>
+  <Card title="Publish" icon="image">Images with captions.</Card>
+  <Card title="Messaging" icon="comments">Read & reply to DMs.</Card>
+  <Card title="Comments" icon="comment-dots">List & reply on posts.</Card>
+  <Card title="Analytics" icon="chart-line">Followers, reach, impressions.</Card>
+</CardGroup>
+
+## Connect
+
+Standard OAuth 2 flow — request a URL, the user approves, PlugKit stores a
+long-lived token.
+
+<Steps>
+  <Step title="Get the authorization URL">
+    ```bash theme={null}
+    curl "https://api.plugkit.co/v1/connect/instagram?profileId=YOUR_PROFILE_ID" \
+      -H "Authorization: Bearer sk_your_key"
+    ```
+
+    → `{ "authUrl": "https://www.instagram.com/oauth/authorize?..." }`
+  </Step>
+
+  <Step title="Send the user to authUrl">
+    They log into their Instagram **business** account and approve the scopes.
+  </Step>
+
+  <Step title="PlugKit stores the account">
+    Instagram redirects to `/connect/instagram/callback`; PlugKit exchanges the
+    code for a long-lived token, subscribes the account to webhooks, and exposes
+    it in `GET /accounts`.
+  </Step>
+</Steps>
+
+## Publish
+
+Instagram publishing is a two-step process (create a media container, then
+publish) — PlugKit runs both for you. Provide a public **image** URL:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "profileId": "PROFILE_ID", "accountIds": ["ACCOUNT_ID"],
+        "content": "Launch day 🚀", "mediaUrls": ["https://…/photo.jpg"], "publishNow": true }'
+```
+
+No public URL? [Upload the file first](/guides/publishing#uploading-media).
+
+## Messaging
+
+Read and reply to DMs. Inbound messages arrive via [webhooks](/guides/webhooks),
+or pull them on demand with sync:
+
+```bash Sync + list theme={null}
+curl -X POST "https://api.plugkit.co/v1/inbox/conversations/sync?accountId=ACCOUNT_ID" -H "Authorization: Bearer sk_your_key"
+curl "https://api.plugkit.co/v1/inbox/conversations?accountId=ACCOUNT_ID" -H "Authorization: Bearer sk_your_key"
+```
+
+```bash Reply / send a direct DM theme={null}
+curl -X POST https://api.plugkit.co/v1/inbox/conversations/CONVERSATION_ID/messages \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" -d '{ "text": "Hi! 👋" }'
+```
+
+<Warning>
+  Meta's rule: you can only message a user who contacted you within the last
+  **24h**, unless you use an approved template.
+</Warning>
+
+## Comments
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/accounts/ACCOUNT_ID/media -H "Authorization: Bearer sk_your_key"          # recent posts
+curl https://api.plugkit.co/v1/accounts/ACCOUNT_ID/media/MEDIA_ID/comments -H "Authorization: Bearer sk_your_key"
+curl -X POST https://api.plugkit.co/v1/accounts/ACCOUNT_ID/comments/COMMENT_ID/reply \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" -d '{ "message": "Thanks! 🙏" }'
+```
+
+## Analytics
+
+Instagram is the richest source in the [analytics store](/guides/analytics):
+views, reach, likes, comments, shares and saves per post, plus followers,
+reach and profile views measured daily. Posts published from the Instagram app
+are collected too.
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/analytics/summary?platform=instagram" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+<Note>
+  Meta retired media `impressions` in favour of `views`. Older posts may carry
+  one and not the other — which is why an unavailable metric comes back `null`
+  rather than `0`.
+</Note>
+
+## Permissions
+
+Instagram grants these scopes on connect: `instagram_business_basic`,
+`…_content_publish`, `…_manage_messages`, `…_manage_comments`,
+`…_manage_insights`. Each capability above needs its matching scope.
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

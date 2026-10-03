@@ -1,0 +1,4219 @@
+# Account analytics (unified shape + raw platform payload)
+Source: https://docs.plugkit.co/api-reference/accounts/account-analytics-unified-shape-+-raw-platform-payload
+
+/api-reference/openapi.json get /v1/accounts/{id}/analytics
+
+
+
+# Analytics for a single post
+Source: https://docs.plugkit.co/api-reference/accounts/analytics-for-a-single-post
+
+/api-reference/openapi.json get /v1/accounts/{id}/media/{mediaId}/analytics
+
+
+
+# Comment on a post
+Source: https://docs.plugkit.co/api-reference/accounts/comment-on-a-post
+
+/api-reference/openapi.json post /v1/accounts/{id}/media/{mediaId}/comments
+
+
+
+# Comments on a post
+Source: https://docs.plugkit.co/api-reference/accounts/comments-on-a-post
+
+/api-reference/openapi.json get /v1/accounts/{id}/media/{mediaId}/comments
+
+
+
+# Connect (or reconnect) a social account
+Source: https://docs.plugkit.co/api-reference/accounts/connect-or-reconnect-a-social-account
+
+/api-reference/openapi.json post /v1/accounts/connect
+
+
+
+# Disconnect an account
+Source: https://docs.plugkit.co/api-reference/accounts/disconnect-an-account
+
+/api-reference/openapi.json delete /v1/accounts/{id}
+
+
+
+# Enable or disable the billable X background work (analytics, inbox sync). Both are off by default: X charges per call, so nothing polls until you say so.
+Source: https://docs.plugkit.co/api-reference/accounts/enable-or-disable-the-billable-x-background-work-analytics-inbox-sync-both-are-off-by-default:-x-charges-per-call-so-nothing-polls-until-you-say-so
+
+/api-reference/openapi.json patch /v1/accounts/{id}/x-billing
+
+
+
+# List connected accounts
+Source: https://docs.plugkit.co/api-reference/accounts/list-connected-accounts
+
+/api-reference/openapi.json get /v1/accounts
+
+
+
+# List the approved message templates of the account (WhatsApp: the only content allowed past the 24h window)
+Source: https://docs.plugkit.co/api-reference/accounts/list-the-approved-message-templates-of-the-account-whatsapp:-the-only-content-allowed-past-the-24h-window
+
+/api-reference/openapi.json get /v1/accounts/{id}/message-templates
+
+
+
+# Move everything attached to another account onto this one, then delete it. Used when a reconnection created a second account for the same real profile.
+Source: https://docs.plugkit.co/api-reference/accounts/move-everything-attached-to-another-account-onto-this-one-then-delete-it-used-when-a-reconnection-created-a-second-account-for-the-same-real-profile
+
+/api-reference/openapi.json post /v1/accounts/{id}/replace
+
+
+
+# Permanently delete an already-disconnected account, along with its post targets and conversations
+Source: https://docs.plugkit.co/api-reference/accounts/permanently-delete-an-already-disconnected-account-along-with-its-post-targets-and-conversations
+
+/api-reference/openapi.json delete /v1/accounts/{id}/permanent
+
+
+
+# Recent posts on the account
+Source: https://docs.plugkit.co/api-reference/accounts/recent-posts-on-the-account
+
+/api-reference/openapi.json get /v1/accounts/{id}/media
+
+
+
+# Reply to a comment
+Source: https://docs.plugkit.co/api-reference/accounts/reply-to-a-comment
+
+/api-reference/openapi.json post /v1/accounts/{id}/comments/{commentId}/reply
+
+
+
+# Retrieve an account
+Source: https://docs.plugkit.co/api-reference/accounts/retrieve-an-account
+
+/api-reference/openapi.json get /v1/accounts/{id}
+
+
+
+# Send a DM directly (without a stored conversation)
+Source: https://docs.plugkit.co/api-reference/accounts/send-a-dm-directly-without-a-stored-conversation
+
+/api-reference/openapi.json post /v1/accounts/{id}/messages/send
+
+
+
+# What the platform requires the creator to choose before publishing (TikTok: nickname, allowed privacy levels, interaction settings)
+Source: https://docs.plugkit.co/api-reference/accounts/what-the-platform-requires-the-creator-to-choose-before-publishing-tiktok:-nickname-allowed-privacy-levels-interaction-settings
+
+/api-reference/openapi.json get /v1/accounts/{id}/publish-options
+
+
+
+# Ad account details (currency, status, spend)
+Source: https://docs.plugkit.co/api-reference/ads/ad-account-details-currency-status-spend
+
+/api-reference/openapi.json get /v1/ads/{accountId}/account
+
+
+
+# Create a campaign (paused unless stated)
+Source: https://docs.plugkit.co/api-reference/ads/create-a-campaign-paused-unless-stated
+
+/api-reference/openapi.json post /v1/ads/{accountId}/campaigns
+
+
+
+# Create an ad from an existing creative or an existing Page post
+Source: https://docs.plugkit.co/api-reference/ads/create-an-ad-from-an-existing-creative-or-an-existing-page-post
+
+/api-reference/openapi.json post /v1/ads/{accountId}/ads
+
+
+
+# Create an ad set (audience, budget, schedule)
+Source: https://docs.plugkit.co/api-reference/ads/create-an-ad-set-audience-budget-schedule
+
+/api-reference/openapi.json post /v1/ads/{accountId}/adsets
+
+
+
+# List ad sets
+Source: https://docs.plugkit.co/api-reference/ads/list-ad-sets
+
+/api-reference/openapi.json get /v1/ads/{accountId}/adsets
+
+
+
+# List ads
+Source: https://docs.plugkit.co/api-reference/ads/list-ads
+
+/api-reference/openapi.json get /v1/ads/{accountId}/ads
+
+
+
+# List campaigns
+Source: https://docs.plugkit.co/api-reference/ads/list-campaigns
+
+/api-reference/openapi.json get /v1/ads/{accountId}/campaigns
+
+
+
+# Promote an existing Page post: creates the campaign, ad set and ad in one call
+Source: https://docs.plugkit.co/api-reference/ads/promote-an-existing-page-post:-creates-the-campaign-ad-set-and-ad-in-one-call
+
+/api-reference/openapi.json post /v1/ads/{accountId}/boost
+
+
+
+# Rename, pause or resume an ad
+Source: https://docs.plugkit.co/api-reference/ads/rename-pause-or-resume-an-ad
+
+/api-reference/openapi.json patch /v1/ads/{accountId}/ads/{adId}
+
+
+
+# Rename, pause, resume or rebudget a campaign
+Source: https://docs.plugkit.co/api-reference/ads/rename-pause-resume-or-rebudget-a-campaign
+
+/api-reference/openapi.json patch /v1/ads/{accountId}/campaigns/{campaignId}
+
+
+
+# Rename, pause, resume or rebudget an ad set
+Source: https://docs.plugkit.co/api-reference/ads/rename-pause-resume-or-rebudget-an-ad-set
+
+/api-reference/openapi.json patch /v1/ads/{accountId}/adsets/{adSetId}
+
+
+
+# Spend and performance for the account, a campaign, an ad set or an ad
+Source: https://docs.plugkit.co/api-reference/ads/spend-and-performance-for-the-account-a-campaign-an-ad-set-or-an-ad
+
+/api-reference/openapi.json get /v1/ads/{accountId}/insights
+
+
+
+# Follower history and growth, per account
+Source: https://docs.plugkit.co/api-reference/analytics/follower-history-and-growth-per-account
+
+/api-reference/openapi.json get /v1/analytics/followers
+
+
+
+# Headline metrics for a window, with change vs the prior period
+Source: https://docs.plugkit.co/api-reference/analytics/headline-metrics-for-a-window-with-change-vs-the-prior-period
+
+/api-reference/openapi.json get /v1/analytics/summary
+
+
+
+# How fast engagement accumulates after publishing, by age bucket
+Source: https://docs.plugkit.co/api-reference/analytics/how-fast-engagement-accumulates-after-publishing-by-age-bucket
+
+/api-reference/openapi.json get /v1/analytics/accumulation
+
+
+
+# One metric over time, optionally split by platform
+Source: https://docs.plugkit.co/api-reference/analytics/one-metric-over-time-optionally-split-by-platform
+
+/api-reference/openapi.json get /v1/analytics/timeseries
+
+
+
+# One row per platform over the window
+Source: https://docs.plugkit.co/api-reference/analytics/one-row-per-platform-over-the-window
+
+/api-reference/openapi.json get /v1/analytics/platforms
+
+
+
+# Post-level analytics (published here or natively on the platform)
+Source: https://docs.plugkit.co/api-reference/analytics/post-level-analytics-published-here-or-natively-on-the-platform
+
+/api-reference/openapi.json get /v1/analytics/posts
+
+
+
+# Refresh now instead of waiting for the next cycle (debounced 15s per account)
+Source: https://docs.plugkit.co/api-reference/analytics/refresh-now-instead-of-waiting-for-the-next-cycle-debounced-15s-per-account
+
+/api-reference/openapi.json post /v1/analytics/sync
+
+
+
+# Weekday × hour engagement grid, read in the given timezone
+Source: https://docs.plugkit.co/api-reference/analytics/weekday-×-hour-engagement-grid-read-in-the-given-timezone
+
+/api-reference/openapi.json get /v1/analytics/best-times
+
+
+
+# Create an API key (the plaintext value is returned once and never again)
+Source: https://docs.plugkit.co/api-reference/api-keys/create-an-api-key-the-plaintext-value-is-returned-once-and-never-again
+
+/api-reference/openapi.json post /v1/api-keys
+
+
+
+# List API keys (without the plaintext value)
+Source: https://docs.plugkit.co/api-reference/api-keys/list-api-keys-without-the-plaintext-value
+
+/api-reference/openapi.json get /v1/api-keys
+
+
+
+# Replace a key with a new one of the same name and revoke the old one (the plaintext value is returned once)
+Source: https://docs.plugkit.co/api-reference/api-keys/replace-a-key-with-a-new-one-of-the-same-name-and-revoke-the-old-one-the-plaintext-value-is-returned-once
+
+/api-reference/openapi.json post /v1/api-keys/{id}/roll
+The stored value is a hash, so an existing key can never be shown again. Rolling it hands back a value you can copy; requests using the old key stop working immediately.
+
+
+
+# Revoke an API key
+Source: https://docs.plugkit.co/api-reference/api-keys/revoke-an-api-key
+
+/api-reference/openapi.json delete /v1/api-keys/{id}
+
+
+
+# Create a comment-to-DM automation
+Source: https://docs.plugkit.co/api-reference/automations/create-a-comment-to-dm-automation
+
+/api-reference/openapi.json post /v1/comment-automations
+
+
+
+# Delete an automation
+Source: https://docs.plugkit.co/api-reference/automations/delete-an-automation
+
+/api-reference/openapi.json delete /v1/comment-automations/{id}
+
+
+
+# List comment-to-DM automations
+Source: https://docs.plugkit.co/api-reference/automations/list-comment-to-dm-automations
+
+/api-reference/openapi.json get /v1/comment-automations
+
+
+
+# Retrieve an automation
+Source: https://docs.plugkit.co/api-reference/automations/retrieve-an-automation
+
+/api-reference/openapi.json get /v1/comment-automations/{id}
+
+
+
+# Trigger log of an automation
+Source: https://docs.plugkit.co/api-reference/automations/trigger-log-of-an-automation
+
+/api-reference/openapi.json get /v1/comment-automations/{id}/runs
+
+
+
+# Update an automation
+Source: https://docs.plugkit.co/api-reference/automations/update-an-automation
+
+/api-reference/openapi.json put /v1/comment-automations/{id}
+
+
+
+# Update an automation
+Source: https://docs.plugkit.co/api-reference/automations/update-an-automation-1
+
+/api-reference/openapi.json patch /v1/comment-automations/{id}
+
+
+
+# Current plan, account quota and X spend
+Source: https://docs.plugkit.co/api-reference/billing/current-plan-account-quota-and-x-spend
+
+/api-reference/openapi.json get /v1/billing/subscription
+
+
+
+# List available plans and the extra-account bands
+Source: https://docs.plugkit.co/api-reference/billing/list-available-plans-and-the-extra-account-bands
+
+/api-reference/openapi.json get /v1/billing/plans
+
+
+
+# Open a Whop checkout to subscribe or change plan
+Source: https://docs.plugkit.co/api-reference/billing/open-a-whop-checkout-to-subscribe-or-change-plan
+
+/api-reference/openapi.json post /v1/billing/checkout
+
+
+
+# Pay-per-call usage for a month (defaults to current)
+Source: https://docs.plugkit.co/api-reference/billing/pay-per-call-usage-for-a-month-defaults-to-current
+
+/api-reference/openapi.json get /v1/usage
+
+
+
+# Set (or clear, with null) the monthly cap on X pay-per-call spend, in USD
+Source: https://docs.plugkit.co/api-reference/billing/set-or-clear-with-null-the-monthly-cap-on-x-pay-per-call-spend-in-usd
+
+/api-reference/openapi.json post /v1/billing/spend-cap
+
+
+
+# Whop webhook endpoint (signature-verified)
+Source: https://docs.plugkit.co/api-reference/billing/whop-webhook-endpoint-signature-verified
+
+/api-reference/openapi.json post /v1/billing/webhook/whop
+
+
+
+# Count the recipients an audience would reach
+Source: https://docs.plugkit.co/api-reference/campaigns/count-the-recipients-an-audience-would-reach
+
+/api-reference/openapi.json get /v1/broadcasts/audience
+
+
+
+# Create a broadcast
+Source: https://docs.plugkit.co/api-reference/campaigns/create-a-broadcast
+
+/api-reference/openapi.json post /v1/broadcasts
+
+
+
+# Create a follow-up sequence
+Source: https://docs.plugkit.co/api-reference/campaigns/create-a-follow-up-sequence
+
+/api-reference/openapi.json post /v1/sequences
+
+
+
+# Delete a broadcast
+Source: https://docs.plugkit.co/api-reference/campaigns/delete-a-broadcast
+
+/api-reference/openapi.json delete /v1/broadcasts/{id}
+
+
+
+# Delete a sequence
+Source: https://docs.plugkit.co/api-reference/campaigns/delete-a-sequence
+
+/api-reference/openapi.json delete /v1/sequences/{id}
+
+
+
+# Enrol a conversation by hand
+Source: https://docs.plugkit.co/api-reference/campaigns/enrol-a-conversation-by-hand
+
+/api-reference/openapi.json post /v1/sequences/{id}/enroll
+
+
+
+# List broadcasts
+Source: https://docs.plugkit.co/api-reference/campaigns/list-broadcasts
+
+/api-reference/openapi.json get /v1/broadcasts
+
+
+
+# List sequences
+Source: https://docs.plugkit.co/api-reference/campaigns/list-sequences
+
+/api-reference/openapi.json get /v1/sequences
+
+
+
+# Per-recipient delivery log
+Source: https://docs.plugkit.co/api-reference/campaigns/per-recipient-delivery-log
+
+/api-reference/openapi.json get /v1/broadcasts/{id}/recipients
+
+
+
+# Put a scheduled broadcast back to draft
+Source: https://docs.plugkit.co/api-reference/campaigns/put-a-scheduled-broadcast-back-to-draft
+
+/api-reference/openapi.json post /v1/broadcasts/{id}/cancel
+
+
+
+# Queue the broadcast for sending
+Source: https://docs.plugkit.co/api-reference/campaigns/queue-the-broadcast-for-sending
+
+/api-reference/openapi.json post /v1/broadcasts/{id}/send
+
+
+
+# Retrieve a broadcast
+Source: https://docs.plugkit.co/api-reference/campaigns/retrieve-a-broadcast
+
+/api-reference/openapi.json get /v1/broadcasts/{id}
+
+
+
+# Retrieve a sequence
+Source: https://docs.plugkit.co/api-reference/campaigns/retrieve-a-sequence
+
+/api-reference/openapi.json get /v1/sequences/{id}
+
+
+
+# Update a draft or scheduled broadcast
+Source: https://docs.plugkit.co/api-reference/campaigns/update-a-draft-or-scheduled-broadcast
+
+/api-reference/openapi.json put /v1/broadcasts/{id}
+
+
+
+# Update a draft or scheduled broadcast
+Source: https://docs.plugkit.co/api-reference/campaigns/update-a-draft-or-scheduled-broadcast-1
+
+/api-reference/openapi.json patch /v1/broadcasts/{id}
+
+
+
+# Update a sequence
+Source: https://docs.plugkit.co/api-reference/campaigns/update-a-sequence
+
+/api-reference/openapi.json put /v1/sequences/{id}
+
+
+
+# Update a sequence
+Source: https://docs.plugkit.co/api-reference/campaigns/update-a-sequence-1
+
+/api-reference/openapi.json patch /v1/sequences/{id}
+
+
+
+# Who is in the sequence, and where
+Source: https://docs.plugkit.co/api-reference/campaigns/who-is-in-the-sequence-and-where
+
+/api-reference/openapi.json get /v1/sequences/{id}/enrollments
+
+
+
+# Connect a Telegram bot with its @BotFather token
+Source: https://docs.plugkit.co/api-reference/connect/connect-a-telegram-bot-with-its-@botfather-token
+
+/api-reference/openapi.json post /v1/connect/telegram
+
+
+
+# Get the OAuth authorization URL to connect an account
+Source: https://docs.plugkit.co/api-reference/connect/get-the-oauth-authorization-url-to-connect-an-account
+
+/api-reference/openapi.json get /v1/connect/{platform}
+
+
+
+# OAuth callback called by the platform after authorization
+Source: https://docs.plugkit.co/api-reference/connect/oauth-callback-called-by-the-platform-after-authorization
+
+/api-reference/openapi.json get /v1/connect/{platform}/callback
+
+
+
+# Re-subscribe a Facebook Page to its webhook fields (subscribed_apps)
+Source: https://docs.plugkit.co/api-reference/connect/re-subscribe-a-facebook-page-to-its-webhook-fields-subscribed_apps
+
+/api-reference/openapi.json post /v1/connect/facebook/{accountId}/subscribe-webhooks
+Applies the current field list — including message_echoes, which surfaces replies written from the Meta inbox — to a Page connected before those fields existed. No re-authorization needed.
+
+
+
+# Re-subscribe a WhatsApp number to its business account webhooks (subscribed_apps)
+Source: https://docs.plugkit.co/api-reference/connect/re-subscribe-a-whatsapp-number-to-its-business-account-webhooks-subscribed_apps
+
+/api-reference/openapi.json post /v1/connect/whatsapp/{accountId}/subscribe-webhooks
+
+
+
+# Subscribe an Instagram account to webhooks (subscribed_apps)
+Source: https://docs.plugkit.co/api-reference/connect/subscribe-an-instagram-account-to-webhooks-subscribed_apps
+
+/api-reference/openapi.json post /v1/connect/instagram/{accountId}/subscribe-webhooks
+
+
+
+# Comments, replies and mentions, most recent first
+Source: https://docs.plugkit.co/api-reference/engagement/comments-replies-and-mentions-most-recent-first
+
+/api-reference/openapi.json get /v1/engagement
+Defaults to what still needs an answer. Each row carries the post it belongs to, so a comment can be read in context.
+
+
+
+# Delete a comment on one of your posts
+Source: https://docs.plugkit.co/api-reference/engagement/delete-a-comment-on-one-of-your-posts
+
+/api-reference/openapi.json delete /v1/engagement/{id}
+
+
+
+# Hide or unhide a comment
+Source: https://docs.plugkit.co/api-reference/engagement/hide-or-unhide-a-comment
+
+/api-reference/openapi.json post /v1/engagement/{id}/hide
+Hiding keeps the comment visible to its author, who is not notified — it is the reversible move, unlike deleting.
+
+
+
+# How much is left to handle, per account
+Source: https://docs.plugkit.co/api-reference/engagement/how-much-is-left-to-handle-per-account
+
+/api-reference/openapi.json get /v1/engagement/summary
+
+
+
+# Mark as handled, or put it back in the pile
+Source: https://docs.plugkit.co/api-reference/engagement/mark-as-handled-or-put-it-back-in-the-pile
+
+/api-reference/openapi.json post /v1/engagement/{id}/handled
+
+
+
+# Pull comments and mentions from the platforms
+Source: https://docs.plugkit.co/api-reference/engagement/pull-comments-and-mentions-from-the-platforms
+
+/api-reference/openapi.json post /v1/engagement/sync
+Webhooks already deliver new comments in real time; this catches up after an outage and fills in what a webhook payload leaves out (like counts, hidden state, author).
+
+
+
+# Reply publicly to a comment, reply or mention
+Source: https://docs.plugkit.co/api-reference/engagement/reply-publicly-to-a-comment-reply-or-mention
+
+/api-reference/openapi.json post /v1/engagement/{id}/reply
+
+
+
+# Check that the API responds (unauthenticated)
+Source: https://docs.plugkit.co/api-reference/health/check-that-the-api-responds-unauthenticated
+
+/api-reference/openapi.json get /v1/health
+
+
+
+# List conversations
+Source: https://docs.plugkit.co/api-reference/inbox/list-conversations
+
+/api-reference/openapi.json get /v1/inbox/conversations
+
+
+
+# List conversations
+Source: https://docs.plugkit.co/api-reference/inbox/list-conversations-1
+
+/api-reference/openapi.json get /v1/conversations
+
+
+
+# List the messages of a conversation (most recent page first)
+Source: https://docs.plugkit.co/api-reference/inbox/list-the-messages-of-a-conversation-most-recent-page-first
+
+/api-reference/openapi.json get /v1/inbox/conversations/{id}/messages
+Returns the latest messages of the thread, rendered oldest-first within the page. Pass `before` (the `nextCursor` of the previous call) to walk further back in time.
+
+
+
+# List the messages of a conversation (most recent page first)
+Source: https://docs.plugkit.co/api-reference/inbox/list-the-messages-of-a-conversation-most-recent-page-first-1
+
+/api-reference/openapi.json get /v1/conversations/{id}/messages
+Returns the latest messages of the thread, rendered oldest-first within the page. Pass `before` (the `nextCursor` of the previous call) to walk further back in time.
+
+
+
+# Mark a conversation as read
+Source: https://docs.plugkit.co/api-reference/inbox/mark-a-conversation-as-read
+
+/api-reference/openapi.json post /v1/inbox/conversations/{id}/read
+
+
+
+# Mark a conversation as read
+Source: https://docs.plugkit.co/api-reference/inbox/mark-a-conversation-as-read-1
+
+/api-reference/openapi.json post /v1/conversations/{id}/read
+
+
+
+# Retrieve a conversation
+Source: https://docs.plugkit.co/api-reference/inbox/retrieve-a-conversation
+
+/api-reference/openapi.json get /v1/inbox/conversations/{id}
+
+
+
+# Retrieve a conversation
+Source: https://docs.plugkit.co/api-reference/inbox/retrieve-a-conversation-1
+
+/api-reference/openapi.json get /v1/conversations/{id}
+
+
+
+# Send a message in a conversation
+Source: https://docs.plugkit.co/api-reference/inbox/send-a-message-in-a-conversation
+
+/api-reference/openapi.json post /v1/inbox/conversations/{id}/messages
+
+
+
+# Send a message in a conversation
+Source: https://docs.plugkit.co/api-reference/inbox/send-a-message-in-a-conversation-1
+
+/api-reference/openapi.json post /v1/conversations/{id}/messages
+
+
+
+# Start (or fetch) a conversation
+Source: https://docs.plugkit.co/api-reference/inbox/start-or-fetch-a-conversation
+
+/api-reference/openapi.json post /v1/inbox/conversations
+
+
+
+# Start (or fetch) a conversation
+Source: https://docs.plugkit.co/api-reference/inbox/start-or-fetch-a-conversation-1
+
+/api-reference/openapi.json post /v1/conversations
+
+
+
+# Sync conversations from the platform (live API)
+Source: https://docs.plugkit.co/api-reference/inbox/sync-conversations-from-the-platform-live-api
+
+/api-reference/openapi.json post /v1/inbox/conversations/sync
+Runs a bounded pass immediately (most recent threads and messages) and, the first time, starts a background backfill of the full history. `backfilling: true` means more conversations will keep landing in the inbox for the next few minutes — poll this list to see them arrive.
+
+
+
+# Sync conversations from the platform (live API)
+Source: https://docs.plugkit.co/api-reference/inbox/sync-conversations-from-the-platform-live-api-1
+
+/api-reference/openapi.json post /v1/conversations/sync
+Runs a bounded pass immediately (most recent threads and messages) and, the first time, starts a background backfill of the full history. `backfilling: true` means more conversations will keep landing in the inbox for the next few minutes — poll this list to see them arrive.
+
+
+
+# Envoyer un fichier avec un lien d'envoi (POST)
+Source: https://docs.plugkit.co/api-reference/media/envoyer-un-fichier-avec-un-lien-denvoi-post
+
+/api-reference/openapi.json post /v1/media/upload/{token}
+
+
+
+# Envoyer un fichier avec un lien d'envoi (PUT)
+Source: https://docs.plugkit.co/api-reference/media/envoyer-un-fichier-avec-un-lien-denvoi-put
+
+/api-reference/openapi.json put /v1/media/upload/{token}
+
+
+
+# Get v1mediafile
+Source: https://docs.plugkit.co/api-reference/media/get-v1mediafile
+
+/api-reference/openapi.json get /v1/media/file/{filename}
+
+
+
+# Lister les médias de la bibliothèque
+Source: https://docs.plugkit.co/api-reference/media/lister-les-médias-de-la-bibliothèque
+
+/api-reference/openapi.json get /v1/media
+
+
+
+# Obtenir un lien d'envoi à usage unique (sans en-tête d'autorisation)
+Source: https://docs.plugkit.co/api-reference/media/obtenir-un-lien-denvoi-à-usage-unique-sans-en-tête-dautorisation
+
+/api-reference/openapi.json post /v1/media/upload-url
+
+
+
+# Page de dépôt du billet (navigateur)
+Source: https://docs.plugkit.co/api-reference/media/page-de-dépôt-du-billet-navigateur
+
+/api-reference/openapi.json get /v1/media/upload/{token}
+
+
+
+# Post v1mediaupload
+Source: https://docs.plugkit.co/api-reference/media/post-v1mediaupload
+
+/api-reference/openapi.json post /v1/media/upload
+
+
+
+# Signaler la fin d'un envoi direct
+Source: https://docs.plugkit.co/api-reference/media/signaler-la-fin-dun-envoi-direct
+
+/api-reference/openapi.json post /v1/media/uploads/{token}/complete
+
+
+
+# Supprimer un média de la bibliothèque
+Source: https://docs.plugkit.co/api-reference/media/supprimer-un-média-de-la-bibliothèque
+
+/api-reference/openapi.json delete /v1/media/{id}
+
+
+
+# Platforms temporarily closed to new connections, and why
+Source: https://docs.plugkit.co/api-reference/platforms/platforms-temporarily-closed-to-new-connections-and-why
+
+/api-reference/openapi.json get /v1/platforms/maintenance
+
+
+
+# Install a playbook
+Source: https://docs.plugkit.co/api-reference/playbooks/install-a-playbook
+
+/api-reference/openapi.json post /v1/playbooks/{slug}/install
+Creates the automations and sequences the playbook describes, on the accounts you pass. Everything it creates is a normal PlugKit object: edit or delete it afterwards from Campaigns, or remove the whole install in one call.
+
+
+
+# List the playbook catalog
+Source: https://docs.plugkit.co/api-reference/playbooks/list-the-playbook-catalog
+
+/api-reference/openapi.json get /v1/playbooks
+
+
+
+# List the playbooks installed on this workspace
+Source: https://docs.plugkit.co/api-reference/playbooks/list-the-playbooks-installed-on-this-workspace
+
+/api-reference/openapi.json get /v1/playbooks/installs
+
+
+
+# Remove an installed playbook
+Source: https://docs.plugkit.co/api-reference/playbooks/remove-an-installed-playbook
+
+/api-reference/openapi.json delete /v1/playbooks/installs/{id}
+Deletes the automations and sequences it created. Pass `keep=resources` to only forget the install and leave them running.
+
+
+
+# Retrieve one playbook, with its inputs and slots
+Source: https://docs.plugkit.co/api-reference/playbooks/retrieve-one-playbook-with-its-inputs-and-slots
+
+/api-reference/openapi.json get /v1/playbooks/{slug}
+
+
+
+# Create a post (draft, scheduled, or published)
+Source: https://docs.plugkit.co/api-reference/posts/create-a-post-draft-scheduled-or-published
+
+/api-reference/openapi.json post /v1/posts
+With `publishNow`, the response returns immediately with `status: "publishing"` and publishing runs in the background. Poll GET /posts/:id to follow it.
+
+
+
+# Delete a post (cancels its schedule; does not unpublish anything)
+Source: https://docs.plugkit.co/api-reference/posts/delete-a-post-cancels-its-schedule;-does-not-unpublish-anything
+
+/api-reference/openapi.json delete /v1/posts/{id}
+
+
+
+# List posts
+Source: https://docs.plugkit.co/api-reference/posts/list-posts
+
+/api-reference/openapi.json get /v1/posts
+
+
+
+# Publish an existing post now (scheduled, draft, or retry after a failure)
+Source: https://docs.plugkit.co/api-reference/posts/publish-an-existing-post-now-scheduled-draft-or-retry-after-a-failure
+
+/api-reference/openapi.json post /v1/posts/{id}/publish
+Returns immediately; the post moves to `publishing` and publishing runs in the background.
+
+
+
+# Retrieve a post
+Source: https://docs.plugkit.co/api-reference/posts/retrieve-a-post
+
+/api-reference/openapi.json get /v1/posts/{id}
+
+
+
+# Update an unpublished post (content, targets, rescheduling; `scheduledFor: null` unschedules it)
+Source: https://docs.plugkit.co/api-reference/posts/update-an-unpublished-post-content-targets-rescheduling;-`scheduledfor:-null`-unschedules-it
+
+/api-reference/openapi.json patch /v1/posts/{id}
+
+
+
+# Create a profile
+Source: https://docs.plugkit.co/api-reference/profiles/create-a-profile
+
+/api-reference/openapi.json post /v1/profiles
+
+
+
+# Delete a profile
+Source: https://docs.plugkit.co/api-reference/profiles/delete-a-profile
+
+/api-reference/openapi.json delete /v1/profiles/{id}
+
+
+
+# List profiles
+Source: https://docs.plugkit.co/api-reference/profiles/list-profiles
+
+/api-reference/openapi.json get /v1/profiles
+
+
+
+# Retrieve a profile
+Source: https://docs.plugkit.co/api-reference/profiles/retrieve-a-profile
+
+/api-reference/openapi.json get /v1/profiles/{id}
+
+
+
+# Update a profile
+Source: https://docs.plugkit.co/api-reference/profiles/update-a-profile
+
+/api-reference/openapi.json put /v1/profiles/{id}
+
+
+
+# Update a profile
+Source: https://docs.plugkit.co/api-reference/profiles/update-a-profile-1
+
+/api-reference/openapi.json patch /v1/profiles/{id}
+
+
+
+# Get the Facebook authorization URL that enables product tagging
+Source: https://docs.plugkit.co/api-reference/shopping/get-the-facebook-authorization-url-that-enables-product-tagging
+
+/api-reference/openapi.json get /v1/shopping/{accountId}/authorize
+Product tagging lives on a different Meta API than the Instagram connection PlugKit already holds, so it needs its own authorization. Open the returned URL in a browser and pick the Facebook Page linked to this Instagram account.
+
+
+
+# OAuth callback for the shopping authorization
+Source: https://docs.plugkit.co/api-reference/shopping/oauth-callback-for-the-shopping-authorization
+
+/api-reference/openapi.json get /v1/shopping/callback
+
+
+
+# Product tagging status of an Instagram account
+Source: https://docs.plugkit.co/api-reference/shopping/product-tagging-status-of-an-instagram-account
+
+/api-reference/openapi.json get /v1/shopping/{accountId}/status
+Says whether products can be tagged, and when not, exactly what is missing: no authorization yet, an expired one, a shop Meta has not approved, or a shop with no catalog. Meta is re-checked at most every 6 hours unless `refresh=true`.
+
+
+
+# Search the products of the account’s Instagram shop
+Source: https://docs.plugkit.co/api-reference/shopping/search-the-products-of-the-account’s-instagram-shop
+
+/api-reference/openapi.json get /v1/shopping/{accountId}/products
+`q` matches a product name or SKU. Only products Meta has approved can be tagged; the others are returned with their review status so it is clear why they are refused.
+
+
+
+# Tag products on a published Instagram post or reel
+Source: https://docs.plugkit.co/api-reference/shopping/tag-products-on-a-published-instagram-post-or-reel
+
+/api-reference/openapi.json post /v1/shopping/{accountId}/media/{mediaId}/tags
+Replaces the product tags of an existing media. Up to 20 tags on a photo (each with x/y coordinates between 0 and 1) and 30 on a video or reel, where coordinates do not apply. Instagram allows 25 tagged posts per 24 hours per account.
+
+
+
+# Turn product tagging off for an account
+Source: https://docs.plugkit.co/api-reference/shopping/turn-product-tagging-off-for-an-account
+
+/api-reference/openapi.json delete /v1/shopping/{accountId}
+Removes the authorization PlugKit holds. Posts keep publishing; they just stop carrying product tags.
+
+
+
+# Create a webhook endpoint (the signing secret is returned once)
+Source: https://docs.plugkit.co/api-reference/webhooks/create-a-webhook-endpoint-the-signing-secret-is-returned-once
+
+/api-reference/openapi.json post /v1/webhooks
+Events: post.published, post.partial, post.failed, message.received, message.sent, message.undelivered, account.disconnected, comment.received, comment.dm_sent, broadcast.finished, usage.threshold_reached. Each delivery is signed with `x-plugkit-signature: t=<unix>,v1=<hex>`, the HMAC-SHA256 of `<t>.<raw body>` with the endpoint secret.
+
+
+
+# Delete a webhook endpoint
+Source: https://docs.plugkit.co/api-reference/webhooks/delete-a-webhook-endpoint
+
+/api-reference/openapi.json delete /v1/webhooks/{id}
+
+
+
+# List webhook endpoints
+Source: https://docs.plugkit.co/api-reference/webhooks/list-webhook-endpoints
+
+/api-reference/openapi.json get /v1/webhooks
+
+
+
+# Recent delivery attempts for this endpoint (debugging)
+Source: https://docs.plugkit.co/api-reference/webhooks/recent-delivery-attempts-for-this-endpoint-debugging
+
+/api-reference/openapi.json get /v1/webhooks/{id}/deliveries
+
+
+
+# Retrieve a webhook endpoint
+Source: https://docs.plugkit.co/api-reference/webhooks/retrieve-a-webhook-endpoint
+
+/api-reference/openapi.json get /v1/webhooks/{id}
+
+
+
+# Update a webhook endpoint
+Source: https://docs.plugkit.co/api-reference/webhooks/update-a-webhook-endpoint
+
+/api-reference/openapi.json patch /v1/webhooks/{id}
+
+
+
+# Invite someone to this workspace (they get access at their next sign-in with that email)
+Source: https://docs.plugkit.co/api-reference/workspaces/invite-someone-to-this-workspace-they-get-access-at-their-next-sign-in-with-that-email
+
+/api-reference/openapi.json post /v1/workspaces/members
+
+
+
+# List the people with access to this workspace
+Source: https://docs.plugkit.co/api-reference/workspaces/list-the-people-with-access-to-this-workspace
+
+/api-reference/openapi.json get /v1/workspaces/members
+
+
+
+# List the workspaces you can act in
+Source: https://docs.plugkit.co/api-reference/workspaces/list-the-workspaces-you-can-act-in
+
+/api-reference/openapi.json get /v1/workspaces
+
+
+
+# Remove a member, or leave a workspace
+Source: https://docs.plugkit.co/api-reference/workspaces/remove-a-member-or-leave-a-workspace
+
+/api-reference/openapi.json delete /v1/workspaces/members/{id}
+
+
+
+# Authentication
+Source: https://docs.plugkit.co/authentication
+
+How PlugKit authenticates the dashboard and your code.
+
+PlugKit has two ways in, both resolving to **your account**:
+
+* **Dashboard session** — you sign in at [plugkit.co/dashboard](https://plugkit.co/dashboard)
+  with Google, GitHub, or email + password. The dashboard uses that session; you
+  never handle a token yourself.
+* **API key** — for your own code. A Bearer key sent on every request. Create and
+  manage keys from the dashboard's **API Keys** section.
+* **OAuth** — how an MCP client connects. The assistant is granted access
+  through a consent screen instead of holding a key of yours, and you can revoke
+  it from **Settings → Connected apps**. See the [MCP server](/mcp/overview).
+
+Everything is scoped per account: a key only ever sees the profiles, accounts,
+posts and conversations that belong to the user who created it.
+
+## Getting your first key
+
+There's no chicken-and-egg: sign in to the dashboard, open **API Keys → New Key**,
+name it (e.g. "Production server"), and copy the value. Then send it on every
+request:
+
+```
+Authorization: Bearer sk_your_key
+```
+
+## Key format
+
+Keys are `sk_` followed by 64 hex characters. They are **hashed** server-side —
+PlugKit only ever shows the full key **once**, at creation. Store it in a secret
+manager, never in client-side code or a git repo.
+
+## Managing keys
+
+<CardGroup>
+  <Card title="Create a key" icon="plus">
+    Dashboard **API Keys → New Key**, or `POST /v1/api-keys` — returns the
+    plaintext key one time.
+  </Card>
+
+  <Card title="List keys" icon="list">
+    `GET /v1/api-keys` — shows prefixes and metadata, never the secret.
+  </Card>
+
+  <Card title="Revoke a key" icon="trash">
+    `DELETE /v1/api-keys/{id}` — immediately invalidates it.
+  </Card>
+
+  <Card title="Rotate" icon="rotate">
+    Create a new key, switch your app over, then revoke the old one.
+  </Card>
+</CardGroup>
+
+<Warning>
+  A leaked key can act on every account in your PlugKit account. Revoke and
+  rotate immediately if one is exposed.
+</Warning>
+
+## Errors
+
+| Status                  | Meaning                                                                                                                |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `401 Unauthorized`      | Missing, malformed, expired, or revoked credential.                                                                    |
+| `403 Forbidden`         | Authenticated but not allowed for this resource.                                                                       |
+| `402 Payment Required`  | The plan's account quota is reached, or a spend cap blocks a billable call — see [Plans & billing](/concepts/billing). |
+| `404 Not Found`         | The resource doesn't exist **or** isn't owned by your account.                                                         |
+| `429 Too Many Requests` | Rate limited. Back off and retry.                                                                                      |
+
+<Note>
+  `404` is intentionally returned instead of `403` when you request a resource
+  that belongs to another account, so keys can't probe for existence.
+</Note>
+
+
+# How analytics are collected
+Source: https://docs.plugkit.co/concepts/analytics-collection
+
+Cadences, freshness, history depth, and what each platform actually exposes.
+
+Analytics don't come from the platform when you ask — they come from PlugKit's
+own store, filled by a background collector. This page is the contract: how
+fresh the numbers are, how far back they go, and what each platform can and
+can't answer.
+
+## Why a store and not a live call
+
+Three of the four screens people actually want are impossible to answer live:
+
+* **Follower history.** No platform returns the follower count you had last
+  Tuesday. If nobody measured it that day, it's gone for good.
+* **Engagement accumulation.** "Half the engagement arrives in the first 6
+  hours" requires the same post measured repeatedly as it ages.
+* **Comparison to the previous period.** Needs both periods on hand.
+
+The fourth — a leaderboard across every account — is technically possible live,
+but costs one call per account per platform and takes seconds. It's one indexed
+query here.
+
+## Cadence
+
+The collector refreshes a post more often when its numbers are still moving, and
+backs off as it settles:
+
+| Pass                             | Creator / trial | Pro          |
+| -------------------------------- | --------------- | ------------ |
+| Discover new posts on an account | every 6h        | every 90 min |
+| Posts under 48h old              | hourly          | every 30 min |
+| Posts under 30 days              | every 6h        | hourly       |
+| Posts over 30 days               | weekly          | weekly       |
+| Follower count                   | daily           | daily        |
+
+Two consequences worth knowing:
+
+* **A post older than 180 days is frozen.** Its last reading stays on record and
+  is never refreshed again. Engagement on a six-month-old post doesn't move, and
+  re-reading your whole archive forever would be the one thing that makes this
+  system grow without bound.
+* **A post the platform no longer knows** — deleted, or turned private — is
+  frozen on its last reading rather than erased. Your history stays intact.
+
+The plan changes the **freshness** of the numbers, never the access. Every
+endpoint, every metric and every account is available on every plan, including
+during the trial.
+
+## Freshness, and saying it out loud
+
+Every analytics response carries `lastSyncAt` and `nextSyncAt`. Show them.
+
+A number without its reading time looks like real time, and the first time it
+disagrees with the platform's own app — which it will, because the two were read
+at different moments — it reads as a bug rather than a sync cycle that hasn't
+run yet.
+
+On top of PlugKit's own cadence, the platforms add their own lag: Instagram
+insights settle over roughly 24 hours, and a view counted at minute one is not
+final at minute two anywhere.
+
+## History depth
+
+| Plan            | Readable history     |
+| --------------- | -------------------- |
+| Creator / trial | 90 days              |
+| Pro             | 550 days (18 months) |
+
+This bounds the **read**, not the collection. Data keeps being recorded either
+way, so moving to Pro reveals a past that was already there — retroactively. A
+request that reaches further back than your plan allows isn't rejected: it is
+clamped, and the response says so.
+
+```json theme={null}
+"window": { "from": "…", "to": "…", "maxHistoryDays": 90, "clamped": true }
+```
+
+## What each platform exposes
+
+|               | Post metrics                                        | Followers | Discovers external posts |
+| ------------- | --------------------------------------------------- | :-------: | :----------------------: |
+| **Instagram** | views, reach, likes, comments, shares, saves        |     ✅     |             ✅            |
+| **Facebook**  | impressions, reach, clicks, likes, comments, shares |     ✅     |             ✅            |
+| **TikTok**    | views, likes, comments, shares                      |     ✅     |             ✅            |
+| **YouTube**   | views, likes, comments                              |     ✅     |             ✅            |
+| **X**         | likes, replies, reposts, impressions                |     ✅     |             —            |
+
+WhatsApp and Telegram have no posts, so they have no analytics.
+
+A few platform truths that shape what you'll see:
+
+* **Instagram** retired `impressions` for media in favour of `views`. Old posts
+  may carry one and not the other.
+* **TikTok** requires the `video.list` and `user.info.stats` scopes. They are
+  **not retroactive**: an account connected before those scopes were added has
+  no analytics until it reconnects. Everything else about it keeps working, so
+  the symptom is empty charts, not an error.
+* **YouTube** returns totals since publication, not a day-by-day series. The
+  daily breakdown lives in the YouTube Analytics API, which requires a separate
+  Google audit.
+* **X** is metered per read. See below.
+
+## X, and anything else that bills per call
+
+X charges for every API read, so it plays by different rules:
+
+* Nothing is polled until **`xAnalyticsEnabled`** is set on the account
+  (`PATCH /v1/accounts/{id}/x-billing`).
+* Once enabled, a post is refreshed **at most once a day**, whatever the plan
+  and whatever its age. The hourly hot window doesn't apply.
+* Posts are not discovered on X — only what you published through PlugKit is
+  tracked. Listing a timeline costs a billed read per page, forever, to find
+  posts you already know about.
+* When the [spend cap](/concepts/billing) is reached, background collection
+  stops silently. It isn't an error — it's the limit in force, yours or the \$20
+  default. Publishing is never blocked by it.
+
+<Note>
+  This is a general mechanism, not an X special case. Any platform that starts
+  billing per read gets the same treatment: opt-in, once a day, under the cap.
+</Note>
+
+## Turning it off
+
+Collection can be stopped entirely on a deployment with
+`ANALYTICS_ENABLED=false`. Scheduled posts keep going out — the two loops are
+separate on purpose.
+
+
+# Plans & billing
+Source: https://docs.plugkit.co/concepts/billing
+
+What a plan includes, what extra accounts cost, and how per-call platforms are re-billed.
+
+PlugKit bills on **connected accounts**, plus the handful of platform calls that
+cost real money upstream. Everything else — publishing, inbox, campaigns,
+analytics, webhooks, MCP — is included.
+
+## Plans
+
+|                             | Creator        | Pro                |
+| --------------------------- | -------------- | ------------------ |
+| Price                       | **\$29**/month | **\$97**/month     |
+| Connected accounts included | 5              | 30                 |
+| Beyond the quota            | not allowed    | billed per account |
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/billing/plans -H "Authorization: Bearer sk_your_key"
+curl https://api.plugkit.co/v1/billing/subscription -H "Authorization: Bearer sk_your_key"
+```
+
+Every account starts with a **7-day free trial**, no card required. The seven
+days start when you connect your first social account, not when you sign up.
+During the trial you can connect **1 account**, and paid X calls stay locked.
+When it ends, that account stays connected but frozen: nothing is sent until
+you pick a plan.
+
+### Creator is a hard wall
+
+On Creator, the 6th account isn't billed as an extra — it is **refused**, with a
+`402` naming the limit and pointing at Pro. That's deliberate: silently charging
+someone who connected one account too many is worse than telling them.
+
+### Pro overflows, in graduated bands
+
+Past 30 accounts, extra accounts are billed by band:
+
+| Accounts | Per extra account / month |
+| -------- | ------------------------- |
+| 31 – 100 | \$3.00                    |
+| 101 +    | \$1.50                    |
+
+Bands are **graduated**, like tax brackets: each account is billed at the rate
+of the band it falls in, not the whole set at the rate you reached. A flat
+scheme would create a cliff where connecting one more account *lowers* your
+bill — and anyone would connect a dummy account to save money.
+
+## Pay-per-call platforms
+
+Some platforms bill per API call. PlugKit passes those through **at cost**, in
+US dollars, with no markup and no currency conversion:
+
+| Operation                       | Price   |
+| ------------------------------- | ------- |
+| Read a post or a lookup         | \$0.005 |
+| Read a user, follows            | \$0.010 |
+| Publish a post                  | \$0.015 |
+| Publish a post containing a URL | \$0.200 |
+| Read a DM                       | \$0.010 |
+| Send a DM                       | \$0.015 |
+
+Today this applies to **X** only. The mechanism is general — any platform that
+starts billing per call joins the same table.
+
+### Nothing runs until you say so
+
+Background work on a metered account is off by default. Two independent
+switches, per account:
+
+```bash theme={null}
+curl -X PATCH https://api.plugkit.co/v1/accounts/ACCOUNT_ID/x-billing \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "analytics": true, "acknowledgeCost": true }'
+```
+
+Until they're on, nothing polls and the account costs nothing. It isn't the call
+you asked for that blows up an invoice — it's the loop running while nobody's
+watching.
+
+**Turning a switch on requires `acknowledgeCost: true`.** Without it the call is
+refused, and the refusal carries the rate card and the cap in force so you can
+show them before asking again. The acceptance is stamped on the account
+(`billing.costAcknowledgedAt`), because "who authorized this, and when" is the
+question that comes up the day an invoice is questioned.
+
+Enabling also checks, right then, that the account **can** be billed — a card
+that has been charged at least once, and a subscription in good standing. You
+find out at the moment you decide, not three days later through empty charts.
+
+Turning a switch **off** requires nothing at all. Stopping a spend is never put
+behind a confirmation.
+
+### Spend cap
+
+Every account has one **from the start**: **\$20 a month**, applied until you set
+your own.
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/billing/spend-cap \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "capUsd": 50 }'
+```
+
+At 80% you get a **`usage.threshold_reached` webhook** — once per month, before
+anything stops, carrying what will pause and what will keep running. At 100%,
+background polling stops — but **publishing
+and sending are never blocked**. Failing a scheduled post to save half a cent
+does far more damage than a small overshoot: someone planned that message.
+
+`GET /v1/billing/subscription` returns the cap in force and `cap_is_default`,
+which tells you whether it's yours or ours.
+
+<Note>
+  There is deliberately **no "unlimited"**. Sending `"capUsd": null` returns you
+  to the default rather than removing the ceiling; to spend more, set a higher
+  number — and that number is still a ceiling. A single X account polled every
+  hour can run to \$360 a month, and the only thing standing between a customer
+  and that invoice should not be a checkbox ticked one evening.
+</Note>
+
+## Watching the spend
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/usage -H "Authorization: Bearer sk_your_key"
+```
+
+```json Response (trimmed) theme={null}
+{
+  "period": "2026-08",
+  "currency": "usd",
+  "total_usd": 3.41,
+  "cap_usd": 20,
+  "remaining_usd": 16.59,
+  "breakdown": [
+    { "operation": "X_POST_WITH_URL", "quantity": 12, "cost_usd": 2.4 },
+    { "operation": "X_READ", "quantity": 202, "cost_usd": 1.01 }
+  ]
+}
+```
+
+Responses that engaged a billable call also carry the cost in an
+`x-plugkit-cost-usd` header.
+
+<Note>
+  This endpoint exists because PlugKit's main interface is an agent. A cost that
+  only shows up on the invoice is a cost nobody could weigh at the moment it was
+  incurred — an assistant can read this before starting a loop, and stop when
+  little budget is left.
+</Note>
+
+## Changing plan
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/billing/checkout \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "plan": "PRO" }'
+```
+
+Returns a Whop checkout URL. Subscriptions and payments are handled by Whop; the
+variable part (extra accounts, per-call usage) is charged at the end of the
+month against the payment method on file.
+
+
+# Profiles & accounts
+Source: https://docs.plugkit.co/concepts/profiles-and-accounts
+
+The data model behind every PlugKit request.
+
+Everything in PlugKit hangs off three objects. Understanding them makes the rest
+of the API obvious.
+
+<Steps>
+  <Step title="Your account" icon="user">
+    Created when you sign in to the [dashboard](https://plugkit.co/dashboard).
+    Every profile, account, post and conversation is **scoped to you** — an API
+    key only ever sees your own data.
+  </Step>
+
+  <Step title="Profiles" icon="folder">
+    A **profile** is a workspace / brand that groups connected accounts. You can
+    have several (e.g. one per client). Create one before connecting anything.
+  </Step>
+
+  <Step title="Accounts" icon="link">
+    An **account** is a connected social/messaging identity (an Instagram
+    business account, a Telegram bot, …) living inside a profile. You act on the
+    world through accounts.
+  </Step>
+</Steps>
+
+```bash Create a profile theme={null}
+curl -X POST https://api.plugkit.co/v1/profiles \
+  -H "Authorization: Bearer sk_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{ "name": "My brand" }'
+```
+
+## How you connect accounts
+
+Each platform uses one of three patterns. The [platform pages](/platforms/instagram)
+document the exact flow and specifics for each.
+
+| Pattern             | Platforms                                         | How                                                                                                                            |
+| ------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **OAuth redirect**  | Instagram, Facebook, TikTok, YouTube, X, Meta Ads | `GET /connect/{platform}?profileId=…` → open the returned `authUrl` → the platform redirects back and PlugKit stores the token |
+| **Embedded Signup** | WhatsApp                                          | `GET /connect/whatsapp?profileId=…` — same shape, but the user brings their own number and WhatsApp Business Account           |
+| **Bot token**       | Telegram                                          | `POST /connect/telegram` with a token from @BotFather                                                                          |
+
+One authorization can create **several accounts**: a Facebook login granting
+three Pages produces three accounts, and the same screen can grant ad accounts
+too.
+
+## Managing accounts
+
+```bash List accounts theme={null}
+curl "https://api.plugkit.co/v1/accounts?status=CONNECTED" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+```bash Disconnect theme={null}
+curl -X DELETE https://api.plugkit.co/v1/accounts/ACCOUNT_ID \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Each account exposes its `platform`, `username`, `status`, and the `profileId`
+it belongs to — never its access token.
+
+<Note>
+  Requesting a resource that belongs to another account returns `404`, not
+  `403`, so keys can't probe for existence.
+</Note>
+
+
+# Analytics
+Source: https://docs.plugkit.co/guides/analytics
+
+Cross-platform metrics for every post you publish — and every post you didn't.
+
+PlugKit collects metrics in the background and serves them from its own store.
+That means one request answers for **every connected account at once**, over any
+window, sorted however you like — instead of one call per account per platform,
+each with a different shape.
+
+It also means the numbers have an age. Every response carries `lastSyncAt` and
+`nextSyncAt` so you can show it; see [How collection
+works](/concepts/analytics-collection) for the cadence.
+
+<Note>
+  Analytics are included on every plan and every account, from the trial
+  onwards. Nothing here is gated.
+</Note>
+
+## Summary
+
+The headline numbers over a window, each with its change against the previous
+period of the same length:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/analytics/summary?from=2026-07-24" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+```json Response (trimmed) theme={null}
+{
+  "window": { "from": "2026-07-24T…", "to": "2026-08-23T…", "maxHistoryDays": 90, "clamped": false },
+  "posts": { "value": 194, "change": 54.0 },
+  "engagementRate": { "value": 6.8, "change": 0.5 },
+  "metrics": {
+    "reach":       { "value": 662700, "change": 64.0 },
+    "likes":       { "value": 23100,  "change": 15.4 },
+    "impressions": { "value": 1310000, "change": 29.4 },
+    "clicks":      { "value": null,   "change": null }
+  },
+  "followers": { "total": 726600, "change": 1970 },
+  "bestPost": { "id": "sp_…", "platform": "instagram", "engagement": 4120, "permalink": "https://…" },
+  "lastSyncAt": "2026-08-23T14:31:00.000Z",
+  "nextSyncAt": "2026-08-23T15:19:00.000Z"
+}
+```
+
+<Warning>
+  `null` is not zero. A `null` metric means the platform doesn't expose it for
+  that account — TikTok has no reach, YouTube has no impressions. Rendering it
+  as `0` skews every average you compute downstream.
+</Warning>
+
+Changes follow the unit of what they measure: a **volume** changes in percent,
+a **rate** changes in points. `engagementRate.change: 0.5` means half a point
+(6.3% → 6.8%), not half a percent.
+
+## Posts
+
+Every post with its metrics, sorted by whichever one matters:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/analytics/posts?sortBy=engagement&limit=10" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+| Parameter                 | Values                                                                                                  |
+| ------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `platform`                | `instagram`, `facebook`, `tiktok`, `youtube`, `x`                                                       |
+| `profileId` / `accountId` | Narrow to one profile or one account                                                                    |
+| `source`                  | `all` (default), `plugkit`, `external`                                                                  |
+| `from` / `to`             | ISO dates. Defaults to the last 30 days                                                                 |
+| `sortBy`                  | `date`, `engagement`, `likes`, `comments`, `shares`, `saves`, `views`, `impressions`, `reach`, `clicks` |
+| `order`                   | `asc`, `desc` (default)                                                                                 |
+| `page` / `limit`          | Up to 100 per page                                                                                      |
+
+### Posts you didn't publish through PlugKit
+
+The collector mirrors what each platform lists, so a post published straight
+from the Instagram app shows up here too, marked `source: "external"`. That's
+what makes the numbers match the platform's own dashboard on day one, instead
+of only counting what has gone through the API since you connected.
+
+Use `source=plugkit` when you specifically want to measure your own automation.
+
+## Over time
+
+One metric, bucketed by day, week or month, optionally split by platform — the
+shape a stacked chart wants:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/analytics/timeseries?metric=likes&granularity=week&byPlatform=true" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+```json Response (trimmed) theme={null}
+{
+  "metric": "likes",
+  "granularity": "week",
+  "series": [
+    { "date": "2026-08-03T00:00:00.000Z", "platform": "instagram", "total": 5200 },
+    { "date": "2026-08-03T00:00:00.000Z", "platform": "tiktok",    "total": 2400 }
+  ]
+}
+```
+
+Posts are grouped by **publication date**, and their current metrics summed:
+"likes for the week of the 3rd" means "likes earned by the posts published that
+week". That's the reading that tells you what to publish next.
+
+## Platform breakdown
+
+One row per network over the window — posts, every metric, and the engagement
+rate:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/analytics/platforms" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+## Best time to post
+
+Average engagement per weekday and hour, read in the timezone you ask for:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/analytics/best-times?timezone=Europe/Paris" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+```json Response (trimmed) theme={null}
+{
+  "timezone": "Europe/Paris",
+  "cells": [
+    { "weekday": 4, "hour": 20, "posts": 7, "averageEngagement": 1580 },
+    { "weekday": 6, "hour": 3,  "posts": 1, "averageEngagement": 4200 }
+  ]
+}
+```
+
+`weekday` is `0` for Sunday, following Postgres. **Always pass a timezone** — an
+hour-of-day grid read in UTC is off by your users' whole offset, and it fails
+silently, because every cell still has a plausible number in it.
+
+Check `posts` before acting on a cell. The second row above has the best average
+of the set and is worth nothing: one post is a coincidence, not a slot.
+
+## Engagement accumulation
+
+How fast a post earns its final engagement, by age bucket — the answer to "is it
+still worth watching, or is it done?":
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/analytics/accumulation" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+```json Response (trimmed) theme={null}
+{
+  "buckets": [
+    { "bucket": "6h",  "samples": 40, "share": 48.9 },
+    { "bucket": "24h", "samples": 36, "share": 76.5 },
+    { "bucket": "7d",  "samples": 25, "share": 94.0 }
+  ]
+}
+```
+
+`share` is the percentage of final engagement already earned at that age,
+averaged over the posts in the window. It fills in as your posts age — a brand
+new account only has the early buckets.
+
+## Followers
+
+Follower count over time, per account, with growth:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/analytics/followers?granularity=day" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+<Note>
+  The series starts the day the account was connected. No platform hands back
+  the follower history it didn't record — it can only be measured forward, one
+  day at a time. Connect early.
+</Note>
+
+## Refresh on demand
+
+Someone just published from the platform's own app and wants to see it now:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/analytics/sync \
+  -H "Authorization: Bearer sk_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{ "accountId": "ACCOUNT_ID" }'
+```
+
+With an `accountId`, the platform is queried within the request. Without one,
+every account of the caller is moved to the front of the queue and picked up on
+the next cycle.
+
+Calls within 15 seconds of each other on the same account are ignored — a
+dashboard that refreshes on focus can't turn into a burst of platform calls.
+
+## Live reads
+
+The endpoints above never touch a platform. When you want the value *right now*
+for one object — and are willing to pay for it on metered platforms — two
+pass-through reads remain:
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/accounts/ACCOUNT_ID/analytics -H "Authorization: Bearer sk_your_key"
+curl https://api.plugkit.co/v1/accounts/ACCOUNT_ID/media/MEDIA_ID/analytics -H "Authorization: Bearer sk_your_key"
+```
+
+They return one object, no history and no comparison, and each one is billed on
+X. Prefer `/v1/analytics/*` for anything you'd put in a dashboard.
+
+<CardGroup>
+  <Card title="How collection works" icon="rotate" href="/concepts/analytics-collection">
+    Cadences, freshness, history depth, and what each platform actually exposes.
+  </Card>
+
+  <Card title="Try it live" icon="code" href="/api-reference">
+    Every analytics endpoint in the playground.
+  </Card>
+</CardGroup>
+
+
+# Campaigns
+Source: https://docs.plugkit.co/guides/campaigns
+
+Turn comments into DMs, broadcast to your inbox, and follow up on a schedule.
+
+Three ways to send messages without writing each one: an automation that reacts
+to comments, a broadcast that goes to many contacts at once, and a sequence that
+follows up over days.
+
+All three run on PlugKit's own workers, so they keep going when your process
+isn't running.
+
+<CardGroup>
+  <Card title="Comment → DM" icon="comment-dots">
+    Someone comments a keyword, they get a private message.
+  </Card>
+
+  <Card title="Broadcasts" icon="bullhorn">
+    One message to a filtered slice of your inbox.
+  </Card>
+
+  <Card title="Sequences" icon="list-check">
+    Timed follow-ups that stop when they reply.
+  </Card>
+</CardGroup>
+
+## Comment → DM
+
+The classic "comment LINK and I'll send it to you". PlugKit watches the posts
+you name, matches the keyword, and sends the DM.
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/comment-automations \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{
+    "accountId": "ACCOUNT_ID",
+    "name": "Guide launch",
+    "mediaIds": ["17912…"],
+    "keywords": ["guide", "GUIDE"],
+    "matchType": "contains",
+    "dmText": "Here it is 👇",
+    "dmButtonLabel": "Get the guide",
+    "dmButtonUrl": "https://example.com/guide",
+    "publicReplyText": "Just sent it 🙌",
+    "oncePerUser": true
+  }'
+```
+
+| Field             | Notes                                                                                      |
+| ----------------- | ------------------------------------------------------------------------------------------ |
+| `mediaIds`        | Posts to watch. **Empty means every post on the account, including ones published later.** |
+| `keywords`        | Case- and accent-insensitive. Required unless `matchType` is `any`.                        |
+| `matchType`       | `contains`, `exact`, or `any` (every comment triggers).                                    |
+| `publicReplyText` | Optional public reply under the comment, so others see it worked.                          |
+| `oncePerUser`     | At most one DM per person for this automation.                                             |
+
+<Warning>
+  Meta allows **one private reply per comment, within 7 days**. It's the only
+  way to message someone who has never written to you — and it doesn't come
+  back. A second automation matching the same comment finds the door closed.
+</Warning>
+
+Instagram and Facebook Pages only — no other platform exposes private replies.
+Check what actually fired with `GET /v1/comment-automations/{id}/runs`.
+
+## Broadcasts
+
+One message to many conversations. Preview the audience before you commit:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/broadcasts/audience?accountId=ACCOUNT_ID&activeWithinDays=1" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+```bash Create and schedule theme={null}
+curl -X POST https://api.plugkit.co/v1/broadcasts \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{
+    "accountId": "ACCOUNT_ID",
+    "name": "Friday drop",
+    "text": "New episode is live 🎧",
+    "buttonLabel": "Listen now",
+    "buttonUrl": "https://example.com/episode",
+    "audience": { "activeWithinDays": 1 },
+    "scheduledFor": "2026-08-29T17:00:00",
+    "timezone": "Europe/Paris"
+  }'
+```
+
+Then `POST /v1/broadcasts/{id}/send` to queue it, or let the schedule fire.
+`POST /v1/broadcasts/{id}/cancel` puts a scheduled broadcast back to draft.
+
+### The 24-hour window governs everything
+
+Meta refuses an unlabelled message more than 24 hours after the contact's last
+one. That's why `activeWithinDays: 1` is the default audience: it is the slice
+that will actually be delivered.
+
+You can widen it, and PlugKit will try. Failures then land **per recipient**, in
+the delivery log, rather than failing the whole broadcast:
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/broadcasts/BROADCAST_ID/recipients \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Telegram has no such window. WhatsApp has approved templates for it — see
+[WhatsApp](/platforms/whatsapp).
+
+### The audience is frozen at send time
+
+Recipients are resolved once, when sending starts, and written down. A
+conversation that arrives mid-send isn't silently added, and a retry after a
+partial failure doesn't message the people who already got it twice.
+
+<Note>
+  Broadcasts run on Instagram, Facebook, WhatsApp and Telegram. **X is
+  deliberately excluded**: its DMs are billed per call, and a 500-recipient
+  broadcast would build an invoice nobody approved.
+</Note>
+
+## Sequences
+
+A series of messages sent over time, to whoever enters. Steps carry their own
+delay, counted from the previous one:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/sequences \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{
+    "accountId": "ACCOUNT_ID",
+    "name": "Story lead magnet",
+    "trigger": "story_reply",
+    "keywords": ["info"],
+    "matchType": "contains",
+    "stopOnReply": true,
+    "steps": [
+      {
+        "delayMinutes": 0,
+        "text": "Here it is 👇",
+        "buttonLabel": "Get the link",
+        "buttonUrl": "https://example.com/guide"
+      },
+      { "delayMinutes": 1440, "text": "Did you get a chance to look?" },
+      { "delayMinutes": 4320, "text": "Last nudge — any questions?" }
+    ]
+  }'
+```
+
+| Trigger                | Who enters                                                                 |
+| ---------------------- | -------------------------------------------------------------------------- |
+| `conversation_started` | Anyone who opens a new conversation with the account.                      |
+| `comment_automation`   | People a comment → DM automation just messaged (pass `automationId`).      |
+| `story_reply`          | People who reply to one of the account's stories — filtered by `keywords`. |
+| `manual`               | Only who you enrol with `POST /v1/sequences/{id}/enroll`.                  |
+
+`stopOnReply: true` drops someone out the moment they answer. Leave it on unless
+you have a reason: a human reply that keeps getting followed up by a robot is
+the fastest way to lose the conversation you just won.
+
+Follow who's in and where with `GET /v1/sequences/{id}/enrollments`.
+
+<Note>
+  Sequence steps obey the same 24-hour window. A step that comes due outside it
+  is recorded as failed for that person, with the reason, and the sequence moves
+  on rather than stalling.
+</Note>
+
+## Buttons, not bare links
+
+All three carry a link button: `dmButtonLabel` / `dmButtonUrl` on a comment
+automation, `buttonLabel` / `buttonUrl` on a broadcast and **on each sequence
+step**. Label and URL go together — one without the other is a `400`.
+
+| Where                                        | Fields                         |
+| -------------------------------------------- | ------------------------------ |
+| `POST /v1/comment-automations`               | `dmButtonLabel`, `dmButtonUrl` |
+| `POST /v1/broadcasts`                        | `buttonLabel`, `buttonUrl`     |
+| `POST /v1/sequences` → each entry of `steps` | `buttonLabel`, `buttonUrl`     |
+
+Instagram and Facebook render it as a button template, WhatsApp as a CTA,
+Telegram as an inline keyboard. Where the platform refuses it, the URL is
+appended to the text rather than lost.
+
+<Warning>
+  Prefer the button to a link pasted in the message body. A bare link in a DM is
+  what Meta flags — and it's the reason the story lead magnet above sends a
+  button rather than `example.com` in plain text.
+</Warning>
+
+## Events
+
+Subscribe to [webhooks](/guides/webhooks) to know what happened:
+`comment.dm_sent` when an automation fires, `broadcast.finished` when a send
+completes.
+
+
+# Engagement
+Source: https://docs.plugkit.co/guides/engagement
+
+Comments, replies and mentions across Instagram, Facebook Pages and Threads.
+
+Public engagement is what people write **under your posts**, and the posts that
+**mention you**. It is exposed as a single feed across every connected account,
+whatever the platform underneath.
+
+<Note>
+  This is not the inbox. A DM is a private thread with one contact; a comment is
+  public, hangs off a post, and several people reply to each other under it. The
+  two live at separate paths and never mix — a commenter never becomes a
+  broadcast recipient.
+</Note>
+
+## What each platform allows
+
+| Platform          | Read | Reply | Hide | Delete | Mentions |
+| ----------------- | ---- | ----- | ---- | ------ | -------- |
+| **Instagram**     | ✅    | ✅     | ✅    | ✅      | —        |
+| **Facebook Page** | ✅    | ✅     | ✅    | ✅      | —        |
+| **Threads**       | ✅    | ✅     | ✅    | —      | ✅        |
+
+Threads cannot delete someone else's reply — the platform only lets you delete
+your own posts — so `DELETE` returns `unsupported_for_platform` there. Hiding
+does the same job and is reversible.
+
+A **mention** belongs to its author: you can reply to it, never hide or delete
+it. Both actions are refused explicitly rather than failing at the platform.
+
+## The feed
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/engagement" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+```json theme={null}
+{
+  "engagements": [
+    {
+      "_id": "eng_a1b2",
+      "accountId": "acc_9f",
+      "platform": "instagram",
+      "kind": "comment",
+      "postId": "17895...",
+      "parentId": null,
+      "author": { "handle": "lea.b", "name": "lea.b" },
+      "text": "Where can I get this?",
+      "hidden": false,
+      "isOwn": false,
+      "handled": false,
+      "publishedAt": "2026-09-08T09:12:00.000Z",
+      "post": {
+        "caption": "New drop is live",
+        "permalink": "https://www.instagram.com/p/C.../",
+        "thumbnailUrl": "https://..."
+      }
+    }
+  ],
+  "pagination": { "hasMore": true, "nextCursor": "eng_a1b2" }
+}
+```
+
+Every row carries the `post` it sits under: a comment read without the content
+it answers cannot be answered well.
+
+### Filters
+
+| Parameter                              | Meaning                                                     |
+| -------------------------------------- | ----------------------------------------------------------- |
+| `status`                               | `pending` (default), `handled`, `all`                       |
+| `accountId` / `profileId` / `platform` | Narrow the scope                                            |
+| `kind`                                 | `comment` or `mention`                                      |
+| `postId`                               | Only the comments under one platform post                   |
+| `limit` / `before`                     | Page size (1–200, default 50) and the previous `nextCursor` |
+
+`pending` is the working list: it leaves out **your own replies** and anything
+**deleted**, since neither is waiting on you.
+
+<Note>
+  `hidden` is three-state. `false` = visible, `true` = hidden by you, `null` =
+  the platform does not report it for this object. Do not read `null` as
+  visible.
+</Note>
+
+## Where the data comes from
+
+Two sources write the same rows, and you need both:
+
+* **Webhooks**, which deliver new comments in real time. Subscribe to the
+  `comments` field — see [Webhooks](/guides/webhooks).
+* **`POST /v1/engagement/sync`**, which reads the platform to catch up after an
+  outage, to fill in what a webhook payload omits (like counts, hidden state,
+  author), and to reach an older post.
+
+```bash theme={null}
+curl -X POST "https://api.plugkit.co/v1/engagement/sync" \
+  -H "Authorization: Bearer sk_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{ "accountId": "acc_9f" }'
+```
+
+Without `postId`, the sweep covers each account's most recent posts and its
+mentions. Pass `postId` to reach further back. A failing account never stops the
+others — the response names it:
+
+```json theme={null}
+{ "success": true, "accounts": 3, "fetched": 41,
+  "errors": [{ "accountId": "acc_2", "message": "reconnect the account" }] }
+```
+
+## Acting on a row
+
+All four take the engagement `_id`, not a platform comment id.
+
+```bash theme={null}
+# Reply — PUBLIC, under the post, signed by the account. Marks it handled.
+curl -X POST ".../v1/engagement/eng_a1b2/reply" -d '{ "message": "DM sent!" }'
+
+# Hide (reversible) — the author still sees it and is not notified
+curl -X POST ".../v1/engagement/eng_a1b2/hide" -d '{ "hidden": true }'
+
+# Clear it without replying
+curl -X POST ".../v1/engagement/eng_a1b2/handled" -d '{ "handled": true }'
+
+# Delete — irreversible
+curl -X DELETE ".../v1/engagement/eng_a1b2"
+```
+
+Replying stores your reply immediately, so it appears in the feed without
+waiting for the webhook to echo it back.
+
+A deleted comment keeps its row, flagged `deleted`. A comment removed after you
+answered it is part of the exchange, and reading it back is the only way to make
+sense of the thread later.
+
+## From an assistant
+
+Over MCP: `list_engagement`, `get_engagement_summary`, `sync_engagement`,
+`reply_to_engagement`, `hide_comment`, `mark_engagement_handled`,
+`delete_comment`.
+
+`get_engagement_summary` is the cheap first call — it returns how much is
+unanswered per account, so the assistant can decide where to look before reading
+anything.
+
+
+# Messaging
+Source: https://docs.plugkit.co/guides/messaging
+
+One inbox across Instagram, Facebook, WhatsApp and Telegram.
+
+Every messaging account's inbox is exposed as **conversations** and
+**messages**, in the same shape whatever the platform underneath.
+
+<Note>
+  Paths live under `/v1/inbox/conversations`. The older `/v1/conversations`
+  paths still serve the exact same responses — nothing to migrate.
+</Note>
+
+## List conversations
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/inbox/conversations?accountId=ACCOUNT_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Each row carries the contact, the account, the platform, the last message and
+whether it's unread.
+
+## Read a conversation
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/inbox/conversations/CONVERSATION_ID/messages \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Mark it read once your user has seen it:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/inbox/conversations/CONVERSATION_ID/read \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+## Reply
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/inbox/conversations/CONVERSATION_ID/messages \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "text": "Thanks for reaching out! 👋" }'
+```
+
+Sending is immediate and public to the recipient — there's no undo. Show the
+exact text to whoever is approving it before you call this.
+
+## Start a conversation
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/inbox/conversations \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "accountId": "ACCOUNT_ID", "contactHandle": "33612345678",
+        "externalConversationId": "33612345678" }'
+```
+
+The identifier depends on the platform: a phone number in international format
+on WhatsApp, an IGSID on Instagram, a chat id on Telegram.
+
+There's also a direct path that bypasses the inbox entirely, when you hold the
+platform id and don't need the thread:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/accounts/ACCOUNT_ID/messages/send \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "recipientId": "178414…", "text": "Hi there!" }'
+```
+
+## The 24-hour window
+
+Meta — Instagram, Facebook Messenger and WhatsApp — only accepts free-form
+messages within **24 hours of the contact's last message**. Past that:
+
+* **WhatsApp**: send an approved [template](/platforms/whatsapp#the-24-hour-window).
+* **Instagram / Facebook**: the window is closed. The single exception is a
+  private reply to a comment, once per comment, within 7 days — which is what
+  [comment → DM automations](/guides/campaigns) run on.
+
+Telegram has no such limit.
+
+## Sync from the platform
+
+Inbound messages arrive by [webhook](/guides/webhooks) in real time. When the
+inbox looks incomplete — a freshly connected account, or webhooks that were
+misconfigured for a while — pull the current state from the platform:
+
+```bash theme={null}
+curl -X POST "https://api.plugkit.co/v1/inbox/conversations/sync?accountId=ACCOUNT_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Returns how many conversations and messages were synced.
+
+## Reacting to inbound messages
+
+Subscribe to `message.received` rather than polling the list. The payload
+carries the conversation and the message, so you can route it straight into your
+own system — see [Webhooks](/guides/webhooks).
+
+<Warning>
+  X DMs need elevated paid API access and aren't exposed. Broadcasts exclude X
+  for the same reason — see [Campaigns](/guides/campaigns).
+</Warning>
+
+
+# Publishing
+Source: https://docs.plugkit.co/guides/publishing
+
+Publish one post to several platforms, now or later.
+
+Create a post targeting one or more accounts; PlugKit publishes to each and
+returns a per-target result.
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "profileId": "YOUR_PROFILE_ID",
+    "content": "Launch day 🚀",
+    "accountIds": ["ACCOUNT_ID_1", "ACCOUNT_ID_2"],
+    "mediaItems": [{ "type": "image", "url": "https://example.com/photo.jpg" }],
+    "publishNow": true
+  }'
+```
+
+## Fields
+
+| Field                                         | Required    | Notes                                                                                               |
+| --------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------- |
+| `profileId`                                   | ✅           | The profile that owns the target accounts.                                                          |
+| `content`                                     | ✅           | Caption / text body.                                                                                |
+| `accountIds`                                  | ✅\*         | Target accounts. \*Exactly one of `accountIds` or `platforms`.                                      |
+| `platforms`                                   | ✅\*         | Targets **with per-platform overrides** — see below.                                                |
+| `mediaItems`                                  | conditional | The canonical media shape. Required by the video platforms.                                         |
+| `mediaUrls`                                   | —           | Legacy shorthand: bare URLs, type guessed from the extension. Ignored when `mediaItems` is present. |
+| `title`                                       | —           | Required by YouTube (100 chars). Ignored by platforms without titles.                               |
+| `publishNow`                                  | —           | Publish immediately.                                                                                |
+| `scheduledFor`                                | —           | ISO date. See [Scheduling](#scheduling).                                                            |
+| `timezone`                                    | —           | IANA zone `scheduledFor` is written in.                                                             |
+| `privacy`                                     | —           | `public`, `unlisted`, `private` — YouTube and TikTok.                                               |
+| `asDraft`                                     | —           | TikTok: land in the creator's drafts instead of publishing.                                         |
+| `trialReel`, `trialGraduation`, `shareToFeed` | —           | Instagram reels.                                                                                    |
+| `asStory`                                     | —           | Instagram: publish to the story instead of the feed. See [Stories](#instagram-stories).             |
+| `allowComment`, `allowDuet`, `allowStitch`    | —           | TikTok interaction settings.                                                                        |
+
+The response carries a `target` per account with its `status` and, once live,
+the `platformPostUrl`.
+
+## Media
+
+`mediaItems` is the shape to use — it carries the type, the alt text and a
+custom video thumbnail, none of which a bare URL can express:
+
+```json theme={null}
+"mediaItems": [
+  { "type": "image", "url": "https://…/photo.jpg", "altText": "Our team on stage" },
+  { "type": "video", "url": "https://…/clip.mp4", "thumbnail": "https://…/cover.jpg" }
+]
+```
+
+<Warning>
+  Media must be reachable by the platform itself — Instagram and Facebook fetch
+  the file from the URL you give. A link that expires, or one that serves a web
+  page instead of the file (WeTransfer, Drive, Dropbox share links), fails at
+  publish time, not at create time.
+</Warning>
+
+### The media library
+
+Files you upload stay in the account's media library, whichever way they got in
+— the dashboard composer, an upload link, an import from a URL, or the API. List
+them with `GET /media`, and pass their ids to a post as `mediaIds` instead of
+copying URLs around:
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/media -H "Authorization: Bearer sk_your_key"
+# → { "media": [ { "id": "…", "filename": "reel-4.mp4", "type": "video",
+#                  "sizeBytes": 48210022, "url": "https://api.plugkit.co/v1/media/file/…" } ] }
+```
+
+An assistant does the same through `list_media`, which is what lets someone say
+"publish the reel I just uploaded" without pasting anything. `DELETE /media/:id`
+removes a file for good; it is refused while a post that has not been published
+yet still uses it.
+
+### Uploading a file
+
+No public URL? Two ways in, depending on size.
+
+**Small files, straight through the API:**
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/media/upload \
+  -H "Authorization: Bearer sk_your_key" \
+  -F "file=@./photo.jpg"
+```
+
+**Anything bigger — a one-shot upload ticket.** Ask for a link, then send the
+bytes to it directly. The file never transits the API, so size is bounded by
+storage rather than by request memory:
+
+```bash theme={null}
+# 1. get the ticket
+curl -X POST https://api.plugkit.co/v1/media/upload-url \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "filename": "episode-12.mp4" }'
+# → { "uploadUrl": "https://…", "uploadMethod": "PUT", "mediaUrl": "https://…", "expiresAt": "…", "maxBytes": … }
+
+# 2. send the bytes with the method the ticket names
+curl -X PUT --upload-file ./episode-12.mp4 "PASTE_uploadUrl"
+
+# 3. publish with mediaUrl
+```
+
+Use `mediaUrl` (not `uploadUrl`) in `mediaItems`. The ticket is single-use and
+expires.
+
+**No terminal? Hand the ticket to a person.** The same address opened in a
+browser (`uploadPageUrl`, returned alongside `uploadUrl`) is a page where they
+drop the file — it goes from their browser straight to storage. This is the way
+in when an assistant drives PlugKit from a web chat: it has no shell to run the
+`curl`, and attaching the video to the conversation instead runs into the chat
+client's own attachment limit (30 MB on claude.ai), which is not PlugKit's.
+Opening the page doesn't consume the ticket; only the upload does.
+
+## Per-platform overrides
+
+One idea rarely fits every network verbatim — 280 characters on X, a vertical
+video on TikTok. `platforms` lets one post carry different content per target,
+with `customContent` and `customMedia` overriding the defaults where they're
+given:
+
+```json theme={null}
+{
+  "profileId": "…",
+  "content": "The default text, used where nothing is overridden.",
+  "platforms": [
+    { "accountId": "ACC_IG" },
+    { "accountId": "ACC_X", "customContent": "Shorter, punchier, under 280." },
+    { "accountId": "ACC_TT", "customMedia": [{ "type": "video", "url": "https://…/vertical.mp4" }] }
+  ]
+}
+```
+
+## What each platform expects
+
+| Platform      | Media          | Notes                                                                                         |
+| ------------- | -------------- | --------------------------------------------------------------------------------------------- |
+| **Instagram** | image or video | Container → publish, handled for you. Reels support trial mode; `asStory` posts to the story. |
+| **Facebook**  | optional       | Text-only posts are fine.                                                                     |
+| **TikTok**    | video          | `asDraft`, `privacy` and the interaction flags apply.                                         |
+| **YouTube**   | video          | `title` required; `privacy` maps to the upload's visibility.                                  |
+| **X**         | optional       | Text only, **or** 1–4 images, **or** one video/GIF.                                           |
+| **Telegram**  | optional       | The bot must be an admin of the channel.                                                      |
+| **LinkedIn**  | optional       | Text only, **or** 1–20 images, **or** one video. Posts to the member's profile.               |
+| **Threads**   | optional       | Text only (500 chars), **or** one image/video, **or** a carousel of 2–20.                     |
+
+WhatsApp doesn't do posts — see [Messaging](/guides/messaging).
+
+### Threads
+
+Threads is a Meta platform, but it is not Instagram: it has its own app
+credentials, its own authorization screen and its own `threads_*` permissions.
+Nothing carries over from a connected Instagram account.
+
+* **500 characters**, and Threads counts emoji as UTF-8 bytes. A longer `content`
+  is rejected up front rather than silently truncated.
+* **A carousel takes 2 to 20 items.** The caption belongs to the post, not to the
+  individual media.
+* **`allowComment: false` closes replies** to mentioned accounts only — that is
+  the strictest setting Threads offers; there is no "nobody".
+* **No stories, no drafts, no privacy levels.** A Threads post is public. Those
+  options are refused rather than accepted and ignored.
+* **No messaging at all.** Threads has no DM API, so it never appears in the
+  Inbox, in broadcasts, in sequences, or in comment-to-DM automations.
+* Rate limits are the platform's: 250 published posts per 24 hours.
+
+### Instagram stories
+
+Set `asStory: true` and the post goes to the account's story instead of the
+feed. It is the same call, and the same connection — nothing extra to
+authorise.
+
+A story is not a short post, and Instagram is strict about it:
+
+* **It lasts 24 hours**, then it is gone. There is no permanent URL, so the
+  target comes back without a `platformPostUrl`, and the story is left out of
+  Analytics rather than mirrored as a post frozen at zero.
+* **It carries no caption.** Instagram drops the text, so `content` becomes
+  optional when every target of the post is an Instagram account. Keep it when
+  the same post also goes to X or LinkedIn — they still need it.
+* **One media, and only these formats**: a JPEG image (8 MB max), or an MP4/MOV
+  video of 3 to 60 seconds (100 MB max, H.264/HEVC + AAC). A PNG is refused.
+* **No stickers, polls, links or mentions.** Instagram's API publishes the media
+  and nothing else; interactive elements only exist in the app.
+* `asStory` and `trialReel` are mutually exclusive — a trial only means
+  something in the feed.
+
+```json theme={null}
+{
+  "profileId": "prof_...",
+  "accountIds": ["acc_instagram"],
+  "asStory": true,
+  "mediaItems": [{ "url": "https://cdn.example.com/story.jpg", "type": "image" }]
+}
+```
+
+Stories count towards the same Instagram quota as feed posts (100 API
+publications per rolling 24 hours).
+
+## Scheduling
+
+Pass `scheduledFor` instead of `publishNow`:
+
+```json theme={null}
+{ "profileId": "…", "content": "…", "accountIds": ["…"],
+  "scheduledFor": "2027-01-01T09:00:00", "timezone": "Europe/Paris" }
+```
+
+A date **without** an offset is read in `timezone`. A date carrying its own
+offset (`2027-01-01T09:00:00+01:00`) is absolute and `timezone` is ignored.
+
+Publish a scheduled post early, or retry one that failed:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts/POST_ID/publish \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+It returns immediately and publishes in the background. Targets that already
+published are skipped, so a retry never double-posts.
+
+## When a target fails
+
+A post to three accounts where one fails comes back `partial`, not `failed` —
+and the failing target carries its own error. The others are live; the fix is to
+retry that one target, which the `publish` call above does.
+
+Subscribe to `post.published`, `post.partial` and `post.failed` to hear about it
+without polling — see [Webhooks](/guides/webhooks).
+
+<Card title="See all fields" icon="code" href="/api-reference">
+  Open `POST /v1/posts` in the API Reference to try it live.
+</Card>
+
+
+# Webhooks
+Source: https://docs.plugkit.co/guides/webhooks
+
+Get told when a post goes live, a message arrives, or an account drops.
+
+Register an HTTPS endpoint and PlugKit posts an event to it when something
+happens — no polling.
+
+## Create an endpoint
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/webhooks \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://your-app.com/hooks/plugkit",
+    "events": ["post.published", "message.received"]
+  }'
+```
+
+Omit `events` (or send an empty list) to receive everything, including events
+added later.
+
+<Warning>
+  The response contains the signing secret (`whsec_…`) **once**. Store it now —
+  it is never shown again, and you need it to verify deliveries.
+</Warning>
+
+## Events
+
+| Event                     | Fired when                                                                               |
+| ------------------------- | ---------------------------------------------------------------------------------------- |
+| `post.published`          | The post is live on every one of its targets.                                            |
+| `post.partial`            | Some targets published, others failed.                                                   |
+| `post.failed`             | No target published.                                                                     |
+| `message.received`        | An inbound message landed in the inbox.                                                  |
+| `comment.received`        | A comment arrived on one of the account's posts.                                         |
+| `comment.dm_sent`         | A [comment → DM automation](/guides/campaigns) sent its private message.                 |
+| `broadcast.finished`      | A broadcast finished serving every recipient.                                            |
+| `account.disconnected`    | An account was disconnected, or its token died.                                          |
+| `usage.threshold_reached` | Pay-per-call spend passed 80% of the monthly cap — once a month, before anything pauses. |
+
+The list is closed and names are `object.past_tense`. New events are added over
+time; existing ones are never renamed.
+
+## Payload
+
+Every delivery shares one envelope:
+
+```json theme={null}
+{
+  "id": "evt_9f2c…",
+  "type": "post.published",
+  "createdAt": "2026-08-23T14:31:02.184Z",
+  "data": { }
+}
+```
+
+`data` carries the resource in the same shape the REST API returns it, so the
+post in `post.published` is the post you'd get from `GET /v1/posts/{id}`.
+
+## Verifying a delivery
+
+Each request carries an `x-plugkit-signature` header:
+
+```
+x-plugkit-signature: t=1756045862,v1=6f3b…
+```
+
+`v1` is the HMAC-SHA256 of `<t>.<raw body>`, keyed with your endpoint secret.
+Compute it over the **raw** body — parsing and re-serialising the JSON changes
+the bytes and breaks the comparison.
+
+<CodeGroup>
+  ```ts TypeScript theme={null}
+  import { createHmac, timingSafeEqual } from "crypto";
+
+  function verify(rawBody: string, header: string, secret: string): boolean {
+    const parts = Object.fromEntries(
+      header.split(",").map((kv) => kv.split("=") as [string, string]),
+    );
+    const expected = createHmac("sha256", secret)
+      .update(`${parts.t}.${rawBody}`)
+      .digest("hex");
+
+    // Reject anything older than five minutes to blunt replays.
+    if (Math.abs(Date.now() / 1000 - Number(parts.t)) > 300) return false;
+
+    return timingSafeEqual(Buffer.from(expected), Buffer.from(parts.v1));
+  }
+  ```
+
+  ```python Python theme={null}
+  import hmac, hashlib, time
+
+  def verify(raw_body: bytes, header: str, secret: str) -> bool:
+      parts = dict(kv.split("=", 1) for kv in header.split(","))
+      expected = hmac.new(
+          secret.encode(), f"{parts['t']}.".encode() + raw_body, hashlib.sha256
+      ).hexdigest()
+      if abs(time.time() - int(parts["t"])) > 300:
+          return False
+      return hmac.compare_digest(expected, parts["v1"])
+  ```
+</CodeGroup>
+
+## Delivery and retries
+
+Answer `2xx` within **10 seconds**. Anything else — an error status, a timeout,
+a connection refused — is retried up to **6 attempts** with backoff: 30s, 2min,
+8min, 32min, \~2h, then the delivery is marked `FAILED`.
+
+Events are queued and sent by a worker, never inside the request that triggered
+them. A slow endpoint of yours never slows down a publication, and a broken one
+never makes it fail.
+
+Deliveries are **at least once**: a retry after a response you sent late will
+arrive twice. Deduplicate on the payload's `id`.
+
+Inspect what happened:
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/webhooks/WEBHOOK_ID/deliveries \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Each row carries the event, the attempt count, the response status and the last
+error.
+
+## Managing endpoints
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/webhooks -H "Authorization: Bearer sk_your_key"
+
+curl -X PATCH https://api.plugkit.co/v1/webhooks/WEBHOOK_ID \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "enabled": false }'
+
+curl -X DELETE https://api.plugkit.co/v1/webhooks/WEBHOOK_ID \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+<Note>
+  These are PlugKit's **outbound** webhooks. The inbound plumbing — subscribing
+  an account to Meta's own webhooks so DMs reach the inbox at all — happens
+  automatically when an account is connected. It can be re-run for Instagram
+  (`POST /v1/connect/instagram/{accountId}/subscribe-webhooks`) and WhatsApp
+  (`POST /v1/connect/whatsapp/{accountId}/subscribe-webhooks`); a Facebook Page
+  subscribes once at connection time, so a Page that missed it has to be
+  reconnected.
+</Note>
+
+
+# PlugKit
+Source: https://docs.plugkit.co/index
+
+One API to publish, read, and reply across every social platform — built for developers and AI agents.
+
+PlugKit is a single REST API that connects social and messaging accounts through
+**official platform APIs** and lets you act on them — publish content, read and
+send messages, manage comments, pull analytics — without integrating each
+platform yourself. Same request shape everywhere, no per-API quirks.
+
+## Platforms
+
+Each platform has its own capabilities and connection flow — see its page for
+the specifics.
+
+| Platform                              | Publish | Messaging | Comments | Analytics | Ads |
+| ------------------------------------- | :-----: | :-------: | :------: | :-------: | :-: |
+| [**Instagram**](/platforms/instagram) |    ✅    |     ✅     |     ✅    |     ✅     |  —  |
+| [**Facebook**](/platforms/facebook)   |    ✅    |     ✅     |     ✅    |     ✅     |  —  |
+| [**TikTok**](/platforms/tiktok)       |    ✅    |     —     |     —    |     ✅     |  —  |
+| [**YouTube**](/platforms/youtube)     |    ✅    |     —     |     —    |     ✅     |  —  |
+| [**X (Twitter)**](/platforms/x)       |    ✅    |     —     |     —    |     ✅¹    |  —  |
+| [**WhatsApp**](/platforms/whatsapp)   |    —    |     ✅     |     —    |     —     |  —  |
+| [**Telegram**](/platforms/telegram)   |    ✅    |     ✅     |     —    |     —     |  —  |
+| [**Meta Ads**](/platforms/meta-ads)   |    —    |     —     |     —    |     —     |  ✅  |
+
+<sup>1</sup> X bills every API read, so its analytics are opt-in and capped —
+see [Plans & billing](/concepts/billing).
+
+<CardGroup>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Create an account, get an API key, and make your first call in five minutes.
+  </Card>
+
+  <Card title="Authentication" icon="key" href="/authentication">
+    How the dashboard session and API keys work.
+  </Card>
+
+  <Card title="Profiles & accounts" icon="sitemap" href="/concepts/profiles-and-accounts">
+    The data model behind every request, and how connections work.
+  </Card>
+
+  <Card title="MCP server" icon="robot" href="/mcp/overview">
+    Connect Claude, Cursor or VS Code to your accounts in one click.
+  </Card>
+
+  <Card title="Analytics" icon="chart-line" href="/guides/analytics">
+    Cross-platform metrics, collected in the background — including posts you
+    published outside PlugKit.
+  </Card>
+
+  <Card title="Campaigns" icon="bullhorn" href="/guides/campaigns">
+    Comment → DM automations, broadcasts and follow-up sequences.
+  </Card>
+
+  <Card title="API Reference" icon="code" href="/api-reference">
+    Every endpoint, with a live playground to try them.
+  </Card>
+</CardGroup>
+
+## How it works
+
+<Steps>
+  <Step title="Sign in and create a key">
+    Sign in to the [dashboard](https://plugkit.co/dashboard) with Google, GitHub,
+    or email, then create an API key. Everything you do is scoped to your account.
+  </Step>
+
+  <Step title="Create a profile">
+    A profile groups the accounts you connect (a workspace / brand).
+  </Step>
+
+  <Step title="Connect an account">
+    Send your user through the platform's flow — OAuth, a bot token, or Cloud
+    credentials, depending on the platform.
+  </Step>
+
+  <Step title="Act through one API">
+    Publish, message, moderate comments, pull metrics — the same request shape
+    whatever the platform.
+  </Step>
+</Steps>
+
+## Base URL
+
+```
+https://api.plugkit.co/v1
+```
+
+Every request is authenticated with a Bearer API key — see
+[Authentication](/authentication).
+
+
+# Connect a client
+Source: https://docs.plugkit.co/mcp/clients
+
+Add the PlugKit MCP server to Claude, ChatGPT, Claude Code, Cursor, VS Code, or any other MCP client.
+
+Every client needs the same thing — the server URL:
+
+```
+https://api.plugkit.co/mcp
+```
+
+Clients that support OAuth (all the ones below) will open a PlugKit consent
+screen the first time they connect; approve it and you're done. There is no key
+to paste unless you want one.
+
+<Warning>
+  **You add the connector yourself — not from a chat with the assistant.** An
+  assistant asked to install its own connector will decline (it can't vouch for
+  what it would be connecting to), and an API key pasted into a conversation
+  connects nothing while staying in the history forever. Every
+  step below is something you click or run; it takes about a minute. The
+  [dashboard](https://plugkit.co/dashboard/mcp) walks through the same steps one
+  client at a time and tells you when the server has seen your assistant connect.
+</Warning>
+
+## Claude (web, desktop, mobile)
+
+<Steps>
+  <Step title="Open the connector settings">
+    In Claude, open [Settings → Customize → Connectors](https://claude.ai/new#settings/customize-connectors),
+    then **Add → Custom connector**.
+  </Step>
+
+  <Step title="Paste the URL">
+    Name it `PlugKit` and paste `https://api.plugkit.co/mcp`. Leave the advanced
+    OAuth fields empty — PlugKit registers the client automatically.
+  </Step>
+
+  <Step title="Connect and approve">
+    Click **Connect**. Claude sends you to PlugKit, you sign in if needed, pick
+    read-only or full access, and approve.
+  </Step>
+
+  <Step title="Check it">
+    Ask Claude *"what PlugKit accounts do I have?"* — it should call `whoami`
+    and list your profiles and connected accounts.
+  </Step>
+</Steps>
+
+<Note>
+  Custom connectors are available on Free, Pro, Max, Team and Enterprise plans;
+  free accounts are limited to one custom connector.
+</Note>
+
+## ChatGPT
+
+ChatGPT takes the same URL — but a custom MCP server is a *developer-mode
+plugin* there, and the switch is not where most people look for it.
+
+<Steps>
+  <Step title="Turn developer mode on">
+    In ChatGPT: **Settings → Security and login → Developer mode**. Not under
+    Apps or Connectors. Without it, the **+** button in the next step does not
+    exist.
+  </Step>
+
+  <Step title="Open the plugins screen">
+    Go to [chatgpt.com/plugins](https://chatgpt.com/plugins), click the **+** in
+    the top right, then **Create app**. A *New plugin* dialog opens on a big
+    drag-and-drop box — ignore the box and click **Create an MCP app**, at the
+    bottom left of that dialog.
+
+    Both other doors are dead ends: **Create plugin** builds a whole plugin
+    package and never asks for a server URL, and **Upload plugin** wants a `.zip`
+    you don't have. *Create app → Create an MCP app* is the only path that asks
+    for one.
+  </Step>
+
+  <Step title="Fill in the connection">
+    Name it `PlugKit`, give it any description, paste
+    `https://api.plugkit.co/mcp` as the MCP server URL, and pick **OAuth**.
+    Leave client id and secret empty — PlugKit registers ChatGPT itself.
+  </Step>
+
+  <Step title="Approve, then use it">
+    ChatGPT opens PlugKit: sign in if needed, pick read-only or full access, and
+    approve. In a new chat, open the **+** menu and select **PlugKit**. Ask
+    *"search my PlugKit account for the conversation about pricing"* — it should
+    call `search`, then `fetch` on the result.
+  </Step>
+</Steps>
+
+<Note>
+  Developer mode needs the ChatGPT **web** app and a paid plan (Plus, Pro,
+  Business, Enterprise or Edu). It is not available on the free plan.
+</Note>
+
+<Note>
+  ChatGPT expects every connector to expose two tools with fixed names, `search`
+  and `fetch` — that is how it looks things up and cites them. PlugKit serves
+  both, over everything the account holds: posts, conversations (by contact
+  **and** by what was said in them), accounts, media, automations, sequences,
+  broadcasts and playbooks. They are read-only, and every client gets them, not
+  just ChatGPT.
+</Note>
+
+## Claude Code
+
+```bash theme={null}
+claude mcp add --transport http --scope user plugkit https://api.plugkit.co/mcp
+```
+
+Then run `/mcp` inside Claude Code and choose **Authenticate** — it opens the
+PlugKit consent screen in your browser. `--scope user` makes the server
+available in every project; drop it to keep PlugKit to the current folder.
+
+With an API key instead of OAuth:
+
+```bash theme={null}
+claude mcp add --transport http --scope user plugkit https://api.plugkit.co/mcp \
+  --header "Authorization: Bearer sk_your_key"
+```
+
+The three PlugKit workflows show up as slash commands:
+`/mcp__plugkit__publish`, `/mcp__plugkit__inbox`, `/mcp__plugkit__report`.
+
+## Cursor
+
+<Card title="Add PlugKit to Cursor" icon="arrow-pointer" href="cursor://anysphere.cursor-deeplink/mcp/install?name=plugkit&config=eyJ0eXBlIjoiaHR0cCIsInVybCI6Imh0dHBzOi8vYXBpLnBsdWdraXQuY28vbWNwIn0%3D">
+  Opens Cursor and asks you to confirm the server.
+</Card>
+
+Or by hand — **Settings → MCP → Add new MCP server**, or edit
+`~/.cursor/mcp.json`:
+
+```json ~/.cursor/mcp.json theme={null}
+{
+  "mcpServers": {
+    "plugkit": {
+      "type": "http",
+      "url": "https://api.plugkit.co/mcp"
+    }
+  }
+}
+```
+
+Cursor shows a **Needs login** state next to the server — click it to run the
+OAuth flow.
+
+## VS Code
+
+<Card title="Add PlugKit to VS Code" icon="code" href="vscode:mcp/install?%7B%22name%22%3A%22plugkit%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fapi.plugkit.co%2Fmcp%22%7D">
+  Opens VS Code and asks you to confirm the server.
+</Card>
+
+Or from the command line:
+
+```bash theme={null}
+code --add-mcp '{"name":"plugkit","type":"http","url":"https://api.plugkit.co/mcp"}'
+```
+
+Or by hand in `.vscode/mcp.json` (workspace) / your user `mcp.json`:
+
+```json .vscode/mcp.json theme={null}
+{
+  "servers": {
+    "plugkit": {
+      "type": "http",
+      "url": "https://api.plugkit.co/mcp"
+    }
+  }
+}
+```
+
+## Any other client
+
+The server speaks plain MCP over Streamable HTTP, so anything that can add a
+remote server works — Windsurf, Zed, LibreChat, Goose, your own agent. The
+canonical config shape:
+
+```json theme={null}
+{
+  "mcpServers": {
+    "plugkit": {
+      "type": "http",
+      "url": "https://api.plugkit.co/mcp"
+    }
+  }
+}
+```
+
+If the client doesn't do OAuth, add the header:
+
+```json theme={null}
+{
+  "mcpServers": {
+    "plugkit": {
+      "type": "http",
+      "url": "https://api.plugkit.co/mcp",
+      "headers": { "Authorization": "Bearer sk_your_key" }
+    }
+  }
+}
+```
+
+### From your own code
+
+Any MCP SDK works. With the TypeScript SDK:
+
+```ts theme={null}
+import { Client } from "@modelcontextprotocol/sdk/client/index.js";
+import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
+
+const client = new Client({ name: "my-agent", version: "1.0.0" });
+await client.connect(
+  new StreamableHTTPClientTransport(new URL("https://api.plugkit.co/mcp"), {
+    requestInit: {
+      headers: { Authorization: `Bearer ${process.env.PLUGKIT_API_KEY}` },
+    },
+  }),
+);
+
+const { tools } = await client.listTools();
+```
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="My assistant says it doesn't know PlugKit, or refuses to install it">
+    Expected, and not a fault on either side: PlugKit is a *custom* connector, so
+    it appears in no assistant's built-in list, and an assistant asked to install
+    its own connector will decline — it has no way to vouch for what it would be
+    connecting to. Follow the steps for your client above; the tools appear on
+    their own once the server is added.
+
+    If it asks you to confirm the service is legitimate before you connect, our
+    only addresses are **plugkit.co**, **api.plugkit.co** and **docs.plugkit.co**.
+    Once connected, this is a useful thing to paste to give it its bearings:
+
+    ```
+    I use PlugKit (https://plugkit.co) to manage my social accounts. Its MCP
+    server is https://api.plugkit.co/mcp and its docs are at
+    https://docs.plugkit.co/mcp/overview. I have already added it as a
+    connector — please use its tools, starting with whoami.
+    ```
+  </Accordion>
+
+  <Accordion title="Someone gave me an API key — where do I paste it?">
+    Nowhere, for Claude, Claude Code, Cursor and VS Code: they sign in instead,
+    which is both easier and safer. A key is only for an app that can't open a
+    sign-in window, or for your own code — it goes in a config file or an
+    environment variable, never in a chat. A key carries full access and doesn't
+    expire, so if one has been through a conversation, revoke it under **API
+    keys** in the dashboard and create another.
+  </Accordion>
+
+  <Accordion title="The client asks for a command to run, or an SSE URL">
+    PlugKit is a **remote** server: nothing to install, no `npx` command, no
+    local proxy. Choose the client's HTTP / Streamable HTTP option and give it
+    `https://api.plugkit.co/mcp`. Legacy SSE is not supported.
+  </Accordion>
+
+  <Accordion title="The client says 401 / unauthorized">
+    The server is reachable but the token isn't valid. With OAuth, disconnect and
+    reconnect the server so it runs the consent flow again. With an API key,
+    check the header is exactly `Authorization: Bearer sk_…` and that the key
+    hasn't been revoked in the dashboard.
+  </Accordion>
+
+  <Accordion title="Connected, but the tools do nothing useful">
+    Ask the assistant to call `whoami` first. Almost every tool needs a
+    `profileId` or an `accountId`, and `whoami` is what hands those out along
+    with what each platform supports.
+  </Accordion>
+
+  <Accordion title="Only read tools show up">
+    The token was granted `mcp:read`. Write tools are not registered at all for a
+    read-only session — reconnect and grant full access if you want the assistant
+    to publish and reply.
+  </Accordion>
+
+  <Accordion title="The client tries GET or SSE and fails">
+    The server is stateless: it answers `POST /mcp` and returns JSON. `GET` and
+    `DELETE` return `405`. Configure the server as **HTTP / Streamable HTTP**,
+    never as legacy **SSE**.
+  </Accordion>
+
+  <Accordion title="A one-click button does nothing">
+    The `cursor://` and `vscode:` links need the app installed on the same
+    machine as the browser, and the browser may ask you to allow opening an
+    external application. If it stays silent, fall back to the JSON config above.
+  </Accordion>
+</AccordionGroup>
+
+
+# MCP server
+Source: https://docs.plugkit.co/mcp/overview
+
+Give Claude, ChatGPT, Cursor, VS Code or any MCP client the ability to publish, read and reply on your social accounts.
+
+PlugKit ships a hosted **MCP server**: the same capabilities as the REST API,
+exposed as tools an AI assistant can call. Point a client at one URL, sign in,
+and the assistant can list your connected accounts, publish a post, triage the
+inbox, or pull analytics — no code, no SDK.
+
+```
+https://api.plugkit.co/mcp
+```
+
+<Note>
+  Transport is **Streamable HTTP** (stateless). There is nothing to install and
+  nothing to run locally — no `npx`, no local proxy.
+</Note>
+
+## Connect in one click
+
+<CardGroup>
+  <Card title="Claude" icon="message" href="/mcp/clients#claude-web-desktop-mobile">
+    Customize → Connectors → Add → Custom connector → paste the URL.
+  </Card>
+
+  <Card title="ChatGPT" icon="sparkles" href="/mcp/clients#chatgpt">
+    Developer mode → chatgpt.com/plugins → **+** → paste the URL.
+  </Card>
+
+  <Card title="Claude Code" icon="terminal" href="/mcp/clients#claude-code">
+    `claude mcp add -t http plugkit https://api.plugkit.co/mcp`
+  </Card>
+
+  <Card title="Cursor" icon="arrow-pointer" href="/mcp/clients#cursor">
+    One-click install link, or three lines in `~/.cursor/mcp.json`.
+  </Card>
+
+  <Card title="VS Code" icon="code" href="/mcp/clients#vs-code">
+    One-click install link, or `code --add-mcp`.
+  </Card>
+</CardGroup>
+
+Fastest path of all: **[Assistants & API keys](https://plugkit.co/dashboard/mcp)**
+in the dashboard walks through one client at a time, with an install button or
+the exact values to paste — and then confirms when the server has actually seen
+your assistant connect.
+
+## Authentication
+
+Two ways in, same account scoping as the REST API — an assistant only ever sees
+the profiles, accounts, posts and conversations of the PlugKit user it acts for.
+
+<Tabs>
+  <Tab title="Sign in (OAuth)">
+    The recommended path, and the only one that needs no secret in a config file.
+    PlugKit is a full OAuth 2.1 authorization server (PKCE, no client secret): the
+    client sends you to a PlugKit consent screen, you approve, and it stores a
+    token of its own.
+
+    You choose what you grant:
+
+    | Scope       | What the assistant can do                                                                          |
+    | ----------- | -------------------------------------------------------------------------------------------------- |
+    | `mcp:read`  | Read profiles, accounts, posts, conversations and analytics. Write tools are not even listed.      |
+    | `mcp:write` | Everything above, plus publish, send messages, reply to comments, connect and disconnect accounts. |
+
+    Revoke any assistant at any time from **Settings → Connected apps** in the
+    dashboard.
+  </Tab>
+
+  <Tab title="API key">
+    For clients without OAuth support, send a key as a plain Bearer header:
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "plugkit": {
+          "type": "http",
+          "url": "https://api.plugkit.co/mcp",
+          "headers": { "Authorization": "Bearer sk_your_key" }
+        }
+      }
+    }
+    ```
+
+    Create the key in the dashboard's [API Keys](https://plugkit.co/dashboard/api-keys)
+    section. A key carries **full access** — it has no scopes — so prefer OAuth
+    when the client supports it.
+  </Tab>
+</Tabs>
+
+## What an assistant can do
+
+<CardGroup>
+  <Card title="Publish" icon="paper-plane">
+    Draft, schedule and publish to several accounts at once, with media.
+  </Card>
+
+  <Card title="Inbox" icon="inbox">
+    Read and answer Instagram, WhatsApp and Telegram conversations.
+  </Card>
+
+  <Card title="Comments" icon="comments">
+    Read comments on a published post and reply publicly.
+  </Card>
+
+  <Card title="Analytics" icon="chart-line">
+    Ranked posts, trends, follower growth and best posting times — read from the
+    collected store, so one call covers every account.
+  </Card>
+
+  <Card title="Campaigns & ads" icon="bullhorn">
+    Comment → DM automations, broadcasts, follow-up sequences, and Meta ad
+    campaigns.
+  </Card>
+
+  <Card title="Connections" icon="plug">
+    Hand the user an OAuth link to connect a new account, or disconnect one.
+  </Card>
+
+  <Card title="All 103 tools" icon="wrench" href="/mcp/tools">
+    The full reference, plus the three ready-made workflows.
+  </Card>
+</CardGroup>
+
+## Safety
+
+Publishing a post, sending a message and replying to a comment are **public and
+immediate**. The server instructs the model to show the exact content and get
+your approval before calling those tools, but that is a prompt, not a lock — the
+real guarantees are the ones you control:
+
+* Grant `mcp:read` only, when you just want reporting and triage.
+* Review the accounts a connected assistant can reach with `whoami`.
+* Revoke from **Settings → Connected apps** the moment you're done.
+
+<Warning>
+  `delete_profile` cascades to its accounts, posts and conversations, and
+  `revoke_api_key` can revoke the very key the connection runs on. Both are
+  write-scope tools — another reason to hand out `mcp:read` by default.
+</Warning>
+
+
+# Tools & workflows
+Source: https://docs.plugkit.co/mcp/tools
+
+The 103 tools and 3 ready-made workflows exposed by the PlugKit MCP server.
+
+Every tool maps to the REST API you already know — same vocabulary, same ids.
+Tools marked **write** are hidden entirely from a session granted `mcp:read`.
+
+<Note>
+  Start with `whoami`. Nearly every other tool needs a `profileId` or an
+  `accountId`, and `whoami` returns both, plus what each platform supports.
+</Note>
+
+## Search
+
+| Tool     |      | What it does                                                                                                                                                                                                                                         |
+| -------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `search` | read | One keyword across everything the account holds: posts, conversations (by contact **and** by what was said inside them), accounts, profiles, media, comment→DM rules, sequences, broadcasts, playbooks. Returns short results with an id and a link. |
+| `fetch`  | read | Read one result in full from its id — a conversation with its recent messages, a post with its per-platform targets and errors, a published post with its metrics.                                                                                   |
+
+<Note>
+  These two names are fixed by OpenAI: ChatGPT connectors look for `search` and
+  `fetch` to look things up and cite them. Every client gets them all the same —
+  nothing else searches inside message text.
+</Note>
+
+## Profiles
+
+| Tool             |       | What it does                                                                                          |
+| ---------------- | ----- | ----------------------------------------------------------------------------------------------------- |
+| `whoami`         | read  | Authenticated identity, profiles, connected accounts, and per-platform capabilities. The entry point. |
+| `list_profiles`  | read  | Profiles with their account and post counts.                                                          |
+| `get_profile`    | read  | One profile by id.                                                                                    |
+| `create_profile` | write | Create a profile (a workspace grouping the accounts of one brand or client).                          |
+| `update_profile` | write | Rename, recolour, re-describe, or set as default.                                                     |
+| `delete_profile` | write | Delete a profile **and** its accounts, posts and conversations. Irreversible.                         |
+
+## Accounts & connections
+
+| Tool                           |       | What it does                                                                                                                                                                                                                    |
+| ------------------------------ | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `list_accounts`                | read  | Connected accounts, filterable by profile, platform or status.                                                                                                                                                                  |
+| `get_account`                  | read  | One account (the platform token is never exposed).                                                                                                                                                                              |
+| `get_connect_url`              | write | Generate the OAuth link for any platform. The assistant hands it to you — it can't follow it itself.                                                                                                                            |
+| `connect_telegram`             | write | Attach a Telegram bot from its BotFather token (validated before storage).                                                                                                                                                      |
+| `connect_account_manually`     | write | Attach an account from credentials you already hold. Advanced.                                                                                                                                                                  |
+| `disconnect_account`           | write | Disconnect and wipe the token. Posts and conversations are kept.                                                                                                                                                                |
+| `subscribe_instagram_webhooks` | write | Re-subscribe an Instagram account to Meta webhooks so DMs arrive in real time.                                                                                                                                                  |
+| `list_message_templates`       | read  | WhatsApp templates the business has had approved — the only thing that sends past the 24h window.                                                                                                                               |
+| `get_publish_options`          | read  | TikTok only: what that creator's account allows right now — the privacy levels it accepts, and which of comment / duet / stitch its own settings already disable. Read it before `create_post`; TikTok refuses any other value. |
+| `subscribe_facebook_webhooks`  | write | Re-apply the current webhook fields to a connected Facebook Page, including `message_echoes`, which surfaces replies written from the Meta inbox. For Pages connected before those fields existed. No re-authorization needed.  |
+
+## Posts
+
+| Tool                  |       | What it does                                                                                                                                                                                                                        |
+| --------------------- | ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `list_posts`          | read  | Posts with their targets and status, filterable and searchable.                                                                                                                                                                     |
+| `get_post`            | read  | One post: content, status, and per target the live URL or the error.                                                                                                                                                                |
+| `create_post`         | write | Create a post for several accounts at once — draft, scheduled (`scheduledFor`) or immediate (`publishNow`).                                                                                                                         |
+| `update_post`         | write | Edit or reschedule a draft/scheduled post. Published posts are frozen.                                                                                                                                                              |
+| `publish_post`        | write | Publish now: a draft, a scheduled post brought forward, or a retry (already-published targets are skipped, so no duplicates).                                                                                                       |
+| `delete_post`         | write | Delete on PlugKit and cancel the schedule. Does not unpublish what's already live.                                                                                                                                                  |
+| `unpublish_post`      | write | Take a post back off the platform. The opposite of `delete_post`, which only removes it from PlugKit and leaves it live. Threads can undo a publication, Instagram and TikTok cannot. Permanent: ask first.                         |
+| `upload_media`        | write | Re-host a file from a URL you already have, and return the PlugKit URL.                                                                                                                                                             |
+| `create_media_upload` | write | Get a one-shot upload link — the assistant sends the bytes itself, or hands you the browser page when it has no shell. Any size, no third-party file host.                                                                          |
+| `check_media_upload`  | read  | Confirm the file actually landed before publishing.                                                                                                                                                                                 |
+| `list_media`          | read  | The account's media library — start here when a post needs a photo or a video, and pass the ids to `create_post` as `mediaIds`.                                                                                                     |
+| `delete_media`        | write | Remove a file from the library. Refused while an unpublished post still uses it.                                                                                                                                                    |
+| `open_media_uploader` | read  | Show a drop zone in the conversation, so files on the person's machine reach you without leaving the chat. Several at once, and it stays open for more. Use it instead of `create_media_upload` when you cannot run shell commands. |
+
+<Info>
+  WhatsApp and Telegram don't do posts — only messages. `whoami` returns the
+  capability matrix so the assistant can filter targets itself.
+</Info>
+
+## Messaging
+
+| Tool                     |       | What it does                                                                                                                        |
+| ------------------------ | ----- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `list_conversations`     | read  | The unified inbox across Instagram, Facebook, WhatsApp and Telegram.                                                                |
+| `get_conversation`       | read  | One conversation (contact, account, platform).                                                                                      |
+| `list_messages`          | read  | History of a conversation with direction and delivery status.                                                                       |
+| `list_instagram_threads` | read  | Raw Instagram threads with participant IGSIDs — to find a contact the inbox doesn't know yet.                                       |
+| `send_dm`                | write | DM someone by name, @handle or phone number — no conversation id. Returns the matches instead of sending when several contacts fit. |
+| `send_message`           | write | Reply in an existing conversation. Immediate and irreversible.                                                                      |
+| `create_conversation`    | write | Open a thread with a contact identified by their platform id.                                                                       |
+| `sync_conversations`     | write | Pull conversations and messages from the platform API when the inbox looks stale.                                                   |
+| `send_direct_message`    | write | Low-level escape hatch: send straight to a platform identifier, storing nothing in the inbox.                                       |
+
+## Analytics
+
+Reads the collected store — history, comparisons, every account at once, no
+platform call. See [Analytics](/guides/analytics).
+
+| Tool                       |       | What it does                                                                                                                                 |
+| -------------------------- | ----- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `get_analytics_summary`    | read  | Headline numbers over a window, each with its change vs the previous period. Start here.                                                     |
+| `get_top_posts`            | read  | Posts ranked by any metric, including ones published outside PlugKit.                                                                        |
+| `get_analytics_timeseries` | read  | One metric by day, week or month, optionally split by platform.                                                                              |
+| `get_best_times_to_post`   | read  | Weekday × hour engagement grid — feed it into `scheduledFor` instead of guessing.                                                            |
+| `get_follower_stats`       | read  | Follower history and growth per account.                                                                                                     |
+| `get_analytics_by_account` | read  | One row per connected account over the window, including the accounts that published nothing. Use it whenever two accounts share a platform. |
+| `sync_analytics`           | write | Pull an account's latest posts now instead of waiting for the cycle. Debounced 15s.                                                          |
+
+## Comments & live reads
+
+| Tool                    |       | What it does                                                                                                             |
+| ----------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------ |
+| `get_account_analytics` | read  | Live account read: followers, following, post count, reach where exposed. One object, billed on X.                       |
+| `get_account_media`     | read  | Recent posts on the account with their metrics and `mediaId`.                                                            |
+| `get_post_analytics`    | read  | Live read of one published post.                                                                                         |
+| `get_comments`          | read  | Comments on ONE known post, read live. For working through everything that needs answering, use `list_engagement` below. |
+| `reply_to_comment`      | write | Reply publicly using PLATFORM ids — threaded on a `commentId`, or on the post itself.                                    |
+
+<Note>
+  `get_*_analytics` query the platform **live**: current value, one object, and
+  a real cost on metered platforms. For anything a dashboard would show — a
+  ranking, a trend, a comparison — the `get_analytics_*` tools above answer in
+  one call and cost nothing.
+</Note>
+
+## Engagement
+
+Comments on your posts, replies, and posts that mention you — Instagram,
+Facebook Pages and Threads, in one feed. These take the engagement `_id` from
+`list_engagement`, not a platform comment id.
+
+| Tool                      |       | What it does                                                                                                              |
+| ------------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------- |
+| `get_engagement_summary`  | read  | How much is unanswered, per account. The cheap first call — start here.                                                   |
+| `list_engagement`         | read  | The feed, most recent first. Defaults to what still needs an answer, each row carrying the post it sits under.            |
+| `sync_engagement`         | write | Pull from the platforms — after an outage, or to reach an older post via `postId`. Webhooks already deliver new comments. |
+| `reply_to_engagement`     | write | Publish a PUBLIC reply, signed by the account. Marks the item handled.                                                    |
+| `hide_comment`            | write | Hide a comment or bring it back. Reversible, author not notified — prefer it to deleting.                                 |
+| `mark_engagement_handled` | write | Clear something that needs no answer.                                                                                     |
+| `delete_comment`          | write | Permanently delete a comment on your post. Irreversible.                                                                  |
+
+<Warning>
+  `reply_to_engagement` and `reply_to_comment` publish **publicly**, under the
+  post, signed by the connected account — they are not DMs, and no platform
+  offers an edit. A mention belongs to its author: it can be replied to, never
+  hidden or deleted.
+</Warning>
+
+## Playbooks
+
+Ready-made setups installed in one call on a connected Instagram or Facebook
+account. The catalog is on [plugkit.co/playbooks](https://www.plugkit.co/playbooks/).
+
+| Tool                      |       | What it does                                                                                                                                                             |
+| ------------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `list_playbooks`          | read  | What can be installed: comment-to-DM lead magnet, story lead magnet, waitlist, welcome message. Start here before building a comment automation by hand.                 |
+| `get_playbook`            | read  | The full definition: the account slots to fill, every input with its default, and the automations and sequences it will create. Read it before installing.               |
+| `install_playbook`        | write | Create everything the playbook describes on one account. Live from that moment, real people get real DMs: show the rendered messages first and get an explicit go-ahead. |
+| `list_playbook_installs`  | read  | What is already installed here, with the automations and sequences each one created and their status.                                                                    |
+| `remove_playbook_install` | write | Delete what a playbook created. Pass `keepResources` to unlink the install while leaving everything running.                                                             |
+
+## Campaigns
+
+| Tool                          |       | What it does                                                                               |
+| ----------------------------- | ----- | ------------------------------------------------------------------------------------------ |
+| `create_comment_automation`   | write | "Comment a keyword, get a DM" on one post or every post of the account.                    |
+| `list_comment_automations`    | read  | Automations with their status and counters.                                                |
+| `update_comment_automation`   | write | Change keywords, message, button, or pause it.                                             |
+| `delete_comment_automation`   | write | Remove an automation.                                                                      |
+| `get_comment_automation_runs` | read  | Trigger log — who commented what, and what was sent.                                       |
+| `preview_broadcast_audience`  | read  | Count the recipients an audience would reach, **before** sending.                          |
+| `create_broadcast`            | write | Draft or schedule one message to a filtered slice of the inbox.                            |
+| `list_broadcasts`             | read  | Broadcasts with status and counts.                                                         |
+| `send_broadcast`              | write | Queue it for sending. Immediate and irreversible for every recipient.                      |
+| `cancel_broadcast`            | write | Put a scheduled broadcast back to draft.                                                   |
+| `delete_broadcast`            | write | Delete a broadcast.                                                                        |
+| `get_broadcast_recipients`    | read  | Per-recipient delivery log, with the reason for each failure.                              |
+| `create_sequence`             | write | Timed follow-ups, triggered by a new conversation, a comment automation, or a story reply. |
+| `list_sequences`              | read  | Sequences with their steps and status.                                                     |
+| `update_sequence`             | write | Edit steps, trigger or status.                                                             |
+| `delete_sequence`             | write | Remove a sequence.                                                                         |
+| `enroll_in_sequence`          | write | Put a conversation into a sequence by hand.                                                |
+| `get_sequence_enrollments`    | read  | Who is in it, and at which step.                                                           |
+
+## Ads (Meta)
+
+| Tool                                              |       | What it does                                                                    |
+| ------------------------------------------------- | ----- | ------------------------------------------------------------------------------- |
+| `get_ad_account`                                  | read  | Currency, status and spend of the ad account. Read it before creating anything. |
+| `list_campaigns` / `list_ad_sets` / `list_ads`    | read  | The hierarchy, at each level.                                                   |
+| `create_campaign`                                 | write | Create a campaign. **Paused** unless told otherwise.                            |
+| `create_ad_set`                                   | write | Audience, budget and schedule. Budgets in minor units (2000 = €20.00).          |
+| `create_ad`                                       | write | An ad from an existing creative or an existing Page post.                       |
+| `update_campaign` / `update_ad_set` / `update_ad` | write | Rename, pause, resume, rebudget.                                                |
+| `boost_post`                                      | write | Promote a published Page post — campaign, ad set and ad in one call.            |
+| `get_ads_insights`                                | read  | Spend and performance for the account, a campaign, an ad set or an ad.          |
+
+<Warning>
+  Everything is created **paused**, and budgets are in minor units. Setting
+  `status: "ACTIVE"` starts spending real money — the assistant should confirm
+  the amount and the audience with you first.
+</Warning>
+
+## Shopping (Instagram)
+
+| Tool                   |       | What it does                                                                                                                                                                                                                                                                                           |
+| ---------------------- | ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `get_shopping_status`  | read  | Whether an account can tag products, and if not, exactly what is missing: no permission, an expired one, a shop Meta has not approved, or a shop with no catalog. Tagging needs a second Facebook authorization the user grants themselves, from the account card on the dashboard's Connections page. |
+| `search_shop_products` | read  | Search the account's shop catalog by product name or SKU. The ids returned here are the only ones `productTags` accepts, never invent one. A product whose `taggable` is false cannot be tagged, and its Meta review status says why.                                                                  |
+| `tag_products_on_post` | write | Tag products on an already published post or reel. **Replaces** the existing tags, so send the complete list. At most 20 on a photo, 30 on a reel; coordinates only apply to a photo. Instagram accepts 25 tagged posts per account per 24 hours.                                                      |
+
+## Billing
+
+| Tool               |       | What it does                                                       |
+| ------------------ | ----- | ------------------------------------------------------------------ |
+| `get_subscription` | read  | Plan, account quota, and current X spend.                          |
+| `get_usage`        | read  | Pay-per-call spend for the month, broken down by operation.        |
+| `set_x_billing`    | write | Turn X background analytics and inbox sync on or off, per account. |
+
+<Note>
+  `get_usage` exists so an assistant can weigh a cost **before** starting a
+  loop, instead of discovering it on the invoice.
+</Note>
+
+## API keys
+
+| Tool             |       | What it does                                                                                                 |
+| ---------------- | ----- | ------------------------------------------------------------------------------------------------------------ |
+| `list_api_keys`  | read  | Keys with prefix, last use and revocation state. Never the secret.                                           |
+| `create_api_key` | write | Create a key. The plaintext is returned **once**, and it lands in the conversation — only use it on request. |
+| `revoke_api_key` | write | Revoke immediately, including the key this connection may be running on.                                     |
+
+## Workflows
+
+Three prompts ship with the server. Clients surface them as commands — in Claude
+Code, `/mcp__plugkit__publish`, `/mcp__plugkit__inbox`, `/mcp__plugkit__report`.
+
+<CardGroup>
+  <Card title="publish" icon="paper-plane">
+    Publish one message to every eligible account of a profile, after showing you
+    the targets and the final text.
+  </Card>
+
+  <Card title="inbox" icon="inbox">
+    Sync each messaging account, surface unanswered incoming messages, and draft
+    a reply for each.
+  </Card>
+
+  <Card title="report" icon="chart-line">
+    Published posts, failures and per-account analytics over a period, as a table
+    plus three recommendations.
+  </Card>
+</CardGroup>
+
+## Errors
+
+Tools return the API's own errors as text rather than throwing, so the assistant
+can explain and retry. A `404` means the resource doesn't exist **or** doesn't
+belong to your account — see [Authentication](/authentication).
+
+
+# Facebook
+Source: https://docs.plugkit.co/platforms/facebook
+
+Publish to a Page, answer Messenger, moderate comments and read insights.
+
+Facebook connects a **Page** — not a personal profile. Publishing, Messenger,
+comments and insights, through Meta's Graph API.
+
+<CardGroup>
+  <Card title="Publish" icon="image">Text, images, videos.</Card>
+  <Card title="Messenger" icon="comments">Read & reply to DMs.</Card>
+  <Card title="Comments" icon="comment-dots">List, reply, private reply.</Card>
+  <Card title="Analytics" icon="chart-line">Impressions, reach, clicks, fans.</Card>
+</CardGroup>
+
+## Connect
+
+Facebook Login for Business. One authorization can attach several Pages, and the
+same screen can also grant [Meta Ads](/platforms/meta-ads) access:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/connect/facebook?profileId=YOUR_PROFILE_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Open the returned `authUrl`, pick the Pages to grant, and PlugKit stores one
+account per Page after the callback.
+
+<Note>
+  Page tokens are derived from the user token at connection time and refreshed
+  as needed. You never handle them.
+</Note>
+
+## Publish
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "profileId": "PROFILE_ID", "accountIds": ["ACCOUNT_ID"],
+        "content": "We just shipped 🚀",
+        "mediaItems": [{ "type": "image", "url": "https://…/photo.jpg" }],
+        "publishNow": true }'
+```
+
+Text-only posts are fine — `mediaItems` is optional on Facebook. Videos are
+uploaded to the Page's video endpoint automatically based on the media type.
+
+## Messenger
+
+Conversations appear in the [unified inbox](/guides/messaging) like any other
+platform:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/inbox/conversations?accountId=ACCOUNT_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+The same **24-hour window** as Instagram applies: free-form replies within 24h
+of the contact's last message.
+
+## Comments
+
+```bash theme={null}
+# comments on a post
+curl https://api.plugkit.co/v1/accounts/ACCOUNT_ID/media/POST_ID/comments \
+  -H "Authorization: Bearer sk_your_key"
+
+# public reply, threaded under a comment
+curl -X POST https://api.plugkit.co/v1/accounts/ACCOUNT_ID/comments/COMMENT_ID/reply \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "message": "Thanks! 🙏" }'
+```
+
+Facebook Pages also support **private replies** — messaging a commenter who has
+never written to you, once per comment, within 7 days. That's what
+[comment → DM automations](/guides/campaigns) run on.
+
+## Analytics
+
+Facebook feeds the [analytics store](/guides/analytics) like every other
+publishing platform: post impressions, reach, clicks, likes, comments and
+shares, plus Page fans measured daily.
+
+## Permissions
+
+`pages_show_list`, `pages_read_engagement`, `pages_manage_posts`,
+`pages_messaging`, `pages_manage_engagement`, and **`pages_manage_metadata`**.
+
+<Warning>
+  Without `pages_manage_metadata`, the Page can't be subscribed to webhooks —
+  and you receive **no** inbound messages or comments at all. Everything else
+  keeps working, which makes it a quiet failure. The subscription happens once,
+  when the Page is connected, so a Page authorized without that permission has
+  to be **reconnected** after granting it.
+</Warning>
+
+
+# Instagram
+Source: https://docs.plugkit.co/platforms/instagram
+
+Publish, DM, moderate comments and read insights on Instagram business accounts.
+
+Instagram is PlugKit's most complete integration: **publishing, messaging,
+comments and analytics**, all through Meta's official *Instagram API with
+Instagram Login*. Requires an Instagram **professional (business or creator)**
+account.
+
+<CardGroup>
+  <Card title="Publish" icon="image">Images with captions.</Card>
+  <Card title="Messaging" icon="comments">Read & reply to DMs.</Card>
+  <Card title="Comments" icon="comment-dots">List & reply on posts.</Card>
+  <Card title="Analytics" icon="chart-line">Followers, reach, impressions.</Card>
+</CardGroup>
+
+## Connect
+
+Standard OAuth 2 flow — request a URL, the user approves, PlugKit stores a
+long-lived token.
+
+<Steps>
+  <Step title="Get the authorization URL">
+    ```bash theme={null}
+    curl "https://api.plugkit.co/v1/connect/instagram?profileId=YOUR_PROFILE_ID" \
+      -H "Authorization: Bearer sk_your_key"
+    ```
+
+    → `{ "authUrl": "https://www.instagram.com/oauth/authorize?..." }`
+  </Step>
+
+  <Step title="Send the user to authUrl">
+    They log into their Instagram **business** account and approve the scopes.
+  </Step>
+
+  <Step title="PlugKit stores the account">
+    Instagram redirects to `/connect/instagram/callback`; PlugKit exchanges the
+    code for a long-lived token, subscribes the account to webhooks, and exposes
+    it in `GET /accounts`.
+  </Step>
+</Steps>
+
+## Publish
+
+Instagram publishing is a two-step process (create a media container, then
+publish) — PlugKit runs both for you. Provide a public **image** URL:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "profileId": "PROFILE_ID", "accountIds": ["ACCOUNT_ID"],
+        "content": "Launch day 🚀", "mediaUrls": ["https://…/photo.jpg"], "publishNow": true }'
+```
+
+No public URL? [Upload the file first](/guides/publishing#uploading-media).
+
+## Messaging
+
+Read and reply to DMs. Inbound messages arrive via [webhooks](/guides/webhooks),
+or pull them on demand with sync:
+
+```bash Sync + list theme={null}
+curl -X POST "https://api.plugkit.co/v1/inbox/conversations/sync?accountId=ACCOUNT_ID" -H "Authorization: Bearer sk_your_key"
+curl "https://api.plugkit.co/v1/inbox/conversations?accountId=ACCOUNT_ID" -H "Authorization: Bearer sk_your_key"
+```
+
+```bash Reply / send a direct DM theme={null}
+curl -X POST https://api.plugkit.co/v1/inbox/conversations/CONVERSATION_ID/messages \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" -d '{ "text": "Hi! 👋" }'
+```
+
+<Warning>
+  Meta's rule: you can only message a user who contacted you within the last
+  **24h**, unless you use an approved template.
+</Warning>
+
+## Comments
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/accounts/ACCOUNT_ID/media -H "Authorization: Bearer sk_your_key"          # recent posts
+curl https://api.plugkit.co/v1/accounts/ACCOUNT_ID/media/MEDIA_ID/comments -H "Authorization: Bearer sk_your_key"
+curl -X POST https://api.plugkit.co/v1/accounts/ACCOUNT_ID/comments/COMMENT_ID/reply \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" -d '{ "message": "Thanks! 🙏" }'
+```
+
+## Analytics
+
+Instagram is the richest source in the [analytics store](/guides/analytics):
+views, reach, likes, comments, shares and saves per post, plus followers,
+reach and profile views measured daily. Posts published from the Instagram app
+are collected too.
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/analytics/summary?platform=instagram" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+<Note>
+  Meta retired media `impressions` in favour of `views`. Older posts may carry
+  one and not the other — which is why an unavailable metric comes back `null`
+  rather than `0`.
+</Note>
+
+## Permissions
+
+Instagram grants these scopes on connect: `instagram_business_basic`,
+`…_content_publish`, `…_manage_messages`, `…_manage_comments`,
+`…_manage_insights`. Each capability above needs its matching scope.
+
+
+# Meta Ads
+Source: https://docs.plugkit.co/platforms/meta-ads
+
+Run Facebook and Instagram campaigns — campaigns, ad sets, ads, boosts and insights.
+
+A `meta_ads` account is an **ad account**, not a social network. It publishes
+nothing and receives no messages. What it holds is campaigns — and the ability
+to promote a Page post you already published.
+
+<CardGroup>
+  <Card title="Campaigns" icon="layer-group">Campaign → ad set → ad.</Card>
+  <Card title="Boost" icon="rocket">Promote an existing Page post in one call.</Card>
+  <Card title="Insights" icon="chart-column">Spend and performance at every level.</Card>
+  <Card title="Audiences" icon="users">Meta targeting specs, passed through.</Card>
+</CardGroup>
+
+## Connect
+
+Same Facebook Login screen as [Pages](/platforms/facebook) — one authorization
+can grant both:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/connect/meta_ads?profileId=YOUR_PROFILE_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Each ad account the user grants becomes its own PlugKit account.
+
+```bash Check what you're spending against theme={null}
+curl https://api.plugkit.co/v1/ads/ACCOUNT_ID/account -H "Authorization: Bearer sk_your_key"
+```
+
+Returns the currency, status and lifetime spend. Read it before your first
+create — **every budget below is expressed in that currency**.
+
+## Two rules that will bite you otherwise
+
+<Warning>
+  **Budgets are in minor units.** `2000` is €20.00, not €2000. Meta expects
+  cents (or the currency's smallest unit) everywhere: `dailyBudget`,
+  `lifetimeBudget`, `bidAmount`.
+</Warning>
+
+<Warning>
+  **Everything is created `PAUSED`.** Campaigns, ad sets and ads all start
+  paused, and boosts too. Set `status: "ACTIVE"` only after an explicit go on
+  the amount and the audience — that call starts spending real money.
+</Warning>
+
+## Boost a post
+
+The short path: take a Page post that's already live and promote it. PlugKit
+creates the campaign, the ad set and the ad in one call.
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/ads/AD_ACCOUNT_ID/boost \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{
+    "postId": "123456789_987654321",
+    "dailyBudget": 2000,
+    "days": 7,
+    "countries": ["FR", "BE"],
+    "ageMin": 25,
+    "ageMax": 45
+  }'
+```
+
+`postId` is the Page post id, in `{page-id}_{post-id}` form — it's the
+`platformPostId` returned when you published through PlugKit.
+
+## The full hierarchy
+
+```bash Campaign theme={null}
+curl -X POST https://api.plugkit.co/v1/ads/AD_ACCOUNT_ID/campaigns \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "name": "Spring launch", "objective": "OUTCOME_ENGAGEMENT", "dailyBudget": 5000 }'
+```
+
+Objectives: `OUTCOME_AWARENESS`, `OUTCOME_TRAFFIC`, `OUTCOME_ENGAGEMENT`,
+`OUTCOME_LEADS`, `OUTCOME_APP_PROMOTION`, `OUTCOME_SALES`.
+
+```bash Ad set — audience, budget, schedule theme={null}
+curl -X POST https://api.plugkit.co/v1/ads/AD_ACCOUNT_ID/adsets \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{
+    "name": "FR 25-45",
+    "campaignId": "CAMPAIGN_ID",
+    "dailyBudget": 2000,
+    "optimizationGoal": "POST_ENGAGEMENT",
+    "billingEvent": "IMPRESSIONS",
+    "targeting": { "geo_locations": { "countries": ["FR"] }, "age_min": 25, "age_max": 45 }
+  }'
+```
+
+`targeting` and `promotedObject` are Meta specs, passed through unchanged — so
+anything Meta's own docs describe works here. Omit `targeting` and it defaults
+to France.
+
+```bash Ad — from an existing Page post theme={null}
+curl -X POST https://api.plugkit.co/v1/ads/AD_ACCOUNT_ID/ads \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "name": "Launch video", "adSetId": "ADSET_ID", "objectStoryId": "123456789_987654321" }'
+```
+
+Give either `objectStoryId` (an existing Page post) or `creativeId` (an existing
+ad creative).
+
+Set the budget **either** on the campaign (campaign budget optimisation, Meta
+splits it) **or** on the ad sets — not both.
+
+## Pause, resume, rebudget
+
+`PATCH` works the same on all three levels:
+
+```bash theme={null}
+curl -X PATCH https://api.plugkit.co/v1/ads/AD_ACCOUNT_ID/campaigns/CAMPAIGN_ID \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "status": "PAUSED" }'
+```
+
+## Insights
+
+Spend and performance, for the whole account or one object:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/ads/AD_ACCOUNT_ID/insights?campaignId=CAMPAIGN_ID&since=2026-08-01&until=2026-08-23" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+<Note>
+  These are **ad** metrics — spend, impressions, CPC — and they're separate from
+  the organic [analytics store](/guides/analytics), which measures posts.
+</Note>
+
+## Permissions
+
+`ads_management`, `ads_read`, `business_management`, plus the Page permissions
+when you boost a Page post.
+
+
+# Telegram
+Source: https://docs.plugkit.co/platforms/telegram
+
+Post to channels and receive messages with a Telegram bot.
+
+Telegram is the simplest platform to connect — **no OAuth, no app review**. You
+create a bot, paste its token, and you can **publish to channels** and **receive
+messages**.
+
+<CardGroup>
+  <Card title="Publish" icon="paper-plane">Post to a channel/group.</Card>
+  <Card title="Messaging" icon="comments">Receive & reply to chats.</Card>
+</CardGroup>
+
+## Connect
+
+Create a bot with [@BotFather](https://t.me/BotFather) (`/newbot`), copy the
+token, and connect it:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/connect/telegram \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "profileId": "YOUR_PROFILE_ID", "botToken": "123456:AA..." }'
+```
+
+PlugKit validates the token (`getMe`) and stores the bot. No consent screen, no
+review.
+
+## Publish to a channel
+
+Add your bot as an **admin** of the target channel/group, then publish. Media is
+passed as a URL:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "profileId": "PROFILE_ID", "accountIds": ["ACCOUNT_ID"],
+        "content": "Hello channel 👋", "mediaUrls": ["https://…/video.mp4"], "publishNow": true }'
+```
+
+<Note>
+  A Telegram bot can only post where it's a member/admin. For a channel, add the
+  bot as an administrator first — that's a Telegram rule.
+</Note>
+
+## Messaging
+
+Users who message your bot show up as **conversations**. Read and reply like any
+platform:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/inbox/conversations?accountId=ACCOUNT_ID" -H "Authorization: Bearer sk_your_key"
+curl -X POST https://api.plugkit.co/v1/inbox/conversations/CONVERSATION_ID/messages \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" -d '{ "text": "Hi! 👋" }'
+```
+
+## Not supported
+
+Telegram has no comments or analytics surface here.
+
+
+# TikTok
+Source: https://docs.plugkit.co/platforms/tiktok
+
+Publish videos to TikTok via the official Login Kit + Content Posting API.
+
+TikTok is a **video-publishing** integration via TikTok's Login Kit and Content
+Posting API.
+
+<CardGroup>
+  <Card title="Publish video" icon="video">Post a public MP4.</Card>
+  <Card title="Drafts" icon="pen">Send to drafts to finish in-app.</Card>
+  <Card title="Analytics" icon="chart-line">Views, likes, comments, shares.</Card>
+  <Card title="Interactions" icon="sliders">Comments, Duet and Stitch settings.</Card>
+</CardGroup>
+
+## Connect
+
+OAuth flow (Login Kit):
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/connect/tiktok?profileId=YOUR_PROFILE_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Open the returned `authUrl`, approve on TikTok's consent screen, and the account
+is stored after the callback.
+
+## Publish a video
+
+Provide a **public `.mp4` URL** in `mediaUrls`:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "profileId": "PROFILE_ID", "accountIds": ["ACCOUNT_ID"],
+        "content": "New drop 🎬", "mediaUrls": ["https://…/video.mp4"], "publishNow": true }'
+```
+
+### Send to drafts
+
+Set `asDraft: true` to push the video into the TikTok app's drafts instead of
+posting — the user finalizes and publishes it from their phone:
+
+```json theme={null}
+{ "profileId": "…", "accountIds": ["…"], "content": "…",
+  "mediaUrls": ["https://…/video.mp4"], "asDraft": true }
+```
+
+### Visibility and interactions
+
+`privacy` maps onto TikTok's privacy level, and three flags control what others
+may do with the video:
+
+```json theme={null}
+{ "profileId": "…", "accountIds": ["…"], "content": "…",
+  "mediaItems": [{ "type": "video", "url": "https://…/video.mp4" }],
+  "privacy": "public",
+  "allowComment": true, "allowDuet": true, "allowStitch": false }
+```
+
+<Note>
+  TikTok has no `unlisted`: both `unlisted` and `private` publish as
+  `SELF_ONLY`. And a creator's own account settings win — if they've disabled
+  Duets, `allowDuet: true` doesn't override it.
+</Note>
+
+## Analytics
+
+TikTok feeds the [analytics store](/guides/analytics): views, likes, comments
+and shares per video, plus follower count measured daily. Videos published
+straight from the TikTok app are picked up too.
+
+<Warning>
+  This needs the `video.list` and `user.info.stats` scopes, which are **not
+  retroactive**. An account connected before they were added keeps publishing
+  fine but returns no analytics at all — reconnect it to fix that. Empty charts,
+  no error.
+</Warning>
+
+<Note>
+  TikTok has no daily history of its own: metrics are read as running totals and
+  PlugKit records the series itself, from the day you connect.
+</Note>
+
+## Not supported
+
+TikTok's API doesn't expose messaging or comments to third-party apps.
+
+## Permissions
+
+Scopes: `user.info.basic`, `video.publish`, `video.upload`, `video.list`,
+`user.info.stats`. The last two are for analytics and must also be enabled in
+your TikTok developer portal — otherwise the authorization goes out without
+them, silently.
+
+
+# WhatsApp
+Source: https://docs.plugkit.co/platforms/whatsapp
+
+Connect a customer's own WhatsApp number and hold two-way conversations.
+
+WhatsApp is a **messaging-only** integration on Meta's WhatsApp Cloud API. No
+posts, no comments, no analytics — a conversation channel.
+
+<CardGroup>
+  <Card title="Messaging" icon="comments">Send & receive, two ways.</Card>
+  <Card title="Templates" icon="file-lines">Reach people outside the 24h window.</Card>
+</CardGroup>
+
+## Connect
+
+WhatsApp uses Meta's **Embedded Signup**: your user brings their own number,
+inside a Facebook-hosted flow that also creates or picks their WhatsApp Business
+Account.
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/connect/whatsapp?profileId=YOUR_PROFILE_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Open the returned `authUrl`. The user signs in with Facebook, selects or creates
+a WABA, and verifies the phone number. PlugKit stores the number, exchanges a
+long-lived token and subscribes it to webhooks.
+
+<Warning>
+  A **test number** issued by Meta's API Setup screen carries a 24-hour token and
+  will silently stop working the next day. Connect a real number.
+</Warning>
+
+If inbound messages ever stop arriving, re-subscribe the number without
+reconnecting it:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/connect/whatsapp/ACCOUNT_ID/subscribe-webhooks \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+## Send a message
+
+A thread is a **conversation**. Open (or find) one for a phone number in
+international format, then send into it:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/inbox/conversations \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "accountId": "ACCOUNT_ID", "contactHandle": "33612345678",
+        "externalConversationId": "33612345678" }'
+
+curl -X POST https://api.plugkit.co/v1/inbox/conversations/CONVERSATION_ID/messages \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "text": "Hello from PlugKit!" }'
+```
+
+## The 24-hour window
+
+Meta accepts free-form text only within **24 hours of the contact's last
+message**. Past that, only an approved **template** goes through — free-form
+text doesn't "mostly work", it is rejected.
+
+List what the WABA has had approved:
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/accounts/ACCOUNT_ID/message-templates \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Then send it, filling the `{{1}}`, `{{2}}` placeholders in order:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/inbox/conversations/CONVERSATION_ID/messages \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{
+    "template": {
+      "name": "order_update",
+      "language": "fr",
+      "variables": ["Teo", "12345"]
+    }
+  }'
+```
+
+The name and language must match an approved template exactly. `components` is
+the escape hatch for headers and buttons — raw Meta components, passed through.
+
+## Read the inbox
+
+Inbound messages arrive by webhook. List and read them like any platform:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/inbox/conversations?accountId=ACCOUNT_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+See [Messaging](/guides/messaging) for the full inbox, and
+[Campaigns](/guides/campaigns) for broadcasts — which are governed by the same
+24-hour window.
+
+## When it stops working
+
+An account carries `isActive` and `needsReconnection`, plus a
+`disconnectedReason` when we know it — check them before assuming a send failed
+for its own reasons:
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/accounts/ACCOUNT_ID -H "Authorization: Bearer sk_your_key"
+```
+
+Two WhatsApp-specific traps worth knowing:
+
+* Meta can refuse to serve the phone number while the token is perfectly valid —
+  after a coexistence disconnect on the phone side, for instance. Sends then
+  fail with a Meta error rather than an auth error.
+* Reconnecting the **same** number updates the existing account in place, so
+  conversations and history are kept. If a reconnection ever lands on a second
+  account for the same real number — a different WABA, say — fold it back with
+  `POST /v1/accounts/{id}/replace`, which moves everything onto the account you
+  keep and deletes the other.
+
+## Permissions
+
+`whatsapp_business_messaging` (send and receive) and
+`whatsapp_business_management` (business account and numbers).
+
+
+# X (Twitter)
+Source: https://docs.plugkit.co/platforms/x
+
+Post tweets with media and read account & tweet analytics.
+
+X is a **publishing + analytics** integration via the X API v2 (OAuth 2.0 with
+PKCE, auto-refreshing tokens).
+
+<CardGroup>
+  <Card title="Publish" icon="feather">Text, images or video.</Card>
+  <Card title="Analytics" icon="chart-simple">Account & per-tweet metrics.</Card>
+</CardGroup>
+
+## Connect
+
+OAuth 2.0 (PKCE) flow:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/connect/x?profileId=YOUR_PROFILE_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Open the returned `authUrl` and approve. The callback `/connect/x/callback` must
+be registered in your X app's **User authentication settings**.
+
+## Publish a tweet
+
+X accepts **text only**, **1–4 images**, **or** a single video/GIF (media is
+optional):
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "profileId": "PROFILE_ID", "accountIds": ["ACCOUNT_ID"],
+        "content": "We just shipped 🚀", "mediaUrls": ["https://…/image.jpg"], "publishNow": true }'
+```
+
+The response includes the tweet's `platformPostId` and `platformPostUrl`.
+
+## Analytics
+
+X feeds the [analytics store](/guides/analytics) like the other platforms —
+likes, replies, reposts and impressions per post — with two differences that
+follow from X billing every API read.
+
+<Warning>
+  **Nothing is polled until you opt in.** Background analytics on an X account
+  are off by default, per account:
+
+  ```bash theme={null}
+  curl -X PATCH https://api.plugkit.co/v1/accounts/ACCOUNT_ID/x-billing \
+    -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+    -d '{ "analytics": true, "acknowledgeCost": true }'
+  ```
+
+  `acknowledgeCost` is required to turn it on: the call is refused without it,
+  and the refusal carries the rate card so you can show it first. See
+  [Plans & billing](/concepts/billing).
+</Warning>
+
+Once enabled:
+
+* A post is refreshed **at most once a day**, whatever your plan. The hourly
+  window other platforms get would cost \$0.005 per post per hour.
+* **Only posts published through PlugKit are tracked.** Listing your timeline to
+  discover the others would be a billed read per page, forever, to find posts we
+  already know about.
+* Collection stops when your [spend cap](/concepts/billing) is reached.
+  Publishing never does.
+
+A **\$20 monthly cap applies by default**, so this can't run away on its own.
+Raise or lower it to fit:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/billing/spend-cap \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "capUsd": 20 }'
+```
+
+## Pricing
+
+X calls are re-billed at cost — $0.005 a read, $0.015 a post, and **\$0.200 for
+a post containing a URL** (X's own pricing, roughly 13× a normal post). Watch it
+with `GET /v1/usage`; see [Plans & billing](/concepts/billing).
+
+## Not supported
+
+X DMs need elevated paid API access, so messaging isn't exposed here.
+
+## Permissions
+
+Scopes: `tweet.read`, `tweet.write`, `users.read`, `media.write`,
+`offline.access` (for token refresh).
+
+
+# YouTube
+Source: https://docs.plugkit.co/platforms/youtube
+
+Upload videos to YouTube via the Google Data API.
+
+YouTube is a **video-publishing** integration via Google's YouTube Data API.
+
+<CardGroup>
+  <Card title="Publish video" icon="video">Upload a video to a channel.</Card>
+  <Card title="Analytics" icon="chart-line">Views, likes, comments, subscribers.</Card>
+</CardGroup>
+
+## Connect
+
+Google OAuth flow:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/connect/youtube?profileId=YOUR_PROFILE_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Open the returned `authUrl`, approve on Google's consent screen, and the channel
+is connected after the callback.
+
+## Publish a video
+
+Provide a **public video URL**. YouTube requires a title — pass one explicitly
+with `title` (100 characters max); without it, PlugKit falls back to the start
+of `content`, which is a stopgap:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "profileId": "PROFILE_ID", "accountIds": ["ACCOUNT_ID"],
+        "title": "Episode 1 — how we built it",
+        "content": "Full description here…",
+        "mediaItems": [{ "type": "video", "url": "https://…/video.mp4" }],
+        "privacy": "public", "publishNow": true }'
+```
+
+<Warning>
+  Until your Google/YouTube app is **verified**, uploads land as **`private`**.
+  This is a Google requirement — publish publicly once verification is granted.
+</Warning>
+
+`privacy` accepts `public`, `unlisted` or `private`.
+
+## Analytics
+
+YouTube feeds the [analytics store](/guides/analytics): views, likes and
+comments per video, plus subscriber count measured daily. Videos uploaded
+outside PlugKit are picked up too.
+
+<Note>
+  These are **totals since publication**, not a day-by-day series. Per-day views
+  live in the YouTube Analytics API, which requires a separate Google audit — so
+  the daily series PlugKit shows is the one it records itself, from the day you
+  connect. A channel that hides its subscriber count returns `null`, not `0`.
+</Note>
+
+## Not supported
+
+Messaging and comments aren't exposed.
+
+## Permissions
+
+Scopes: `youtube.upload` (publishing) and `youtube.readonly` (analytics).
+
+
+# Quickstart
+Source: https://docs.plugkit.co/quickstart
+
+From zero to your first published post.
+
+## 1. Create your account & API key
+
+Sign in to the [PlugKit dashboard](https://plugkit.co/dashboard) with Google,
+GitHub, or email + password. Then open **API Keys → New Key** and copy the key —
+it looks like `sk_...` and is shown **only once**.
+
+<Note>
+  All requests go to `https://api.plugkit.co/v1` and require the header
+  `Authorization: Bearer sk_...`. The key scopes every call to your account.
+</Note>
+
+## 2. Make your first call
+
+List your profiles to confirm the key works:
+
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl https://api.plugkit.co/v1/profiles \
+    -H "Authorization: Bearer sk_your_key"
+  ```
+
+  ```ts TypeScript theme={null}
+  const res = await fetch("https://api.plugkit.co/v1/profiles", {
+    headers: { Authorization: "Bearer sk_your_key" },
+  });
+  const { profiles } = await res.json();
+  ```
+
+  ```python Python theme={null}
+  import requests
+  r = requests.get(
+      "https://api.plugkit.co/v1/profiles",
+      headers={"Authorization": "Bearer sk_your_key"},
+  )
+  print(r.json())
+  ```
+</CodeGroup>
+
+## 3. Create a profile
+
+A profile groups the accounts you connect. Create one and keep its `id`:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/profiles \
+  -H "Authorization: Bearer sk_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{ "name": "My brand" }'
+```
+
+## 4. Connect an account
+
+Start the OAuth flow to link an account (Instagram shown here):
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/connect/instagram?profileId=YOUR_PROFILE_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+You get back an `authUrl` — open it in a browser, approve, and the account is
+created. Every platform has its own page under **Platforms**, and the shared
+model is in [Profiles & accounts](/concepts/profiles-and-accounts). You can also
+do this in two clicks from the dashboard's **Connections** page.
+
+## 5. Publish
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "profileId": "YOUR_PROFILE_ID",
+    "content": "Hello from PlugKit 👋",
+    "accountIds": ["YOUR_ACCOUNT_ID"],
+    "mediaUrls": ["https://example.com/photo.jpg"],
+    "publishNow": true
+  }'
+```
+
+## 6. Read the results
+
+Metrics are collected in the background, so one call covers every account you
+connected:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/analytics/summary" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+<CardGroup>
+  <Card title="Explore the full API" icon="code" href="/api-reference">
+    Try every endpoint live in the API Reference playground.
+  </Card>
+
+  <Card title="Skip the code" icon="robot" href="/mcp/overview">
+    Add the MCP server to Claude, Cursor or VS Code and do all of the above by
+    asking for it.
+  </Card>
+</CardGroup>
+
+

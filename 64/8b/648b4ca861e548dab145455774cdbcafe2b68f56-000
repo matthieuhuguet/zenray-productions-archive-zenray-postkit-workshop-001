@@ -1,0 +1,299 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Connect a client
+
+> Add the PlugKit MCP server to Claude, ChatGPT, Claude Code, Cursor, VS Code, or any other MCP client.
+
+Every client needs the same thing — the server URL:
+
+```
+https://api.plugkit.co/mcp
+```
+
+Clients that support OAuth (all the ones below) will open a PlugKit consent
+screen the first time they connect; approve it and you're done. There is no key
+to paste unless you want one.
+
+<Warning>
+  **You add the connector yourself — not from a chat with the assistant.** An
+  assistant asked to install its own connector will decline (it can't vouch for
+  what it would be connecting to), and an API key pasted into a conversation
+  connects nothing while staying in the history forever. Every
+  step below is something you click or run; it takes about a minute. The
+  [dashboard](https://plugkit.co/dashboard/mcp) walks through the same steps one
+  client at a time and tells you when the server has seen your assistant connect.
+</Warning>
+
+## Claude (web, desktop, mobile)
+
+<Steps>
+  <Step title="Open the connector settings">
+    In Claude, open [Settings → Customize → Connectors](https://claude.ai/new#settings/customize-connectors),
+    then **Add → Custom connector**.
+  </Step>
+
+  <Step title="Paste the URL">
+    Name it `PlugKit` and paste `https://api.plugkit.co/mcp`. Leave the advanced
+    OAuth fields empty — PlugKit registers the client automatically.
+  </Step>
+
+  <Step title="Connect and approve">
+    Click **Connect**. Claude sends you to PlugKit, you sign in if needed, pick
+    read-only or full access, and approve.
+  </Step>
+
+  <Step title="Check it">
+    Ask Claude *"what PlugKit accounts do I have?"* — it should call `whoami`
+    and list your profiles and connected accounts.
+  </Step>
+</Steps>
+
+<Note>
+  Custom connectors are available on Free, Pro, Max, Team and Enterprise plans;
+  free accounts are limited to one custom connector.
+</Note>
+
+## ChatGPT
+
+ChatGPT takes the same URL — but a custom MCP server is a *developer-mode
+plugin* there, and the switch is not where most people look for it.
+
+<Steps>
+  <Step title="Turn developer mode on">
+    In ChatGPT: **Settings → Security and login → Developer mode**. Not under
+    Apps or Connectors. Without it, the **+** button in the next step does not
+    exist.
+  </Step>
+
+  <Step title="Open the plugins screen">
+    Go to [chatgpt.com/plugins](https://chatgpt.com/plugins), click the **+** in
+    the top right, then **Create app**. A *New plugin* dialog opens on a big
+    drag-and-drop box — ignore the box and click **Create an MCP app**, at the
+    bottom left of that dialog.
+
+    Both other doors are dead ends: **Create plugin** builds a whole plugin
+    package and never asks for a server URL, and **Upload plugin** wants a `.zip`
+    you don't have. *Create app → Create an MCP app* is the only path that asks
+    for one.
+  </Step>
+
+  <Step title="Fill in the connection">
+    Name it `PlugKit`, give it any description, paste
+    `https://api.plugkit.co/mcp` as the MCP server URL, and pick **OAuth**.
+    Leave client id and secret empty — PlugKit registers ChatGPT itself.
+  </Step>
+
+  <Step title="Approve, then use it">
+    ChatGPT opens PlugKit: sign in if needed, pick read-only or full access, and
+    approve. In a new chat, open the **+** menu and select **PlugKit**. Ask
+    *"search my PlugKit account for the conversation about pricing"* — it should
+    call `search`, then `fetch` on the result.
+  </Step>
+</Steps>
+
+<Note>
+  Developer mode needs the ChatGPT **web** app and a paid plan (Plus, Pro,
+  Business, Enterprise or Edu). It is not available on the free plan.
+</Note>
+
+<Note>
+  ChatGPT expects every connector to expose two tools with fixed names, `search`
+  and `fetch` — that is how it looks things up and cites them. PlugKit serves
+  both, over everything the account holds: posts, conversations (by contact
+  **and** by what was said in them), accounts, media, automations, sequences,
+  broadcasts and playbooks. They are read-only, and every client gets them, not
+  just ChatGPT.
+</Note>
+
+## Claude Code
+
+```bash theme={null}
+claude mcp add --transport http --scope user plugkit https://api.plugkit.co/mcp
+```
+
+Then run `/mcp` inside Claude Code and choose **Authenticate** — it opens the
+PlugKit consent screen in your browser. `--scope user` makes the server
+available in every project; drop it to keep PlugKit to the current folder.
+
+With an API key instead of OAuth:
+
+```bash theme={null}
+claude mcp add --transport http --scope user plugkit https://api.plugkit.co/mcp \
+  --header "Authorization: Bearer sk_your_key"
+```
+
+The three PlugKit workflows show up as slash commands:
+`/mcp__plugkit__publish`, `/mcp__plugkit__inbox`, `/mcp__plugkit__report`.
+
+## Cursor
+
+<Card title="Add PlugKit to Cursor" icon="arrow-pointer" href="cursor://anysphere.cursor-deeplink/mcp/install?name=plugkit&config=eyJ0eXBlIjoiaHR0cCIsInVybCI6Imh0dHBzOi8vYXBpLnBsdWdraXQuY28vbWNwIn0%3D">
+  Opens Cursor and asks you to confirm the server.
+</Card>
+
+Or by hand — **Settings → MCP → Add new MCP server**, or edit
+`~/.cursor/mcp.json`:
+
+```json ~/.cursor/mcp.json theme={null}
+{
+  "mcpServers": {
+    "plugkit": {
+      "type": "http",
+      "url": "https://api.plugkit.co/mcp"
+    }
+  }
+}
+```
+
+Cursor shows a **Needs login** state next to the server — click it to run the
+OAuth flow.
+
+## VS Code
+
+<Card title="Add PlugKit to VS Code" icon="code" href="vscode:mcp/install?%7B%22name%22%3A%22plugkit%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fapi.plugkit.co%2Fmcp%22%7D">
+  Opens VS Code and asks you to confirm the server.
+</Card>
+
+Or from the command line:
+
+```bash theme={null}
+code --add-mcp '{"name":"plugkit","type":"http","url":"https://api.plugkit.co/mcp"}'
+```
+
+Or by hand in `.vscode/mcp.json` (workspace) / your user `mcp.json`:
+
+```json .vscode/mcp.json theme={null}
+{
+  "servers": {
+    "plugkit": {
+      "type": "http",
+      "url": "https://api.plugkit.co/mcp"
+    }
+  }
+}
+```
+
+## Any other client
+
+The server speaks plain MCP over Streamable HTTP, so anything that can add a
+remote server works — Windsurf, Zed, LibreChat, Goose, your own agent. The
+canonical config shape:
+
+```json theme={null}
+{
+  "mcpServers": {
+    "plugkit": {
+      "type": "http",
+      "url": "https://api.plugkit.co/mcp"
+    }
+  }
+}
+```
+
+If the client doesn't do OAuth, add the header:
+
+```json theme={null}
+{
+  "mcpServers": {
+    "plugkit": {
+      "type": "http",
+      "url": "https://api.plugkit.co/mcp",
+      "headers": { "Authorization": "Bearer sk_your_key" }
+    }
+  }
+}
+```
+
+### From your own code
+
+Any MCP SDK works. With the TypeScript SDK:
+
+```ts theme={null}
+import { Client } from "@modelcontextprotocol/sdk/client/index.js";
+import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
+
+const client = new Client({ name: "my-agent", version: "1.0.0" });
+await client.connect(
+  new StreamableHTTPClientTransport(new URL("https://api.plugkit.co/mcp"), {
+    requestInit: {
+      headers: { Authorization: `Bearer ${process.env.PLUGKIT_API_KEY}` },
+    },
+  }),
+);
+
+const { tools } = await client.listTools();
+```
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="My assistant says it doesn't know PlugKit, or refuses to install it">
+    Expected, and not a fault on either side: PlugKit is a *custom* connector, so
+    it appears in no assistant's built-in list, and an assistant asked to install
+    its own connector will decline — it has no way to vouch for what it would be
+    connecting to. Follow the steps for your client above; the tools appear on
+    their own once the server is added.
+
+    If it asks you to confirm the service is legitimate before you connect, our
+    only addresses are **plugkit.co**, **api.plugkit.co** and **docs.plugkit.co**.
+    Once connected, this is a useful thing to paste to give it its bearings:
+
+    ```
+    I use PlugKit (https://plugkit.co) to manage my social accounts. Its MCP
+    server is https://api.plugkit.co/mcp and its docs are at
+    https://docs.plugkit.co/mcp/overview. I have already added it as a
+    connector — please use its tools, starting with whoami.
+    ```
+  </Accordion>
+
+  <Accordion title="Someone gave me an API key — where do I paste it?">
+    Nowhere, for Claude, Claude Code, Cursor and VS Code: they sign in instead,
+    which is both easier and safer. A key is only for an app that can't open a
+    sign-in window, or for your own code — it goes in a config file or an
+    environment variable, never in a chat. A key carries full access and doesn't
+    expire, so if one has been through a conversation, revoke it under **API
+    keys** in the dashboard and create another.
+  </Accordion>
+
+  <Accordion title="The client asks for a command to run, or an SSE URL">
+    PlugKit is a **remote** server: nothing to install, no `npx` command, no
+    local proxy. Choose the client's HTTP / Streamable HTTP option and give it
+    `https://api.plugkit.co/mcp`. Legacy SSE is not supported.
+  </Accordion>
+
+  <Accordion title="The client says 401 / unauthorized">
+    The server is reachable but the token isn't valid. With OAuth, disconnect and
+    reconnect the server so it runs the consent flow again. With an API key,
+    check the header is exactly `Authorization: Bearer sk_…` and that the key
+    hasn't been revoked in the dashboard.
+  </Accordion>
+
+  <Accordion title="Connected, but the tools do nothing useful">
+    Ask the assistant to call `whoami` first. Almost every tool needs a
+    `profileId` or an `accountId`, and `whoami` is what hands those out along
+    with what each platform supports.
+  </Accordion>
+
+  <Accordion title="Only read tools show up">
+    The token was granted `mcp:read`. Write tools are not registered at all for a
+    read-only session — reconnect and grant full access if you want the assistant
+    to publish and reply.
+  </Accordion>
+
+  <Accordion title="The client tries GET or SSE and fails">
+    The server is stateless: it answers `POST /mcp` and returns JSON. `GET` and
+    `DELETE` return `405`. Configure the server as **HTTP / Streamable HTTP**,
+    never as legacy **SSE**.
+  </Accordion>
+
+  <Accordion title="A one-click button does nothing">
+    The `cursor://` and `vscode:` links need the app installed on the same
+    machine as the browser, and the browser may ask you to allow opening an
+    external application. If it stays silent, fall back to the JSON config above.
+  </Accordion>
+</AccordionGroup>
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

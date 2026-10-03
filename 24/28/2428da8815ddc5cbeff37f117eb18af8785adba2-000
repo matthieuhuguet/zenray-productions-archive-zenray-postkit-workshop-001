@@ -1,0 +1,87 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Create a webhook endpoint (the signing secret is returned once)
+
+> Events: post.published, post.partial, post.failed, message.received, message.sent, message.undelivered, account.disconnected, comment.received, comment.dm_sent, broadcast.finished, usage.threshold_reached. Each delivery is signed with `x-plugkit-signature: t=<unix>,v1=<hex>`, the HMAC-SHA256 of `<t>.<raw body>` with the endpoint secret.
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json post /v1/webhooks
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/webhooks:
+    post:
+      tags:
+        - webhooks
+      summary: Create a webhook endpoint (the signing secret is returned once)
+      description: >-
+        Events: post.published, post.partial, post.failed, message.received,
+        message.sent, message.undelivered, account.disconnected,
+        comment.received, comment.dm_sent, broadcast.finished,
+        usage.threshold_reached. Each delivery is signed with
+        `x-plugkit-signature: t=<unix>,v1=<hex>`, the HMAC-SHA256 of `<t>.<raw
+        body>` with the endpoint secret.
+      operationId: WebhookEndpointsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebhookDto'
+      responses:
+        '201':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    CreateWebhookDto:
+      type: object
+      properties:
+        url:
+          type: string
+          example: https://example.com/hooks/plugkit
+          description: HTTPS endpoint that receives the events.
+        events:
+          type: array
+          description: Events to subscribe to. Empty or omitted means all events.
+          items:
+            type: string
+            enum:
+              - post.published
+              - post.partial
+              - post.failed
+              - message.received
+              - message.sent
+              - message.undelivered
+              - account.disconnected
+              - comment.received
+              - comment.dm_sent
+              - broadcast.finished
+              - usage.threshold_reached
+      required:
+        - url
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

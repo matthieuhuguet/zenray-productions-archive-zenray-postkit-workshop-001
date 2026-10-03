@@ -1,0 +1,57 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Get the Facebook authorization URL that enables product tagging
+
+> Product tagging lives on a different Meta API than the Instagram connection PlugKit already holds, so it needs its own authorization. Open the returned URL in a browser and pick the Facebook Page linked to this Instagram account.
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json get /v1/shopping/{accountId}/authorize
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/shopping/{accountId}/authorize:
+    get:
+      tags:
+        - shopping
+      summary: Get the Facebook authorization URL that enables product tagging
+      description: >-
+        Product tagging lives on a different Meta API than the Instagram
+        connection PlugKit already holds, so it needs its own authorization.
+        Open the returned URL in a browser and pick the Facebook Page linked to
+        this Instagram account.
+      operationId: ShoppingController_authorize
+      parameters:
+        - name: accountId
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

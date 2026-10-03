@@ -1,0 +1,7047 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/v1/billing/plans": {
+      "get": {
+        "operationId": "BillingController_plans",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List available plans and the extra-account bands",
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/v1/billing/subscription": {
+      "get": {
+        "operationId": "BillingController_subscription",
+        "parameters": [
+          {
+            "name": "datafastVisitorId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Current plan, account quota and X spend",
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/v1/billing/checkout": {
+      "post": {
+        "operationId": "BillingController_checkout",
+        "parameters": [
+          {
+            "name": "datafastVisitorId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartCheckoutDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Open a Whop checkout to subscribe or change plan",
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/v1/billing/spend-cap": {
+      "post": {
+        "operationId": "BillingController_setSpendCap",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetSpendCapDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Set (or clear, with null) the monthly cap on X pay-per-call spend, in USD",
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/v1/usage": {
+      "get": {
+        "operationId": "BillingController_usageReport",
+        "parameters": [
+          {
+            "name": "month",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Pay-per-call usage for a month (defaults to current)",
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/v1/billing/webhook/whop": {
+      "post": {
+        "operationId": "BillingController_webhook",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Whop webhook endpoint (signature-verified)",
+        "tags": [
+          "billing"
+        ]
+      }
+    },
+    "/v1/workspaces": {
+      "get": {
+        "operationId": "WorkspacesController_list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List the workspaces you can act in",
+        "tags": [
+          "workspaces"
+        ]
+      }
+    },
+    "/v1/workspaces/members": {
+      "get": {
+        "operationId": "WorkspacesController_members",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List the people with access to this workspace",
+        "tags": [
+          "workspaces"
+        ]
+      },
+      "post": {
+        "operationId": "WorkspacesController_invite",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InviteMemberDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Invite someone to this workspace (they get access at their next sign-in with that email)",
+        "tags": [
+          "workspaces"
+        ]
+      }
+    },
+    "/v1/workspaces/members/{id}": {
+      "delete": {
+        "operationId": "WorkspacesController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Remove a member, or leave a workspace",
+        "tags": [
+          "workspaces"
+        ]
+      }
+    },
+    "/v1/api-keys": {
+      "post": {
+        "operationId": "ApiKeysController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateApiKeyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create an API key (the plaintext value is returned once and never again)",
+        "tags": [
+          "api-keys"
+        ]
+      },
+      "get": {
+        "operationId": "ApiKeysController_list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List API keys (without the plaintext value)",
+        "tags": [
+          "api-keys"
+        ]
+      }
+    },
+    "/v1/api-keys/{id}/roll": {
+      "post": {
+        "description": "The stored value is a hash, so an existing key can never be shown again. Rolling it hands back a value you can copy; requests using the old key stop working immediately.",
+        "operationId": "ApiKeysController_roll",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Replace a key with a new one of the same name and revoke the old one (the plaintext value is returned once)",
+        "tags": [
+          "api-keys"
+        ]
+      }
+    },
+    "/v1/api-keys/{id}": {
+      "delete": {
+        "operationId": "ApiKeysController_revoke",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Revoke an API key",
+        "tags": [
+          "api-keys"
+        ]
+      }
+    },
+    "/v1/health": {
+      "get": {
+        "operationId": "HealthController_check",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Check that the API responds (unauthenticated)",
+        "tags": [
+          "health"
+        ]
+      }
+    },
+    "/v1/platforms/maintenance": {
+      "get": {
+        "operationId": "PlatformsController_maintenance",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Platforms temporarily closed to new connections, and why",
+        "tags": [
+          "platforms"
+        ]
+      }
+    },
+    "/v1/profiles": {
+      "post": {
+        "operationId": "ProfilesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create a profile",
+        "tags": [
+          "profiles"
+        ]
+      },
+      "get": {
+        "operationId": "ProfilesController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List profiles",
+        "tags": [
+          "profiles"
+        ]
+      }
+    },
+    "/v1/profiles/{id}": {
+      "get": {
+        "operationId": "ProfilesController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Retrieve a profile",
+        "tags": [
+          "profiles"
+        ]
+      },
+      "put": {
+        "operationId": "ProfilesController_replace",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Update a profile",
+        "tags": [
+          "profiles"
+        ]
+      },
+      "patch": {
+        "operationId": "ProfilesController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Update a profile",
+        "tags": [
+          "profiles"
+        ]
+      },
+      "delete": {
+        "operationId": "ProfilesController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Delete a profile",
+        "tags": [
+          "profiles"
+        ]
+      }
+    },
+    "/v1/accounts/connect": {
+      "post": {
+        "operationId": "AccountsController_connect",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConnectAccountDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Connect (or reconnect) a social account",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts": {
+      "get": {
+        "operationId": "AccountsController_findAll",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "type": "number"
+            }
+          },
+          {
+            "name": "profileId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "description": "Filter on connection state (`isActive` in the response).",
+            "schema": {
+              "enum": [
+                "active",
+                "disconnected"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List connected accounts",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}": {
+      "get": {
+        "operationId": "AccountsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Retrieve an account",
+        "tags": [
+          "accounts"
+        ]
+      },
+      "delete": {
+        "operationId": "AccountsController_disconnect",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Disconnect an account",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}/replace": {
+      "post": {
+        "operationId": "AccountsController_replace",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReplaceAccountDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Move everything attached to another account onto this one, then delete it. Used when a reconnection created a second account for the same real profile.",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}/permanent": {
+      "delete": {
+        "operationId": "AccountsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Permanently delete an already-disconnected account, along with its post targets and conversations",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}/analytics": {
+      "get": {
+        "operationId": "AccountsController_getAnalytics",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Account analytics (unified shape + raw platform payload)",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}/publish-options": {
+      "get": {
+        "operationId": "AccountsController_getPublishOptions",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "What the platform requires the creator to choose before publishing (TikTok: nickname, allowed privacy levels, interaction settings)",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}/message-templates": {
+      "get": {
+        "operationId": "AccountsController_listMessageTemplates",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List the approved message templates of the account (WhatsApp: the only content allowed past the 24h window)",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}/x-billing": {
+      "patch": {
+        "operationId": "AccountsController_setXBilling",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/XBillingDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Enable or disable the billable X background work (analytics, inbox sync). Both are off by default: X charges per call, so nothing polls until you say so.",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}/media": {
+      "get": {
+        "operationId": "AccountsController_getMedia",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Recent posts on the account",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}/media/{mediaId}/analytics": {
+      "get": {
+        "operationId": "AccountsController_getMediaAnalytics",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mediaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Analytics for a single post",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}/media/{mediaId}/comments": {
+      "get": {
+        "operationId": "AccountsController_getComments",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mediaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Comments on a post",
+        "tags": [
+          "accounts"
+        ]
+      },
+      "post": {
+        "operationId": "AccountsController_replyToComment",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mediaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Comment on a post",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}/comments/{commentId}/reply": {
+      "post": {
+        "operationId": "AccountsController_replyToCommentId",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "commentId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Reply to a comment",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/accounts/{id}/messages/send": {
+      "post": {
+        "operationId": "AccountsController_sendDirectMessage",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Send a DM directly (without a stored conversation)",
+        "tags": [
+          "accounts"
+        ]
+      }
+    },
+    "/v1/ads/{accountId}/account": {
+      "get": {
+        "operationId": "AdsController_getAdAccount",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Ad account details (currency, status, spend)",
+        "tags": [
+          "ads"
+        ]
+      }
+    },
+    "/v1/ads/{accountId}/campaigns": {
+      "get": {
+        "operationId": "AdsController_listCampaigns",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List campaigns",
+        "tags": [
+          "ads"
+        ]
+      },
+      "post": {
+        "operationId": "AdsController_createCampaign",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCampaignDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create a campaign (paused unless stated)",
+        "tags": [
+          "ads"
+        ]
+      }
+    },
+    "/v1/ads/{accountId}/campaigns/{campaignId}": {
+      "patch": {
+        "operationId": "AdsController_updateCampaign",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "campaignId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCampaignDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Rename, pause, resume or rebudget a campaign",
+        "tags": [
+          "ads"
+        ]
+      }
+    },
+    "/v1/ads/{accountId}/adsets": {
+      "get": {
+        "operationId": "AdsController_listAdSets",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "campaignId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List ad sets",
+        "tags": [
+          "ads"
+        ]
+      },
+      "post": {
+        "operationId": "AdsController_createAdSet",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdSetDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create an ad set (audience, budget, schedule)",
+        "tags": [
+          "ads"
+        ]
+      }
+    },
+    "/v1/ads/{accountId}/adsets/{adSetId}": {
+      "patch": {
+        "operationId": "AdsController_updateAdSet",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "adSetId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAdSetDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Rename, pause, resume or rebudget an ad set",
+        "tags": [
+          "ads"
+        ]
+      }
+    },
+    "/v1/ads/{accountId}/ads": {
+      "get": {
+        "operationId": "AdsController_listAds",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "adSetId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "campaignId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List ads",
+        "tags": [
+          "ads"
+        ]
+      },
+      "post": {
+        "operationId": "AdsController_createAd",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAdDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create an ad from an existing creative or an existing Page post",
+        "tags": [
+          "ads"
+        ]
+      }
+    },
+    "/v1/ads/{accountId}/ads/{adId}": {
+      "patch": {
+        "operationId": "AdsController_updateAd",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "adId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateAdDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Rename, pause or resume an ad",
+        "tags": [
+          "ads"
+        ]
+      }
+    },
+    "/v1/ads/{accountId}/boost": {
+      "post": {
+        "operationId": "AdsController_boostPost",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BoostPostDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Promote an existing Page post: creates the campaign, ad set and ad in one call",
+        "tags": [
+          "ads"
+        ]
+      }
+    },
+    "/v1/ads/{accountId}/insights": {
+      "get": {
+        "operationId": "AdsController_getInsights",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "objectId",
+            "required": false,
+            "in": "query",
+            "description": "Campaign, ad set or ad to measure. Defaults to the whole ad account.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "level",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "account",
+                "campaign",
+                "adset",
+                "ad"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "datePreset",
+            "required": false,
+            "in": "query",
+            "description": "Meta date preset (today, yesterday, last_7d, last_30d, …).",
+            "schema": {
+              "example": "last_7d",
+              "type": "string"
+            }
+          },
+          {
+            "name": "since",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "example": "2026-08-01",
+              "type": "string"
+            }
+          },
+          {
+            "name": "until",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "example": "2026-08-06",
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Spend and performance for the account, a campaign, an ad set or an ad",
+        "tags": [
+          "ads"
+        ]
+      }
+    },
+    "/v1/connect/{platform}": {
+      "get": {
+        "operationId": "ConnectController_getUrl",
+        "parameters": [
+          {
+            "name": "platform",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "profileId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "coexistence",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Get the OAuth authorization URL to connect an account",
+        "tags": [
+          "connect"
+        ]
+      }
+    },
+    "/v1/connect/{platform}/callback": {
+      "get": {
+        "operationId": "ConnectController_callback",
+        "parameters": [
+          {
+            "name": "platform",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "code",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "error",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "error_description",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "OAuth callback called by the platform after authorization",
+        "tags": [
+          "connect"
+        ]
+      }
+    },
+    "/v1/connect/instagram/{accountId}/subscribe-webhooks": {
+      "post": {
+        "operationId": "ConnectController_subscribeWebhooks",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Subscribe an Instagram account to webhooks (subscribed_apps)",
+        "tags": [
+          "connect"
+        ]
+      }
+    },
+    "/v1/connect/facebook/{accountId}/subscribe-webhooks": {
+      "post": {
+        "description": "Applies the current field list — including message_echoes, which surfaces replies written from the Meta inbox — to a Page connected before those fields existed. No re-authorization needed.",
+        "operationId": "ConnectController_subscribeFacebookWebhooks",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Re-subscribe a Facebook Page to its webhook fields (subscribed_apps)",
+        "tags": [
+          "connect"
+        ]
+      }
+    },
+    "/v1/connect/whatsapp/{accountId}/subscribe-webhooks": {
+      "post": {
+        "operationId": "ConnectController_subscribeWhatsAppWebhooks",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Re-subscribe a WhatsApp number to its business account webhooks (subscribed_apps)",
+        "tags": [
+          "connect"
+        ]
+      }
+    },
+    "/v1/connect/telegram": {
+      "post": {
+        "operationId": "ConnectController_connectTelegram",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Connect a Telegram bot with its @BotFather token",
+        "tags": [
+          "connect"
+        ]
+      }
+    },
+    "/v1/inbox/conversations": {
+      "post": {
+        "operationId": "MessagesController_createConversation[0]",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateConversationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Start (or fetch) a conversation",
+        "tags": [
+          "inbox"
+        ]
+      },
+      "get": {
+        "operationId": "MessagesController_findAll[0]",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "type": "number"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "accountId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List conversations",
+        "tags": [
+          "inbox"
+        ]
+      }
+    },
+    "/v1/conversations": {
+      "post": {
+        "operationId": "MessagesController_createConversation[1]",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateConversationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Start (or fetch) a conversation",
+        "tags": [
+          "inbox"
+        ]
+      },
+      "get": {
+        "operationId": "MessagesController_findAll[1]",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "type": "number"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "accountId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List conversations",
+        "tags": [
+          "inbox"
+        ]
+      }
+    },
+    "/v1/inbox/conversations/sync": {
+      "post": {
+        "description": "Runs a bounded pass immediately (most recent threads and messages) and, the first time, starts a background backfill of the full history. `backfilling: true` means more conversations will keep landing in the inbox for the next few minutes — poll this list to see them arrive.",
+        "operationId": "MessagesController_sync[0]",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Sync conversations from the platform (live API)",
+        "tags": [
+          "inbox"
+        ]
+      }
+    },
+    "/v1/conversations/sync": {
+      "post": {
+        "description": "Runs a bounded pass immediately (most recent threads and messages) and, the first time, starts a background backfill of the full history. `backfilling: true` means more conversations will keep landing in the inbox for the next few minutes — poll this list to see them arrive.",
+        "operationId": "MessagesController_sync[1]",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Sync conversations from the platform (live API)",
+        "tags": [
+          "inbox"
+        ]
+      }
+    },
+    "/v1/inbox/conversations/{id}/read": {
+      "post": {
+        "operationId": "MessagesController_markRead[0]",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Mark a conversation as read",
+        "tags": [
+          "inbox"
+        ]
+      }
+    },
+    "/v1/conversations/{id}/read": {
+      "post": {
+        "operationId": "MessagesController_markRead[1]",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Mark a conversation as read",
+        "tags": [
+          "inbox"
+        ]
+      }
+    },
+    "/v1/inbox/conversations/{id}": {
+      "get": {
+        "operationId": "MessagesController_findOne[0]",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Retrieve a conversation",
+        "tags": [
+          "inbox"
+        ]
+      }
+    },
+    "/v1/conversations/{id}": {
+      "get": {
+        "operationId": "MessagesController_findOne[1]",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Retrieve a conversation",
+        "tags": [
+          "inbox"
+        ]
+      }
+    },
+    "/v1/inbox/conversations/{id}/messages": {
+      "get": {
+        "description": "Returns the latest messages of the thread, rendered oldest-first within the page. Pass `before` (the `nextCursor` of the previous call) to walk further back in time.",
+        "operationId": "MessagesController_getMessages[0]",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List the messages of a conversation (most recent page first)",
+        "tags": [
+          "inbox"
+        ]
+      },
+      "post": {
+        "operationId": "MessagesController_sendMessage[0]",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional key making this request safely retryable: replaying the same key with the same body returns the original response instead of executing twice. Keys are kept for 24 h.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Send a message in a conversation",
+        "tags": [
+          "inbox"
+        ]
+      }
+    },
+    "/v1/conversations/{id}/messages": {
+      "get": {
+        "description": "Returns the latest messages of the thread, rendered oldest-first within the page. Pass `before` (the `nextCursor` of the previous call) to walk further back in time.",
+        "operationId": "MessagesController_getMessages[1]",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List the messages of a conversation (most recent page first)",
+        "tags": [
+          "inbox"
+        ]
+      },
+      "post": {
+        "operationId": "MessagesController_sendMessage[1]",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "description": "Optional key making this request safely retryable: replaying the same key with the same body returns the original response instead of executing twice. Keys are kept for 24 h.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Send a message in a conversation",
+        "tags": [
+          "inbox"
+        ]
+      }
+    },
+    "/v1/posts": {
+      "post": {
+        "description": "With `publishNow`, the response returns immediately with `status: \"publishing\"` and publishing runs in the background. Poll GET /posts/:id to follow it.",
+        "operationId": "PostsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePostDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create a post (draft, scheduled, or published)",
+        "tags": [
+          "posts"
+        ]
+      },
+      "get": {
+        "operationId": "PostsController_findAll",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "type": "number"
+            }
+          },
+          {
+            "name": "profileId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "draft",
+                "scheduled",
+                "publishing",
+                "published",
+                "partial",
+                "failed"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "Search in the post content",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scheduledAfter",
+            "required": false,
+            "in": "query",
+            "description": "Only posts scheduled on or after this date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scheduledBefore",
+            "required": false,
+            "in": "query",
+            "description": "Only posts scheduled on or before this date",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sort",
+            "required": false,
+            "in": "query",
+            "description": "Sort by `createdAt` (newest first) or `scheduledFor` (queue order, soonest first)",
+            "schema": {
+              "default": "createdAt",
+              "enum": [
+                "createdAt",
+                "scheduledFor"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List posts",
+        "tags": [
+          "posts"
+        ]
+      }
+    },
+    "/v1/posts/{id}": {
+      "get": {
+        "operationId": "PostsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Retrieve a post",
+        "tags": [
+          "posts"
+        ]
+      },
+      "patch": {
+        "operationId": "PostsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePostDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Update an unpublished post (content, targets, rescheduling; `scheduledFor: null` unschedules it)",
+        "tags": [
+          "posts"
+        ]
+      },
+      "delete": {
+        "operationId": "PostsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Delete a post (cancels its schedule; does not unpublish anything)",
+        "tags": [
+          "posts"
+        ]
+      }
+    },
+    "/v1/posts/{id}/publish": {
+      "post": {
+        "description": "Returns immediately; the post moves to `publishing` and publishing runs in the background.",
+        "operationId": "PostsController_publishNow",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Publish an existing post now (scheduled, draft, or retry after a failure)",
+        "tags": [
+          "posts"
+        ]
+      }
+    },
+    "/v1/shopping/{accountId}/status": {
+      "get": {
+        "description": "Says whether products can be tagged, and when not, exactly what is missing: no authorization yet, an expired one, a shop Meta has not approved, or a shop with no catalog. Meta is re-checked at most every 6 hours unless `refresh=true`.",
+        "operationId": "ShoppingController_status",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "refresh",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Product tagging status of an Instagram account",
+        "tags": [
+          "shopping"
+        ]
+      }
+    },
+    "/v1/shopping/{accountId}/authorize": {
+      "get": {
+        "description": "Product tagging lives on a different Meta API than the Instagram connection PlugKit already holds, so it needs its own authorization. Open the returned URL in a browser and pick the Facebook Page linked to this Instagram account.",
+        "operationId": "ShoppingController_authorize",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Get the Facebook authorization URL that enables product tagging",
+        "tags": [
+          "shopping"
+        ]
+      }
+    },
+    "/v1/shopping/callback": {
+      "get": {
+        "operationId": "ShoppingController_callback",
+        "parameters": [
+          {
+            "name": "code",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "error",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "error_description",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "OAuth callback for the shopping authorization",
+        "tags": [
+          "shopping"
+        ]
+      }
+    },
+    "/v1/shopping/{accountId}": {
+      "delete": {
+        "description": "Removes the authorization PlugKit holds. Posts keep publishing; they just stop carrying product tags.",
+        "operationId": "ShoppingController_revoke",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Turn product tagging off for an account",
+        "tags": [
+          "shopping"
+        ]
+      }
+    },
+    "/v1/shopping/{accountId}/products": {
+      "get": {
+        "description": "`q` matches a product name or SKU. Only products Meta has approved can be tagged; the others are returned with their review status so it is clear why they are refused.",
+        "operationId": "ShoppingController_products",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "q",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Search the products of the account’s Instagram shop",
+        "tags": [
+          "shopping"
+        ]
+      }
+    },
+    "/v1/shopping/{accountId}/media/{mediaId}/tags": {
+      "post": {
+        "description": "Replaces the product tags of an existing media. Up to 20 tags on a photo (each with x/y coordinates between 0 and 1) and 30 on a video or reel, where coordinates do not apply. Instagram allows 25 tagged posts per 24 hours per account.",
+        "operationId": "ShoppingController_tag",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "mediaId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TagProductsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Tag products on a published Instagram post or reel",
+        "tags": [
+          "shopping"
+        ]
+      }
+    },
+    "/v1/media": {
+      "get": {
+        "operationId": "MediaController_listLibrary",
+        "parameters": [
+          {
+            "name": "type",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includePending",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Lister les médias de la bibliothèque",
+        "tags": [
+          "media"
+        ]
+      }
+    },
+    "/v1/media/{id}": {
+      "delete": {
+        "operationId": "MediaController_removeFromLibrary",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Supprimer un média de la bibliothèque",
+        "tags": [
+          "media"
+        ]
+      }
+    },
+    "/v1/media/upload": {
+      "post": {
+        "operationId": "MediaController_upload",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "tags": [
+          "media"
+        ]
+      }
+    },
+    "/v1/media/upload-url": {
+      "post": {
+        "operationId": "MediaController_createUploadUrl",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Obtenir un lien d'envoi à usage unique (sans en-tête d'autorisation)",
+        "tags": [
+          "media"
+        ]
+      }
+    },
+    "/v1/media/upload/{token}": {
+      "get": {
+        "operationId": "MediaController_uploadPage",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Page de dépôt du billet (navigateur)",
+        "tags": [
+          "media"
+        ]
+      },
+      "put": {
+        "operationId": "MediaController_putWithTicket",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Envoyer un fichier avec un lien d'envoi (PUT)",
+        "tags": [
+          "media"
+        ]
+      },
+      "post": {
+        "operationId": "MediaController_postWithTicket",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Envoyer un fichier avec un lien d'envoi (POST)",
+        "tags": [
+          "media"
+        ]
+      }
+    },
+    "/v1/media/uploads/{token}/complete": {
+      "post": {
+        "operationId": "MediaController_completeDirectUpload",
+        "parameters": [
+          {
+            "name": "token",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Signaler la fin d'un envoi direct",
+        "tags": [
+          "media"
+        ]
+      }
+    },
+    "/v1/media/file/{filename}": {
+      "get": {
+        "operationId": "MediaController_serve",
+        "parameters": [
+          {
+            "name": "filename",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "tags": [
+          "media"
+        ]
+      }
+    },
+    "/v1/analytics/summary": {
+      "get": {
+        "operationId": "AnalyticsController_summary",
+        "parameters": [
+          {
+            "name": "profileId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one profile.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accountId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one connected account.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "source",
+            "required": false,
+            "in": "query",
+            "description": "Where the post came from. `plugkit` = published through the API, `external` = published natively on the platform. Defaults to all.",
+            "schema": {
+              "enum": [
+                "all",
+                "plugkit",
+                "external"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "required": false,
+            "in": "query",
+            "description": "Start of the window (ISO date). Defaults to 30 days ago.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "required": false,
+            "in": "query",
+            "description": "End of the window (ISO date). Defaults to now.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Headline metrics for a window, with change vs the prior period",
+        "tags": [
+          "analytics"
+        ]
+      }
+    },
+    "/v1/analytics/posts": {
+      "get": {
+        "operationId": "AnalyticsController_posts",
+        "parameters": [
+          {
+            "name": "profileId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one profile.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accountId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one connected account.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "source",
+            "required": false,
+            "in": "query",
+            "description": "Where the post came from. `plugkit` = published through the API, `external` = published natively on the platform. Defaults to all.",
+            "schema": {
+              "enum": [
+                "all",
+                "plugkit",
+                "external"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "required": false,
+            "in": "query",
+            "description": "Start of the window (ISO date). Defaults to 30 days ago.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "required": false,
+            "in": "query",
+            "description": "End of the window (ISO date). Defaults to now.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "type": "number"
+            }
+          },
+          {
+            "name": "sortBy",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "date",
+              "enum": [
+                "date",
+                "engagement",
+                "likes",
+                "comments",
+                "shares",
+                "saves",
+                "views",
+                "impressions",
+                "reach",
+                "clicks"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "order",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "desc",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Post-level analytics (published here or natively on the platform)",
+        "tags": [
+          "analytics"
+        ]
+      }
+    },
+    "/v1/analytics/platforms": {
+      "get": {
+        "operationId": "AnalyticsController_platforms",
+        "parameters": [
+          {
+            "name": "profileId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one profile.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accountId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one connected account.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "source",
+            "required": false,
+            "in": "query",
+            "description": "Where the post came from. `plugkit` = published through the API, `external` = published natively on the platform. Defaults to all.",
+            "schema": {
+              "enum": [
+                "all",
+                "plugkit",
+                "external"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "required": false,
+            "in": "query",
+            "description": "Start of the window (ISO date). Defaults to 30 days ago.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "required": false,
+            "in": "query",
+            "description": "End of the window (ISO date). Defaults to now.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "One row per platform over the window",
+        "tags": [
+          "analytics"
+        ]
+      }
+    },
+    "/v1/analytics/timeseries": {
+      "get": {
+        "operationId": "AnalyticsController_timeseries",
+        "parameters": [
+          {
+            "name": "profileId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one profile.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accountId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one connected account.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "source",
+            "required": false,
+            "in": "query",
+            "description": "Where the post came from. `plugkit` = published through the API, `external` = published natively on the platform. Defaults to all.",
+            "schema": {
+              "enum": [
+                "all",
+                "plugkit",
+                "external"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "required": false,
+            "in": "query",
+            "description": "Start of the window (ISO date). Defaults to 30 days ago.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "required": false,
+            "in": "query",
+            "description": "End of the window (ISO date). Defaults to now.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "metric",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "engagement",
+              "enum": [
+                "posts",
+                "engagement",
+                "likes",
+                "comments",
+                "shares",
+                "saves",
+                "views",
+                "impressions",
+                "reach",
+                "clicks"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "granularity",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "week",
+              "enum": [
+                "day",
+                "week",
+                "month"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "byPlatform",
+            "required": false,
+            "in": "query",
+            "description": "Split each bucket by platform (what the stacked charts need). Defaults to false.",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "One metric over time, optionally split by platform",
+        "tags": [
+          "analytics"
+        ]
+      }
+    },
+    "/v1/analytics/best-times": {
+      "get": {
+        "operationId": "AnalyticsController_bestTimes",
+        "parameters": [
+          {
+            "name": "profileId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one profile.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accountId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one connected account.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "source",
+            "required": false,
+            "in": "query",
+            "description": "Where the post came from. `plugkit` = published through the API, `external` = published natively on the platform. Defaults to all.",
+            "schema": {
+              "enum": [
+                "all",
+                "plugkit",
+                "external"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "required": false,
+            "in": "query",
+            "description": "Start of the window (ISO date). Defaults to 30 days ago.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "required": false,
+            "in": "query",
+            "description": "End of the window (ISO date). Defaults to now.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "required": false,
+            "in": "query",
+            "description": "IANA timezone the heatmap is read in (e.g. Europe/Paris). Defaults to UTC — an hour-of-day grid in the wrong timezone is worse than none.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Weekday × hour engagement grid, read in the given timezone",
+        "tags": [
+          "analytics"
+        ]
+      }
+    },
+    "/v1/analytics/accumulation": {
+      "get": {
+        "operationId": "AnalyticsController_accumulation",
+        "parameters": [
+          {
+            "name": "profileId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one profile.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accountId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one connected account.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "source",
+            "required": false,
+            "in": "query",
+            "description": "Where the post came from. `plugkit` = published through the API, `external` = published natively on the platform. Defaults to all.",
+            "schema": {
+              "enum": [
+                "all",
+                "plugkit",
+                "external"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "required": false,
+            "in": "query",
+            "description": "Start of the window (ISO date). Defaults to 30 days ago.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "required": false,
+            "in": "query",
+            "description": "End of the window (ISO date). Defaults to now.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "How fast engagement accumulates after publishing, by age bucket",
+        "tags": [
+          "analytics"
+        ]
+      }
+    },
+    "/v1/analytics/followers": {
+      "get": {
+        "operationId": "AnalyticsController_followers",
+        "parameters": [
+          {
+            "name": "profileId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one profile.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accountId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one connected account.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "source",
+            "required": false,
+            "in": "query",
+            "description": "Where the post came from. `plugkit` = published through the API, `external` = published natively on the platform. Defaults to all.",
+            "schema": {
+              "enum": [
+                "all",
+                "plugkit",
+                "external"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "from",
+            "required": false,
+            "in": "query",
+            "description": "Start of the window (ISO date). Defaults to 30 days ago.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "to",
+            "required": false,
+            "in": "query",
+            "description": "End of the window (ISO date). Defaults to now.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "granularity",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "day",
+              "enum": [
+                "day",
+                "week",
+                "month"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Follower history and growth, per account",
+        "tags": [
+          "analytics"
+        ]
+      }
+    },
+    "/v1/analytics/sync": {
+      "post": {
+        "operationId": "AnalyticsController_sync",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncAnalyticsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Refresh now instead of waiting for the next cycle (debounced 15s per account)",
+        "tags": [
+          "analytics"
+        ]
+      }
+    },
+    "/v1/comment-automations": {
+      "post": {
+        "operationId": "CommentAutomationsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCommentAutomationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create a comment-to-DM automation",
+        "tags": [
+          "automations"
+        ]
+      },
+      "get": {
+        "operationId": "CommentAutomationsController_findAll",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "active",
+                "paused"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List comment-to-DM automations",
+        "tags": [
+          "automations"
+        ]
+      }
+    },
+    "/v1/comment-automations/{id}": {
+      "get": {
+        "operationId": "CommentAutomationsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Retrieve an automation",
+        "tags": [
+          "automations"
+        ]
+      },
+      "put": {
+        "operationId": "CommentAutomationsController_replace",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCommentAutomationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Update an automation",
+        "tags": [
+          "automations"
+        ]
+      },
+      "patch": {
+        "operationId": "CommentAutomationsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateCommentAutomationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Update an automation",
+        "tags": [
+          "automations"
+        ]
+      },
+      "delete": {
+        "operationId": "CommentAutomationsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Delete an automation",
+        "tags": [
+          "automations"
+        ]
+      }
+    },
+    "/v1/comment-automations/{id}/runs": {
+      "get": {
+        "operationId": "CommentAutomationsController_runs",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Trigger log of an automation",
+        "tags": [
+          "automations"
+        ]
+      }
+    },
+    "/v1/broadcasts": {
+      "post": {
+        "operationId": "BroadcastsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBroadcastDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create a broadcast",
+        "tags": [
+          "campaigns"
+        ]
+      },
+      "get": {
+        "operationId": "BroadcastsController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List broadcasts",
+        "tags": [
+          "campaigns"
+        ]
+      }
+    },
+    "/v1/broadcasts/audience": {
+      "get": {
+        "operationId": "BroadcastsController_audience",
+        "parameters": [
+          {
+            "name": "accountId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Count the recipients an audience would reach",
+        "tags": [
+          "campaigns"
+        ]
+      }
+    },
+    "/v1/broadcasts/{id}": {
+      "get": {
+        "operationId": "BroadcastsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Retrieve a broadcast",
+        "tags": [
+          "campaigns"
+        ]
+      },
+      "put": {
+        "operationId": "BroadcastsController_replace",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBroadcastDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Update a draft or scheduled broadcast",
+        "tags": [
+          "campaigns"
+        ]
+      },
+      "patch": {
+        "operationId": "BroadcastsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBroadcastDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Update a draft or scheduled broadcast",
+        "tags": [
+          "campaigns"
+        ]
+      },
+      "delete": {
+        "operationId": "BroadcastsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Delete a broadcast",
+        "tags": [
+          "campaigns"
+        ]
+      }
+    },
+    "/v1/broadcasts/{id}/recipients": {
+      "get": {
+        "operationId": "BroadcastsController_recipients",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Per-recipient delivery log",
+        "tags": [
+          "campaigns"
+        ]
+      }
+    },
+    "/v1/broadcasts/{id}/send": {
+      "post": {
+        "operationId": "BroadcastsController_send",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Queue the broadcast for sending",
+        "tags": [
+          "campaigns"
+        ]
+      }
+    },
+    "/v1/broadcasts/{id}/cancel": {
+      "post": {
+        "operationId": "BroadcastsController_cancel",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Put a scheduled broadcast back to draft",
+        "tags": [
+          "campaigns"
+        ]
+      }
+    },
+    "/v1/sequences": {
+      "post": {
+        "operationId": "SequencesController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSequenceDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create a follow-up sequence",
+        "tags": [
+          "campaigns"
+        ]
+      },
+      "get": {
+        "operationId": "SequencesController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List sequences",
+        "tags": [
+          "campaigns"
+        ]
+      }
+    },
+    "/v1/sequences/{id}": {
+      "get": {
+        "operationId": "SequencesController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Retrieve a sequence",
+        "tags": [
+          "campaigns"
+        ]
+      },
+      "put": {
+        "operationId": "SequencesController_replace",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSequenceDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Update a sequence",
+        "tags": [
+          "campaigns"
+        ]
+      },
+      "patch": {
+        "operationId": "SequencesController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSequenceDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Update a sequence",
+        "tags": [
+          "campaigns"
+        ]
+      },
+      "delete": {
+        "operationId": "SequencesController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Delete a sequence",
+        "tags": [
+          "campaigns"
+        ]
+      }
+    },
+    "/v1/sequences/{id}/enrollments": {
+      "get": {
+        "operationId": "SequencesController_enrollments",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "default": 1,
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Who is in the sequence, and where",
+        "tags": [
+          "campaigns"
+        ]
+      }
+    },
+    "/v1/sequences/{id}/enroll": {
+      "post": {
+        "operationId": "SequencesController_enroll",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Enrol a conversation by hand",
+        "tags": [
+          "campaigns"
+        ]
+      }
+    },
+    "/v1/engagement": {
+      "get": {
+        "description": "Defaults to what still needs an answer. Each row carries the post it belongs to, so a comment can be read in context.",
+        "operationId": "EngagementController_list",
+        "parameters": [
+          {
+            "name": "profileId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one profile.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accountId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one connected account.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "kind",
+            "required": false,
+            "in": "query",
+            "description": "`comment` = left on one of your posts (you can reply, hide, delete). `mention` = someone else’s post naming you (you can only reply).",
+            "schema": {
+              "enum": [
+                "comment",
+                "mention"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "postId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to the comments of one post (platform post id).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "description": "Defaults to `pending` — what still needs an answer. `pending` excludes your own replies and anything deleted, since neither is waiting on you.",
+            "schema": {
+              "enum": [
+                "pending",
+                "handled",
+                "all"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Page size (1-200, default 50).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "required": false,
+            "in": "query",
+            "description": "The `nextCursor` of the previous call, to walk further back.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Comments, replies and mentions, most recent first",
+        "tags": [
+          "engagement"
+        ]
+      }
+    },
+    "/v1/engagement/summary": {
+      "get": {
+        "operationId": "EngagementController_summary",
+        "parameters": [
+          {
+            "name": "profileId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one profile.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "accountId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to one connected account.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "platform",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "enum": [
+                "instagram",
+                "whatsapp",
+                "tiktok",
+                "telegram",
+                "youtube",
+                "x",
+                "facebook",
+                "meta_ads",
+                "linkedin",
+                "threads"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "kind",
+            "required": false,
+            "in": "query",
+            "description": "`comment` = left on one of your posts (you can reply, hide, delete). `mention` = someone else’s post naming you (you can only reply).",
+            "schema": {
+              "enum": [
+                "comment",
+                "mention"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "postId",
+            "required": false,
+            "in": "query",
+            "description": "Restrict to the comments of one post (platform post id).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "status",
+            "required": false,
+            "in": "query",
+            "description": "Defaults to `pending` — what still needs an answer. `pending` excludes your own replies and anything deleted, since neither is waiting on you.",
+            "schema": {
+              "enum": [
+                "pending",
+                "handled",
+                "all"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": false,
+            "in": "query",
+            "description": "Page size (1-200, default 50).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "required": false,
+            "in": "query",
+            "description": "The `nextCursor` of the previous call, to walk further back.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "How much is left to handle, per account",
+        "tags": [
+          "engagement"
+        ]
+      }
+    },
+    "/v1/engagement/sync": {
+      "post": {
+        "description": "Webhooks already deliver new comments in real time; this catches up after an outage and fills in what a webhook payload leaves out (like counts, hidden state, author).",
+        "operationId": "EngagementController_sync",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SyncEngagementDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Pull comments and mentions from the platforms",
+        "tags": [
+          "engagement"
+        ]
+      }
+    },
+    "/v1/engagement/{id}/reply": {
+      "post": {
+        "operationId": "EngagementController_reply",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReplyEngagementDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Reply publicly to a comment, reply or mention",
+        "tags": [
+          "engagement"
+        ]
+      }
+    },
+    "/v1/engagement/{id}/hide": {
+      "post": {
+        "description": "Hiding keeps the comment visible to its author, who is not notified — it is the reversible move, unlike deleting.",
+        "operationId": "EngagementController_hide",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HideEngagementDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Hide or unhide a comment",
+        "tags": [
+          "engagement"
+        ]
+      }
+    },
+    "/v1/engagement/{id}/handled": {
+      "post": {
+        "operationId": "EngagementController_handled",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HandledEngagementDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Mark as handled, or put it back in the pile",
+        "tags": [
+          "engagement"
+        ]
+      }
+    },
+    "/v1/engagement/{id}": {
+      "delete": {
+        "operationId": "EngagementController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Delete a comment on one of your posts",
+        "tags": [
+          "engagement"
+        ]
+      }
+    },
+    "/v1/playbooks": {
+      "get": {
+        "operationId": "PlaybooksController_list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "List the playbook catalog",
+        "tags": [
+          "playbooks"
+        ]
+      }
+    },
+    "/v1/playbooks/installs": {
+      "get": {
+        "operationId": "PlaybooksController_installs",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List the playbooks installed on this workspace",
+        "tags": [
+          "playbooks"
+        ]
+      }
+    },
+    "/v1/playbooks/{slug}": {
+      "get": {
+        "operationId": "PlaybooksController_get",
+        "parameters": [
+          {
+            "name": "slug",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "summary": "Retrieve one playbook, with its inputs and slots",
+        "tags": [
+          "playbooks"
+        ]
+      }
+    },
+    "/v1/playbooks/{slug}/install": {
+      "post": {
+        "description": "Creates the automations and sequences the playbook describes, on the accounts you pass. Everything it creates is a normal PlugKit object: edit or delete it afterwards from Campaigns, or remove the whole install in one call.",
+        "operationId": "PlaybooksController_install",
+        "parameters": [
+          {
+            "name": "slug",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstallPlaybookDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Install a playbook",
+        "tags": [
+          "playbooks"
+        ]
+      }
+    },
+    "/v1/playbooks/installs/{id}": {
+      "delete": {
+        "description": "Deletes the automations and sequences it created. Pass `keep=resources` to only forget the install and leave them running.",
+        "operationId": "PlaybooksController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Remove an installed playbook",
+        "tags": [
+          "playbooks"
+        ]
+      }
+    },
+    "/v1/webhooks": {
+      "post": {
+        "description": "Events: post.published, post.partial, post.failed, message.received, message.sent, message.undelivered, account.disconnected, comment.received, comment.dm_sent, broadcast.finished, usage.threshold_reached. Each delivery is signed with `x-plugkit-signature: t=<unix>,v1=<hex>`, the HMAC-SHA256 of `<t>.<raw body>` with the endpoint secret.",
+        "operationId": "WebhookEndpointsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWebhookDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Create a webhook endpoint (the signing secret is returned once)",
+        "tags": [
+          "webhooks"
+        ]
+      },
+      "get": {
+        "operationId": "WebhookEndpointsController_findAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "List webhook endpoints",
+        "tags": [
+          "webhooks"
+        ]
+      }
+    },
+    "/v1/webhooks/{id}": {
+      "get": {
+        "operationId": "WebhookEndpointsController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Retrieve a webhook endpoint",
+        "tags": [
+          "webhooks"
+        ]
+      },
+      "patch": {
+        "operationId": "WebhookEndpointsController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateWebhookDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Update a webhook endpoint",
+        "tags": [
+          "webhooks"
+        ]
+      },
+      "delete": {
+        "operationId": "WebhookEndpointsController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Delete a webhook endpoint",
+        "tags": [
+          "webhooks"
+        ]
+      }
+    },
+    "/v1/webhooks/{id}/deliveries": {
+      "get": {
+        "operationId": "WebhookEndpointsController_deliveries",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "api-key": []
+          }
+        ],
+        "summary": "Recent delivery attempts for this endpoint (debugging)",
+        "tags": [
+          "webhooks"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "PlugKit API",
+    "description": "One API to publish, schedule and message across Instagram, WhatsApp, TikTok, Telegram, YouTube and X.",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "api-key": {
+        "scheme": "bearer",
+        "bearerFormat": "sk_...",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "StartCheckoutDto": {
+        "type": "object",
+        "properties": {
+          "plan": {
+            "type": "string",
+            "enum": [
+              "CREATOR",
+              "PRO"
+            ],
+            "description": "Plan to subscribe to.",
+            "example": "PRO"
+          },
+          "redirectUrl": {
+            "type": "string",
+            "description": "Where Whop sends the customer back after checkout."
+          }
+        },
+        "required": [
+          "plan"
+        ]
+      },
+      "SetSpendCapDto": {
+        "type": "object",
+        "properties": {
+          "capUsd": {
+            "type": "object",
+            "description": "Monthly cap on X pay-per-call spend, in USD. Null falls back to the default cap ($20) — there is no \"unlimited\": to spend more, set a higher number. At 80% you get a warning; at 100% background analytics and inbox polling pause — publishing keeps working, so a scheduled post is never held back over a fraction of a cent.",
+            "example": 25
+          }
+        }
+      },
+      "InviteMemberDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "teammate@gmail.com",
+            "description": "L'adresse avec laquelle l'invité se connecte à PlugKit. Le workspace apparaît dans son sélecteur à sa première connexion sous cette adresse."
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "CreateApiKeyDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "production-server"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "CreateProfileDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "My Brand"
+          },
+          "color": {
+            "type": "string",
+            "example": "#6366f1"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "UpdateProfileDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "My Brand"
+          },
+          "color": {
+            "type": "string",
+            "example": "#6366f1"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isDefault": {
+            "type": "boolean",
+            "default": false
+          }
+        }
+      },
+      "ConnectAccountDto": {
+        "type": "object",
+        "properties": {
+          "platform": {
+            "type": "string",
+            "enum": [
+              "instagram",
+              "whatsapp",
+              "tiktok",
+              "telegram",
+              "youtube",
+              "x",
+              "facebook",
+              "meta_ads",
+              "linkedin",
+              "threads"
+            ]
+          },
+          "profileId": {
+            "type": "string",
+            "description": "Profile the account is attached to"
+          },
+          "externalId": {
+            "type": "string",
+            "description": "Account id on the platform (Instagram business account id / WhatsApp phone number id)"
+          },
+          "username": {
+            "type": "string",
+            "example": "@acme"
+          },
+          "displayName": {
+            "type": "string",
+            "example": "Acme"
+          },
+          "accessToken": {
+            "type": "string",
+            "description": "Platform token (Instagram long-lived / WhatsApp system user)"
+          },
+          "metadata": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "platform",
+          "profileId",
+          "externalId",
+          "username"
+        ]
+      },
+      "ReplaceAccountDto": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account to absorb: its posts and conversations move onto the account in the path, then it is deleted."
+          }
+        },
+        "required": [
+          "accountId"
+        ]
+      },
+      "XBillingDto": {
+        "type": "object",
+        "properties": {
+          "analytics": {
+            "type": "boolean",
+            "description": "Allow analytics reads on this X account. X charges $0.005 per post read and $0.010 per user read."
+          },
+          "inboxSync": {
+            "type": "boolean",
+            "description": "Allow background inbox polling on this X account. X charges $0.010 per DM read."
+          },
+          "acknowledgeCost": {
+            "type": "boolean",
+            "description": "Required to turn either switch ON: confirms the caller has seen what X charges and accepts that these calls are re-billed at cost. Refused without it. Turning a switch OFF never needs it."
+          }
+        }
+      },
+      "CreateCampaignDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Soldes été — trafic"
+          },
+          "objective": {
+            "type": "string",
+            "enum": [
+              "OUTCOME_AWARENESS",
+              "OUTCOME_TRAFFIC",
+              "OUTCOME_ENGAGEMENT",
+              "OUTCOME_LEADS",
+              "OUTCOME_APP_PROMOTION",
+              "OUTCOME_SALES"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "PAUSED"
+            ],
+            "description": "PAUSED by default: a campaign created running starts spending immediately."
+          },
+          "dailyBudget": {
+            "type": "number",
+            "description": "Daily budget in minor units of the ad account currency (2000 = €20.00). Set it here for campaign budget optimization, or on the ad set instead.",
+            "example": 2000
+          },
+          "lifetimeBudget": {
+            "type": "number",
+            "description": "Lifetime budget in minor units of the account currency."
+          },
+          "bidStrategy": {
+            "type": "string",
+            "example": "LOWEST_COST_WITHOUT_CAP"
+          },
+          "specialAdCategories": {
+            "description": "Special ad categories (CREDIT, EMPLOYMENT, HOUSING, ISSUES_ELECTIONS_POLITICS, ONLINE_GAMBLING_AND_GAMING). Empty means none — declaring wrongly gets the campaign rejected at Meta review.",
+            "example": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "objective"
+        ]
+      },
+      "UpdateCampaignDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "PAUSED"
+            ]
+          },
+          "dailyBudget": {
+            "type": "number",
+            "description": "Minor units of the account currency."
+          },
+          "lifetimeBudget": {
+            "type": "number",
+            "description": "Minor units of the account currency."
+          }
+        }
+      },
+      "CreateAdSetDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "campaignId": {
+            "type": "string",
+            "description": "Campaign the ad set belongs to."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "PAUSED"
+            ]
+          },
+          "dailyBudget": {
+            "type": "number",
+            "description": "Minor units of the account currency."
+          },
+          "lifetimeBudget": {
+            "type": "number",
+            "description": "Minor units of the account currency."
+          },
+          "billingEvent": {
+            "type": "string",
+            "example": "IMPRESSIONS"
+          },
+          "optimizationGoal": {
+            "type": "string",
+            "example": "REACH"
+          },
+          "bidAmount": {
+            "type": "number",
+            "description": "Bid cap in minor units of the account currency."
+          },
+          "targeting": {
+            "type": "object",
+            "description": "Meta targeting spec, passed through as-is. Defaults to France if omitted.",
+            "example": {
+              "geo_locations": {
+                "countries": [
+                  "FR"
+                ]
+              },
+              "age_min": 25
+            }
+          },
+          "startTime": {
+            "type": "string",
+            "example": "2026-08-10T09:00:00+0200"
+          },
+          "endTime": {
+            "type": "string",
+            "example": "2026-08-20T09:00:00+0200"
+          },
+          "promotedObject": {
+            "type": "object",
+            "description": "What the ad set optimizes towards (page, pixel, application…), passed through as-is."
+          }
+        },
+        "required": [
+          "name",
+          "campaignId"
+        ]
+      },
+      "UpdateAdSetDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "PAUSED"
+            ]
+          },
+          "dailyBudget": {
+            "type": "number",
+            "description": "Minor units of the account currency."
+          },
+          "lifetimeBudget": {
+            "type": "number",
+            "description": "Minor units of the account currency."
+          },
+          "bidAmount": {
+            "type": "number",
+            "description": "Minor units of the account currency."
+          }
+        }
+      },
+      "CreateAdDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "adSetId": {
+            "type": "string",
+            "description": "Ad set the ad runs in."
+          },
+          "creativeId": {
+            "type": "string",
+            "description": "Existing ad creative to reuse."
+          },
+          "objectStoryId": {
+            "type": "string",
+            "description": "Existing Page post to turn into the creative, as `{page-id}_{post-id}`. Required when creativeId is absent."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "PAUSED"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "adSetId"
+        ]
+      },
+      "UpdateAdDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "PAUSED"
+            ]
+          }
+        }
+      },
+      "BoostPostDto": {
+        "type": "object",
+        "properties": {
+          "postId": {
+            "type": "string",
+            "description": "Page post to promote, as `{page-id}_{post-id}`.",
+            "example": "123456789_987654321"
+          },
+          "dailyBudget": {
+            "type": "number",
+            "description": "Daily budget in minor units of the account currency (2000 = €20.00).",
+            "example": 2000
+          },
+          "days": {
+            "type": "number",
+            "description": "Run duration in days (default 7)."
+          },
+          "countries": {
+            "example": [
+              "FR",
+              "BE"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ageMin": {
+            "type": "number",
+            "example": 18
+          },
+          "ageMax": {
+            "type": "number",
+            "example": 65
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ACTIVE",
+              "PAUSED"
+            ],
+            "description": "PAUSED by default: nothing spends without an explicit go."
+          }
+        },
+        "required": [
+          "postId",
+          "dailyBudget"
+        ]
+      },
+      "CreateConversationDto": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account that owns the conversation"
+          },
+          "contactHandle": {
+            "type": "string",
+            "description": "Contact identifier on the platform (Instagram PSID / WhatsApp wa_id)"
+          },
+          "contactName": {
+            "type": "string"
+          },
+          "externalConversationId": {
+            "type": "string",
+            "description": "Conversation id on the platform (defaults to contactHandle)"
+          }
+        },
+        "required": [
+          "accountId",
+          "contactHandle"
+        ]
+      },
+      "MessageTemplateDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "order_update"
+          },
+          "language": {
+            "type": "string",
+            "example": "fr",
+            "description": "Language code of the approved template (default en_US)"
+          },
+          "variables": {
+            "description": "Values for the {{1}}, {{2}}… placeholders of the body, in order",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "components": {
+            "description": "Raw Meta components (header, buttons). Escape hatch: overrides `variables`.",
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "SendMessageDto": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text content of the message. Optional when `template` is given — the template carries the content, and the text is then only what the inbox shows."
+          },
+          "template": {
+            "description": "WhatsApp only: send an approved template instead of free-form text. Required past the 24h messaging window; ignored by other platforms.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/MessageTemplateDto"
+              }
+            ]
+          }
+        },
+        "required": [
+          "text"
+        ]
+      },
+      "MediaItemDto": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "image",
+              "video",
+              "gif",
+              "document"
+            ],
+            "description": "Inferred from the URL when omitted."
+          },
+          "url": {
+            "type": "string",
+            "example": "https://cdn.example.com/photo.jpg"
+          },
+          "altText": {
+            "type": "string",
+            "description": "Alternative text (accessibility), applied on every platform that supports it."
+          },
+          "thumbnail": {
+            "type": "string",
+            "description": "Custom thumbnail / cover image for a video."
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "PostTargetDto": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account to publish to"
+          },
+          "customContent": {
+            "type": "string",
+            "description": "Text used on this platform instead of the post content (e.g. a shorter version for X)."
+          },
+          "customMedia": {
+            "description": "Media used on this platform instead of the post media.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MediaItemDto"
+            }
+          }
+        },
+        "required": [
+          "accountId"
+        ]
+      },
+      "ProductTagDto": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "string",
+            "description": "Product id from the Instagram shop catalog, as returned by GET /shopping/{accountId}/products."
+          },
+          "x": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "default": 0.5,
+            "description": "Horizontal position of the tag on a photo, from 0 (left) to 1 (right). Ignored on a video or reel. Defaults to the centre — the creator can move it from the Instagram app."
+          },
+          "y": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "default": 0.5,
+            "description": "Vertical position of the tag on a photo, from 0 (top) to 1 (bottom). Ignored on a video or reel."
+          }
+        },
+        "required": [
+          "productId"
+        ]
+      },
+      "CreatePostDto": {
+        "type": "object",
+        "properties": {
+          "profileId": {
+            "type": "string",
+            "description": "Profile that owns the post"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the post. Required by YouTube (100 characters max) and ignored by platforms that have no title.",
+            "maxLength": 100
+          },
+          "content": {
+            "type": "string",
+            "description": "Text / caption of the post. REQUIRED, except when `asStory` is set and every target is an Instagram or Facebook account: a story has no caption."
+          },
+          "accountIds": {
+            "description": "Target account ids — the short form. Use `platforms` instead to tailor the content per platform. Exactly one of the two is required.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "platforms": {
+            "description": "Targets with per-platform overrides. Exactly one of `platforms` and `accountIds` is required.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostTargetDto"
+            }
+          },
+          "mediaItems": {
+            "description": "Media of the post. This is the canonical shape: it carries the type, alt text and thumbnail, which `mediaUrls` cannot.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MediaItemDto"
+            }
+          },
+          "mediaUrls": {
+            "deprecated": true,
+            "description": "Legacy shorthand: a list of URLs, converted to `mediaItems` (type inferred from the extension). Ignored when `mediaItems` is provided.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "scheduledFor": {
+            "type": "string",
+            "description": "Scheduled date (ISO 8601). Without an offset (\"2027-01-01T12:00:00\") the time is read in `timezone`; with an offset or a Z it is an absolute instant. The post moves to `scheduled` and is published automatically at that time.",
+            "example": "2027-01-01T12:00:00"
+          },
+          "timezone": {
+            "type": "string",
+            "description": "IANA timezone `scheduledFor` is expressed in (e.g. \"Europe/Paris\"). Ignored when the date already carries an offset.",
+            "example": "Europe/Paris"
+          },
+          "publishNow": {
+            "type": "boolean",
+            "default": false,
+            "description": "Publish immediately"
+          },
+          "asDraft": {
+            "type": "boolean",
+            "default": false,
+            "description": "TikTok only: send the video to the creator's inbox as a draft (Content Posting API, `video.upload` scope) instead of publishing it directly. The creator finishes the post in the TikTok app."
+          },
+          "trialReel": {
+            "type": "boolean",
+            "default": false,
+            "description": "Instagram only: publish the video as a trial reel — shown to NON-followers only, never to your own followers, until you choose to release it from the Instagram app. Requires a video and an account with at least 1,000 followers. Ignored by the other platforms."
+          },
+          "asStory": {
+            "type": "boolean",
+            "default": false,
+            "description": "Instagram and Facebook Pages: publish to the STORY instead of the feed. A story lasts 24 hours, carries no caption (`content` is ignored, and may be omitted when every target is an Instagram or Facebook account) and takes exactly one media — on Instagram a JPEG image (8 MB max) or an MP4/MOV video of 3 to 60 seconds (100 MB max), on a Facebook Page an image (10 MB max) or an MP4 video of 3 to 90 seconds. Cannot be combined with `trialReel`. Ignored by the other platforms, which have no story API: TikTok does not expose one, LinkedIn and YouTube retired theirs."
+          },
+          "trialGraduation": {
+            "type": "string",
+            "enum": [
+              "MANUAL",
+              "SS_PERFORMANCE"
+            ],
+            "default": "MANUAL",
+            "description": "Instagram only, with `trialReel`: how the trial ends. `MANUAL` — you decide in the Instagram app whether to release the reel to your followers. `SS_PERFORMANCE` — Instagram releases it on its own if the trial performs well."
+          },
+          "shareToFeed": {
+            "type": "boolean",
+            "default": true,
+            "description": "Instagram only, reels: also show the reel in the account feed, not just in the Reels tab."
+          },
+          "productTags": {
+            "description": "Instagram only: products from the account’s Instagram shop to tag on the post — the tiles shown under a photo or in a reel’s \"In this reel\" panel. Requires product tagging to be enabled on the account (`GET /shopping/{accountId}/status`); product ids come from `GET /shopping/{accountId}/products`. Up to 20 tags on a photo, 30 on a reel; Instagram allows 25 tagged posts per account per 24 hours. Tags are applied right after the post goes live: if Meta refuses them, the post still publishes and the target reports why.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductTagDto"
+            }
+          },
+          "allowComment": {
+            "type": "boolean",
+            "default": true,
+            "description": "TikTok only: let other users comment on the video. Forced off when the creator's own TikTok settings already disable comments."
+          },
+          "allowDuet": {
+            "type": "boolean",
+            "default": true,
+            "description": "TikTok only: let other users Duet the video. Forced off when the creator's own TikTok settings already disable duets."
+          },
+          "allowStitch": {
+            "type": "boolean",
+            "default": true,
+            "description": "TikTok only: let other users Stitch the video. Forced off when the creator's own TikTok settings already disable stitches."
+          },
+          "privacy": {
+            "type": "string",
+            "enum": [
+              "public",
+              "unlisted",
+              "private"
+            ],
+            "default": "public",
+            "description": "Visibility of the published video. YouTube maps it directly (`unlisted` = reachable by link but not listed). TikTok has no `unlisted`, so both `unlisted` and `private` publish as SELF_ONLY — visible to the account owner only. The other platforms ignore it."
+          },
+          "tiktokPrivacyLevel": {
+            "type": "string",
+            "enum": [
+              "PUBLIC_TO_EVERYONE",
+              "MUTUAL_FOLLOW_FRIENDS",
+              "FOLLOWER_OF_CREATOR",
+              "SELF_ONLY"
+            ],
+            "description": "TikTok only: the exact privacy level the creator picked, among those returned by `GET /accounts/{id}/publish-options`. Takes precedence over `privacy`, which only knows three values where TikTok has four. Rejected if the creator is not allowed to use it."
+          },
+          "promotionalContent": {
+            "type": "boolean",
+            "default": false,
+            "description": "TikTok only: the video promotes the creator's own brand, product or business. TikTok labels it « Promotional content »."
+          },
+          "paidPartnership": {
+            "type": "boolean",
+            "default": false,
+            "description": "TikTok only: the video promotes a third party as a paid partnership. TikTok labels it « Paid partnership », which wins over « Promotional content » when both are declared. Cannot be combined with a private (SELF_ONLY) visibility."
+          }
+        },
+        "required": [
+          "profileId"
+        ]
+      },
+      "UpdatePostDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Title of the post (YouTube)."
+          },
+          "content": {
+            "type": "string",
+            "description": "Text / caption of the post. An empty string is accepted only together with `asStory: true` — an Instagram story has no caption."
+          },
+          "mediaItems": {
+            "description": "Replaces the media of the post.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MediaItemDto"
+            }
+          },
+          "mediaUrls": {
+            "deprecated": true,
+            "description": "Legacy shorthand (see POST /posts).",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "accountIds": {
+            "description": "Replaces the target accounts",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "platforms": {
+            "description": "Replaces the targets, with their per-platform overrides.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PostTargetDto"
+            }
+          },
+          "scheduledFor": {
+            "type": "object",
+            "description": "New scheduled date (ISO 8601). `null` unschedules the post, which goes back to draft.",
+            "nullable": true,
+            "example": "2027-01-01T12:00:00"
+          },
+          "timezone": {
+            "type": "string",
+            "description": "IANA timezone of `scheduledFor` (e.g. \"Europe/Paris\")",
+            "example": "Europe/Paris"
+          },
+          "asDraft": {
+            "type": "boolean",
+            "description": "TikTok only: publish as a draft (see POST /posts)"
+          },
+          "trialReel": {
+            "type": "boolean",
+            "description": "Instagram only: publish the video as a trial reel (see POST /posts)"
+          },
+          "asStory": {
+            "type": "boolean",
+            "description": "Instagram only: publish to the story instead of the feed (see POST /posts)"
+          },
+          "trialGraduation": {
+            "type": "string",
+            "enum": [
+              "MANUAL",
+              "SS_PERFORMANCE"
+            ],
+            "description": "Instagram only: how a trial reel ends (see POST /posts)"
+          },
+          "shareToFeed": {
+            "type": "boolean",
+            "description": "Instagram only: also show the reel in the account feed (see POST /posts)"
+          },
+          "productTags": {
+            "description": "Instagram only: products to tag on the post (see POST /posts). An empty array removes the products the post was carrying.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductTagDto"
+            }
+          },
+          "allowComment": {
+            "type": "boolean",
+            "description": "TikTok only: allow comments (see POST /posts)"
+          },
+          "allowDuet": {
+            "type": "boolean",
+            "description": "TikTok only: allow Duets (see POST /posts)"
+          },
+          "allowStitch": {
+            "type": "boolean",
+            "description": "TikTok only: allow Stitches (see POST /posts)"
+          },
+          "privacy": {
+            "type": "string",
+            "enum": [
+              "public",
+              "unlisted",
+              "private"
+            ],
+            "description": "Visibility of the published video, on YouTube and TikTok (see POST /posts)"
+          },
+          "tiktokPrivacyLevel": {
+            "type": "string",
+            "enum": [
+              "PUBLIC_TO_EVERYONE",
+              "MUTUAL_FOLLOW_FRIENDS",
+              "FOLLOWER_OF_CREATOR",
+              "SELF_ONLY"
+            ],
+            "description": "TikTok only: the exact privacy level picked by the creator (see POST /posts)"
+          },
+          "promotionalContent": {
+            "type": "boolean",
+            "description": "TikTok only: the video promotes the creator's own brand (see POST /posts)"
+          },
+          "paidPartnership": {
+            "type": "boolean",
+            "description": "TikTok only: the video is a paid partnership (see POST /posts)"
+          }
+        }
+      },
+      "TagProductsDto": {
+        "type": "object",
+        "properties": {
+          "productTags": {
+            "description": "The tags to put on the media. This REPLACES the tags already there. Up to 20 on a photo, 30 on a video or reel.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductTagDto"
+            }
+          }
+        },
+        "required": [
+          "productTags"
+        ]
+      },
+      "SyncAnalyticsDto": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Account to refresh now. Omitted, every account of the caller is queued for the next cycle."
+          }
+        }
+      },
+      "CreateCommentAutomationDto": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Instagram or Facebook Page account to watch."
+          },
+          "name": {
+            "type": "string",
+            "example": "Guide lead magnet"
+          },
+          "mediaIds": {
+            "description": "Platform media ids to watch (mediaId from get_account_media). Empty = every post on the account, including future ones.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "keywords": {
+            "description": "Trigger words. Matching is case- and accent-insensitive. Required unless matchType is `any`.",
+            "example": [
+              "guide",
+              "link"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "matchType": {
+            "type": "string",
+            "enum": [
+              "contains",
+              "exact",
+              "any"
+            ],
+            "default": "contains"
+          },
+          "dmText": {
+            "type": "string",
+            "description": "The DM sent to the commenter."
+          },
+          "dmButtonLabel": {
+            "type": "string",
+            "description": "Button label (20 chars max shown). Empty removes the button, along with dmButtonUrl."
+          },
+          "dmButtonUrl": {
+            "type": "string",
+            "description": "Button destination (https URL). Empty removes the button, along with dmButtonLabel."
+          },
+          "publicReplyText": {
+            "type": "string",
+            "description": "Optional public reply posted under the comment."
+          },
+          "oncePerUser": {
+            "type": "boolean",
+            "default": true,
+            "description": "Send at most one DM per person for this automation."
+          }
+        },
+        "required": [
+          "accountId",
+          "name",
+          "dmText"
+        ]
+      },
+      "UpdateCommentAutomationDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Guide lead magnet"
+          },
+          "mediaIds": {
+            "description": "Platform media ids to watch (mediaId from get_account_media). Empty = every post on the account, including future ones.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "keywords": {
+            "description": "Trigger words. Matching is case- and accent-insensitive. Required unless matchType is `any`.",
+            "example": [
+              "guide",
+              "link"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "matchType": {
+            "type": "string",
+            "enum": [
+              "contains",
+              "exact",
+              "any"
+            ],
+            "default": "contains"
+          },
+          "dmText": {
+            "type": "string",
+            "description": "The DM sent to the commenter."
+          },
+          "dmButtonLabel": {
+            "type": "string",
+            "description": "Button label (20 chars max shown). Empty removes the button, along with dmButtonUrl."
+          },
+          "dmButtonUrl": {
+            "type": "string",
+            "description": "Button destination (https URL). Empty removes the button, along with dmButtonLabel."
+          },
+          "publicReplyText": {
+            "type": "string",
+            "description": "Optional public reply posted under the comment."
+          },
+          "oncePerUser": {
+            "type": "boolean",
+            "default": true,
+            "description": "Send at most one DM per person for this automation."
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "paused"
+            ]
+          }
+        }
+      },
+      "BroadcastAudienceDto": {
+        "type": "object",
+        "properties": {
+          "activeWithinDays": {
+            "type": "number",
+            "description": "Only conversations whose last message is newer than this many days. Omit for every conversation on the account.",
+            "minimum": 1,
+            "maximum": 365
+          },
+          "conversationIds": {
+            "description": "Explicit conversation ids. When given, they win over every other filter.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CreateBroadcastDto": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "example": "Black Friday"
+          },
+          "text": {
+            "type": "string",
+            "description": "The message every recipient gets."
+          },
+          "buttonLabel": {
+            "type": "string",
+            "description": "Button label under the message (20 chars max shown). Needs `buttonUrl`."
+          },
+          "buttonUrl": {
+            "type": "string",
+            "description": "Button destination (https URL). Needs `buttonLabel`. Rendered as a button template on Instagram and Facebook, a CTA on WhatsApp, an inline keyboard on Telegram; if the platform refuses it, the URL is appended to the text."
+          },
+          "audience": {
+            "$ref": "#/components/schemas/BroadcastAudienceDto"
+          },
+          "scheduledFor": {
+            "type": "string",
+            "description": "ISO instant to start sending. Omit to keep it a draft."
+          },
+          "timezone": {
+            "type": "string",
+            "description": "IANA timezone the schedule was typed in."
+          },
+          "sendNow": {
+            "type": "boolean",
+            "description": "Start sending right away (within the next scheduler tick)."
+          }
+        },
+        "required": [
+          "accountId",
+          "name",
+          "text"
+        ]
+      },
+      "UpdateBroadcastDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Black Friday"
+          },
+          "text": {
+            "type": "string",
+            "description": "The message every recipient gets."
+          },
+          "buttonLabel": {
+            "type": "string",
+            "description": "Button label under the message (20 chars max shown). Needs `buttonUrl`."
+          },
+          "buttonUrl": {
+            "type": "string",
+            "description": "Button destination (https URL). Needs `buttonLabel`. Rendered as a button template on Instagram and Facebook, a CTA on WhatsApp, an inline keyboard on Telegram; if the platform refuses it, the URL is appended to the text."
+          },
+          "audience": {
+            "$ref": "#/components/schemas/BroadcastAudienceDto"
+          },
+          "scheduledFor": {
+            "type": "string",
+            "description": "ISO instant to start sending. Omit to keep it a draft."
+          },
+          "timezone": {
+            "type": "string",
+            "description": "IANA timezone the schedule was typed in."
+          },
+          "sendNow": {
+            "type": "boolean",
+            "description": "Start sending right away (within the next scheduler tick)."
+          }
+        }
+      },
+      "SequenceStepDto": {
+        "type": "object",
+        "properties": {
+          "delayMinutes": {
+            "type": "number",
+            "description": "Wait before this step, counted from the previous one (from enrolment for the first). 0 sends immediately.",
+            "minimum": 0
+          },
+          "text": {
+            "type": "string"
+          },
+          "buttonLabel": {
+            "type": "string",
+            "description": "Button label under the message (20 chars max shown). Needs `buttonUrl`. Without it the link has to be pasted into the text, and a bare link in a DM is what Meta flags."
+          },
+          "buttonUrl": {
+            "type": "string",
+            "description": "Button destination (https URL). Needs `buttonLabel`. Instagram and Facebook render it as a button template, WhatsApp as a CTA, Telegram as an inline keyboard; if the platform refuses it, the URL is appended to the text instead of being lost."
+          }
+        },
+        "required": [
+          "delayMinutes",
+          "text"
+        ]
+      },
+      "CreateSequenceDto": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "example": "Relance nouveaux contacts"
+          },
+          "trigger": {
+            "type": "string",
+            "enum": [
+              "conversation_started",
+              "comment_automation",
+              "story_reply",
+              "manual"
+            ],
+            "default": "conversation_started",
+            "description": "`story_reply` enrols the contact when they reply to one of the account stories — the story lead magnet (\"reply BETA and I send you the link\"). Narrow it with `keywords`."
+          },
+          "automationId": {
+            "type": "string",
+            "description": "Comment-to-DM automation that enrols people, when trigger is `comment_automation`."
+          },
+          "keywords": {
+            "description": "Keywords that filter entry, when trigger is `story_reply`. Empty means every story reply enrols. Case- and accent-insensitive.",
+            "example": [
+              "beta"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "matchType": {
+            "type": "string",
+            "enum": [
+              "contains",
+              "exact",
+              "any"
+            ],
+            "default": "contains",
+            "description": "How `keywords` are matched against the reply."
+          },
+          "stopOnReply": {
+            "type": "boolean",
+            "default": true,
+            "description": "Stop the follow-ups as soon as the contact replies."
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SequenceStepDto"
+            }
+          }
+        },
+        "required": [
+          "accountId",
+          "name",
+          "steps"
+        ]
+      },
+      "UpdateSequenceDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Relance nouveaux contacts"
+          },
+          "trigger": {
+            "type": "string",
+            "enum": [
+              "conversation_started",
+              "comment_automation",
+              "story_reply",
+              "manual"
+            ],
+            "default": "conversation_started",
+            "description": "`story_reply` enrols the contact when they reply to one of the account stories — the story lead magnet (\"reply BETA and I send you the link\"). Narrow it with `keywords`."
+          },
+          "automationId": {
+            "type": "string",
+            "description": "Comment-to-DM automation that enrols people, when trigger is `comment_automation`."
+          },
+          "keywords": {
+            "description": "Keywords that filter entry, when trigger is `story_reply`. Empty means every story reply enrols. Case- and accent-insensitive.",
+            "example": [
+              "beta"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "matchType": {
+            "type": "string",
+            "enum": [
+              "contains",
+              "exact",
+              "any"
+            ],
+            "default": "contains",
+            "description": "How `keywords` are matched against the reply."
+          },
+          "stopOnReply": {
+            "type": "boolean",
+            "default": true,
+            "description": "Stop the follow-ups as soon as the contact replies."
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SequenceStepDto"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "paused"
+            ]
+          }
+        }
+      },
+      "SyncEngagementDto": {
+        "type": "object",
+        "properties": {
+          "accountId": {
+            "type": "string",
+            "description": "Only this account. Omit to sync every eligible account."
+          },
+          "profileId": {
+            "type": "string",
+            "description": "Only the accounts of this profile."
+          },
+          "postId": {
+            "type": "string",
+            "description": "Only this post (platform post id). Without it, the most recent posts of each account are swept — pass it to reach an older post."
+          }
+        }
+      },
+      "ReplyEngagementDto": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "The public reply to publish."
+          }
+        }
+      },
+      "HideEngagementDto": {
+        "type": "object",
+        "properties": {
+          "hidden": {
+            "type": "boolean",
+            "description": "true hides the comment, false brings it back."
+          }
+        }
+      },
+      "HandledEngagementDto": {
+        "type": "object",
+        "properties": {
+          "handled": {
+            "type": "boolean",
+            "description": "Mark as handled (true) or put it back in the pile (false)."
+          }
+        }
+      },
+      "InstallPlaybookDto": {
+        "type": "object",
+        "properties": {
+          "accounts": {
+            "type": "object",
+            "description": "The account to use for each slot of the playbook, keyed by slot (`{\"account\": \"acc_123\"}`). Every slot listed by `GET /playbooks/{slug}` must be filled.",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "account": "clx0account123"
+            }
+          },
+          "inputs": {
+            "type": "object",
+            "description": "Values for the playbook inputs, keyed by input key. Anything left out falls back to the catalog default, so `{\"keyword\":\"GUIDE\",\"link\":\"https://…\"}` is usually enough.",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "example": {
+              "keyword": "GUIDE",
+              "link": "https://example.com/guide"
+            }
+          },
+          "force": {
+            "type": "boolean",
+            "description": "Install again on an account that already runs this playbook. Off by default: two copies send two DMs for a single comment.",
+            "default": false
+          }
+        }
+      },
+      "CreateWebhookDto": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "example": "https://example.com/hooks/plugkit",
+            "description": "HTTPS endpoint that receives the events."
+          },
+          "events": {
+            "type": "array",
+            "description": "Events to subscribe to. Empty or omitted means all events.",
+            "items": {
+              "type": "string",
+              "enum": [
+                "post.published",
+                "post.partial",
+                "post.failed",
+                "message.received",
+                "message.sent",
+                "message.undelivered",
+                "account.disconnected",
+                "comment.received",
+                "comment.dm_sent",
+                "broadcast.finished",
+                "usage.threshold_reached"
+              ]
+            }
+          }
+        },
+        "required": [
+          "url"
+        ]
+      },
+      "UpdateWebhookDto": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "example": "https://example.com/hooks/plugkit"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "post.published",
+                "post.partial",
+                "post.failed",
+                "message.received",
+                "message.sent",
+                "message.undelivered",
+                "account.disconnected",
+                "comment.received",
+                "comment.dm_sent",
+                "broadcast.finished",
+                "usage.threshold_reached"
+              ]
+            }
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Pause deliveries without deleting the endpoint."
+          }
+        }
+      }
+    }
+  }
+}

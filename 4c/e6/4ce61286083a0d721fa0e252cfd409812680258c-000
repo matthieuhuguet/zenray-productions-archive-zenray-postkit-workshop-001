@@ -1,0 +1,106 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Update a draft or scheduled broadcast
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json put /v1/broadcasts/{id}
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/broadcasts/{id}:
+    put:
+      tags:
+        - campaigns
+      summary: Update a draft or scheduled broadcast
+      operationId: BroadcastsController_replace
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBroadcastDto'
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    UpdateBroadcastDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Black Friday
+        text:
+          type: string
+          description: The message every recipient gets.
+        buttonLabel:
+          type: string
+          description: >-
+            Button label under the message (20 chars max shown). Needs
+            `buttonUrl`.
+        buttonUrl:
+          type: string
+          description: >-
+            Button destination (https URL). Needs `buttonLabel`. Rendered as a
+            button template on Instagram and Facebook, a CTA on WhatsApp, an
+            inline keyboard on Telegram; if the platform refuses it, the URL is
+            appended to the text.
+        audience:
+          $ref: '#/components/schemas/BroadcastAudienceDto'
+        scheduledFor:
+          type: string
+          description: ISO instant to start sending. Omit to keep it a draft.
+        timezone:
+          type: string
+          description: IANA timezone the schedule was typed in.
+        sendNow:
+          type: boolean
+          description: Start sending right away (within the next scheduler tick).
+    BroadcastAudienceDto:
+      type: object
+      properties:
+        activeWithinDays:
+          type: number
+          description: >-
+            Only conversations whose last message is newer than this many days.
+            Omit for every conversation on the account.
+          minimum: 1
+          maximum: 365
+        conversationIds:
+          description: >-
+            Explicit conversation ids. When given, they win over every other
+            filter.
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

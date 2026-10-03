@@ -1,0 +1,66 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Set (or clear, with null) the monthly cap on X pay-per-call spend, in USD
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json post /v1/billing/spend-cap
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/billing/spend-cap:
+    post:
+      tags:
+        - billing
+      summary: >-
+        Set (or clear, with null) the monthly cap on X pay-per-call spend, in
+        USD
+      operationId: BillingController_setSpendCap
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetSpendCapDto'
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    SetSpendCapDto:
+      type: object
+      properties:
+        capUsd:
+          type: object
+          description: >-
+            Monthly cap on X pay-per-call spend, in USD. Null falls back to the
+            default cap ($20) — there is no "unlimited": to spend more, set a
+            higher number. At 80% you get a warning; at 100% background
+            analytics and inbox polling pause — publishing keeps working, so a
+            scheduled post is never held back over a fraction of a cent.
+          example: 25
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

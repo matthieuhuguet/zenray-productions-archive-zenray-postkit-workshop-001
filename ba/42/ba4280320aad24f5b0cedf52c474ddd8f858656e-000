@@ -1,0 +1,246 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Publishing
+
+> Publish one post to several platforms, now or later.
+
+Create a post targeting one or more accounts; PlugKit publishes to each and
+returns a per-target result.
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "profileId": "YOUR_PROFILE_ID",
+    "content": "Launch day 🚀",
+    "accountIds": ["ACCOUNT_ID_1", "ACCOUNT_ID_2"],
+    "mediaItems": [{ "type": "image", "url": "https://example.com/photo.jpg" }],
+    "publishNow": true
+  }'
+```
+
+## Fields
+
+| Field | Required | Notes |
+| - | - | - |
+| `profileId` | ✅ | The profile that owns the target accounts. |
+| `content` | ✅ | Caption / text body. |
+| `accountIds` | ✅\* | Target accounts. \*Exactly one of `accountIds` or `platforms`. |
+| `platforms` | ✅\* | Targets **with per-platform overrides** — see below. |
+| `mediaItems` | conditional | The canonical media shape. Required by the video platforms. |
+| `mediaUrls` | — | Legacy shorthand: bare URLs, type guessed from the extension. Ignored when `mediaItems` is present. |
+| `title` | — | Required by YouTube (100 chars). Ignored by platforms without titles. |
+| `publishNow` | — | Publish immediately. |
+| `scheduledFor` | — | ISO date. See [Scheduling](#scheduling). |
+| `timezone` | — | IANA zone `scheduledFor` is written in. |
+| `privacy` | — | `public`, `unlisted`, `private` — YouTube and TikTok. |
+| `asDraft` | — | TikTok: land in the creator's drafts instead of publishing. |
+| `trialReel`, `trialGraduation`, `shareToFeed` | — | Instagram reels. |
+| `asStory` | — | Instagram: publish to the story instead of the feed. See [Stories](#instagram-stories). |
+| `allowComment`, `allowDuet`, `allowStitch` | — | TikTok interaction settings. |
+
+The response carries a `target` per account with its `status` and, once live,
+the `platformPostUrl`.
+
+## Media
+
+`mediaItems` is the shape to use — it carries the type, the alt text and a
+custom video thumbnail, none of which a bare URL can express:
+
+```json theme={null}
+"mediaItems": [
+  { "type": "image", "url": "https://…/photo.jpg", "altText": "Our team on stage" },
+  { "type": "video", "url": "https://…/clip.mp4", "thumbnail": "https://…/cover.jpg" }
+]
+```
+
+<Warning>
+  Media must be reachable by the platform itself — Instagram and Facebook fetch
+  the file from the URL you give. A link that expires, or one that serves a web
+  page instead of the file (WeTransfer, Drive, Dropbox share links), fails at
+  publish time, not at create time.
+</Warning>
+
+### The media library
+
+Files you upload stay in the account's media library, whichever way they got in
+— the dashboard composer, an upload link, an import from a URL, or the API. List
+them with `GET /media`, and pass their ids to a post as `mediaIds` instead of
+copying URLs around:
+
+```bash theme={null}
+curl https://api.plugkit.co/v1/media -H "Authorization: Bearer sk_your_key"
+# → { "media": [ { "id": "…", "filename": "reel-4.mp4", "type": "video",
+#                  "sizeBytes": 48210022, "url": "https://api.plugkit.co/v1/media/file/…" } ] }
+```
+
+An assistant does the same through `list_media`, which is what lets someone say
+"publish the reel I just uploaded" without pasting anything. `DELETE /media/:id`
+removes a file for good; it is refused while a post that has not been published
+yet still uses it.
+
+### Uploading a file
+
+No public URL? Two ways in, depending on size.
+
+**Small files, straight through the API:**
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/media/upload \
+  -H "Authorization: Bearer sk_your_key" \
+  -F "file=@./photo.jpg"
+```
+
+**Anything bigger — a one-shot upload ticket.** Ask for a link, then send the
+bytes to it directly. The file never transits the API, so size is bounded by
+storage rather than by request memory:
+
+```bash theme={null}
+# 1. get the ticket
+curl -X POST https://api.plugkit.co/v1/media/upload-url \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "filename": "episode-12.mp4" }'
+# → { "uploadUrl": "https://…", "uploadMethod": "PUT", "mediaUrl": "https://…", "expiresAt": "…", "maxBytes": … }
+
+# 2. send the bytes with the method the ticket names
+curl -X PUT --upload-file ./episode-12.mp4 "PASTE_uploadUrl"
+
+# 3. publish with mediaUrl
+```
+
+Use `mediaUrl` (not `uploadUrl`) in `mediaItems`. The ticket is single-use and
+expires.
+
+**No terminal? Hand the ticket to a person.** The same address opened in a
+browser (`uploadPageUrl`, returned alongside `uploadUrl`) is a page where they
+drop the file — it goes from their browser straight to storage. This is the way
+in when an assistant drives PlugKit from a web chat: it has no shell to run the
+`curl`, and attaching the video to the conversation instead runs into the chat
+client's own attachment limit (30 MB on claude.ai), which is not PlugKit's.
+Opening the page doesn't consume the ticket; only the upload does.
+
+## Per-platform overrides
+
+One idea rarely fits every network verbatim — 280 characters on X, a vertical
+video on TikTok. `platforms` lets one post carry different content per target,
+with `customContent` and `customMedia` overriding the defaults where they're
+given:
+
+```json theme={null}
+{
+  "profileId": "…",
+  "content": "The default text, used where nothing is overridden.",
+  "platforms": [
+    { "accountId": "ACC_IG" },
+    { "accountId": "ACC_X", "customContent": "Shorter, punchier, under 280." },
+    { "accountId": "ACC_TT", "customMedia": [{ "type": "video", "url": "https://…/vertical.mp4" }] }
+  ]
+}
+```
+
+## What each platform expects
+
+| Platform | Media | Notes |
+| - | - | - |
+| **Instagram** | image or video | Container → publish, handled for you. Reels support trial mode; `asStory` posts to the story. |
+| **Facebook** | optional | Text-only posts are fine. |
+| **TikTok** | video | `asDraft`, `privacy` and the interaction flags apply. |
+| **YouTube** | video | `title` required; `privacy` maps to the upload's visibility. |
+| **X** | optional | Text only, **or** 1–4 images, **or** one video/GIF. |
+| **Telegram** | optional | The bot must be an admin of the channel. |
+| **LinkedIn** | optional | Text only, **or** 1–20 images, **or** one video. Posts to the member's profile. |
+| **Threads** | optional | Text only (500 chars), **or** one image/video, **or** a carousel of 2–20. |
+
+WhatsApp doesn't do posts — see [Messaging](/guides/messaging).
+
+### Threads
+
+Threads is a Meta platform, but it is not Instagram: it has its own app
+credentials, its own authorization screen and its own `threads_*` permissions.
+Nothing carries over from a connected Instagram account.
+
+* **500 characters**, and Threads counts emoji as UTF-8 bytes. A longer `content`
+  is rejected up front rather than silently truncated.
+* **A carousel takes 2 to 20 items.** The caption belongs to the post, not to the
+  individual media.
+* **`allowComment: false` closes replies** to mentioned accounts only — that is
+  the strictest setting Threads offers; there is no "nobody".
+* **No stories, no drafts, no privacy levels.** A Threads post is public. Those
+  options are refused rather than accepted and ignored.
+* **No messaging at all.** Threads has no DM API, so it never appears in the
+  Inbox, in broadcasts, in sequences, or in comment-to-DM automations.
+* Rate limits are the platform's: 250 published posts per 24 hours.
+
+### Instagram stories
+
+Set `asStory: true` and the post goes to the account's story instead of the
+feed. It is the same call, and the same connection — nothing extra to
+authorise.
+
+A story is not a short post, and Instagram is strict about it:
+
+* **It lasts 24 hours**, then it is gone. There is no permanent URL, so the
+  target comes back without a `platformPostUrl`, and the story is left out of
+  Analytics rather than mirrored as a post frozen at zero.
+* **It carries no caption.** Instagram drops the text, so `content` becomes
+  optional when every target of the post is an Instagram account. Keep it when
+  the same post also goes to X or LinkedIn — they still need it.
+* **One media, and only these formats**: a JPEG image (8 MB max), or an MP4/MOV
+  video of 3 to 60 seconds (100 MB max, H.264/HEVC + AAC). A PNG is refused.
+* **No stickers, polls, links or mentions.** Instagram's API publishes the media
+  and nothing else; interactive elements only exist in the app.
+* `asStory` and `trialReel` are mutually exclusive — a trial only means
+  something in the feed.
+
+```json theme={null}
+{
+  "profileId": "prof_...",
+  "accountIds": ["acc_instagram"],
+  "asStory": true,
+  "mediaItems": [{ "url": "https://cdn.example.com/story.jpg", "type": "image" }]
+}
+```
+
+Stories count towards the same Instagram quota as feed posts (100 API
+publications per rolling 24 hours).
+
+## Scheduling
+
+Pass `scheduledFor` instead of `publishNow`:
+
+```json theme={null}
+{ "profileId": "…", "content": "…", "accountIds": ["…"],
+  "scheduledFor": "2027-01-01T09:00:00", "timezone": "Europe/Paris" }
+```
+
+A date **without** an offset is read in `timezone`. A date carrying its own
+offset (`2027-01-01T09:00:00+01:00`) is absolute and `timezone` is ignored.
+
+Publish a scheduled post early, or retry one that failed:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts/POST_ID/publish \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+It returns immediately and publishes in the background. Targets that already
+published are skipped, so a retry never double-posts.
+
+## When a target fails
+
+A post to three accounts where one fails comes back `partial`, not `failed` —
+and the failing target carries its own error. The others are live; the fix is to
+retry that one target, which the `publish` call above does.
+
+Subscribe to `post.published`, `post.partial` and `post.failed` to hear about it
+without polling — see [Webhooks](/guides/webhooks).
+
+<Card title="See all fields" icon="code" href="/api-reference">
+  Open `POST /v1/posts` in the API Reference to try it live.
+</Card>
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

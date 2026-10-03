@@ -1,0 +1,97 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# One row per platform over the window
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json get /v1/analytics/platforms
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/analytics/platforms:
+    get:
+      tags:
+        - analytics
+      summary: One row per platform over the window
+      operationId: AnalyticsController_platforms
+      parameters:
+        - name: profileId
+          required: false
+          in: query
+          description: Restrict to one profile.
+          schema:
+            type: string
+        - name: accountId
+          required: false
+          in: query
+          description: Restrict to one connected account.
+          schema:
+            type: string
+        - name: platform
+          required: false
+          in: query
+          schema:
+            type: string
+            enum:
+              - instagram
+              - whatsapp
+              - tiktok
+              - telegram
+              - youtube
+              - x
+              - facebook
+              - meta_ads
+              - linkedin
+              - threads
+        - name: source
+          required: false
+          in: query
+          description: >-
+            Where the post came from. `plugkit` = published through the API,
+            `external` = published natively on the platform. Defaults to all.
+          schema:
+            enum:
+              - all
+              - plugkit
+              - external
+            type: string
+        - name: from
+          required: false
+          in: query
+          description: Start of the window (ISO date). Defaults to 30 days ago.
+          schema:
+            type: string
+        - name: to
+          required: false
+          in: query
+          description: End of the window (ISO date). Defaults to now.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

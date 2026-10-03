@@ -1,0 +1,261 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Tools & workflows
+
+> The 103 tools and 3 ready-made workflows exposed by the PlugKit MCP server.
+
+Every tool maps to the REST API you already know — same vocabulary, same ids.
+Tools marked **write** are hidden entirely from a session granted `mcp:read`.
+
+<Note>
+  Start with `whoami`. Nearly every other tool needs a `profileId` or an
+  `accountId`, and `whoami` returns both, plus what each platform supports.
+</Note>
+
+## Search
+
+| Tool | | What it does |
+| - | - | - |
+| `search` | read | One keyword across everything the account holds: posts, conversations (by contact **and** by what was said inside them), accounts, profiles, media, comment→DM rules, sequences, broadcasts, playbooks. Returns short results with an id and a link. |
+| `fetch` | read | Read one result in full from its id — a conversation with its recent messages, a post with its per-platform targets and errors, a published post with its metrics. |
+
+<Note>
+  These two names are fixed by OpenAI: ChatGPT connectors look for `search` and
+  `fetch` to look things up and cite them. Every client gets them all the same —
+  nothing else searches inside message text.
+</Note>
+
+## Profiles
+
+| Tool | | What it does |
+| - | - | - |
+| `whoami` | read | Authenticated identity, profiles, connected accounts, and per-platform capabilities. The entry point. |
+| `list_profiles` | read | Profiles with their account and post counts. |
+| `get_profile` | read | One profile by id. |
+| `create_profile` | write | Create a profile (a workspace grouping the accounts of one brand or client). |
+| `update_profile` | write | Rename, recolour, re-describe, or set as default. |
+| `delete_profile` | write | Delete a profile **and** its accounts, posts and conversations. Irreversible. |
+
+## Accounts & connections
+
+| Tool | | What it does |
+| - | - | - |
+| `list_accounts` | read | Connected accounts, filterable by profile, platform or status. |
+| `get_account` | read | One account (the platform token is never exposed). |
+| `get_connect_url` | write | Generate the OAuth link for any platform. The assistant hands it to you — it can't follow it itself. |
+| `connect_telegram` | write | Attach a Telegram bot from its BotFather token (validated before storage). |
+| `connect_account_manually` | write | Attach an account from credentials you already hold. Advanced. |
+| `disconnect_account` | write | Disconnect and wipe the token. Posts and conversations are kept. |
+| `subscribe_instagram_webhooks` | write | Re-subscribe an Instagram account to Meta webhooks so DMs arrive in real time. |
+| `list_message_templates` | read | WhatsApp templates the business has had approved — the only thing that sends past the 24h window. |
+| `get_publish_options` | read | TikTok only: what that creator's account allows right now — the privacy levels it accepts, and which of comment / duet / stitch its own settings already disable. Read it before `create_post`; TikTok refuses any other value. |
+| `subscribe_facebook_webhooks` | write | Re-apply the current webhook fields to a connected Facebook Page, including `message_echoes`, which surfaces replies written from the Meta inbox. For Pages connected before those fields existed. No re-authorization needed. |
+
+## Posts
+
+| Tool | | What it does |
+| - | - | - |
+| `list_posts` | read | Posts with their targets and status, filterable and searchable. |
+| `get_post` | read | One post: content, status, and per target the live URL or the error. |
+| `create_post` | write | Create a post for several accounts at once — draft, scheduled (`scheduledFor`) or immediate (`publishNow`). |
+| `update_post` | write | Edit or reschedule a draft/scheduled post. Published posts are frozen. |
+| `publish_post` | write | Publish now: a draft, a scheduled post brought forward, or a retry (already-published targets are skipped, so no duplicates). |
+| `delete_post` | write | Delete on PlugKit and cancel the schedule. Does not unpublish what's already live. |
+| `unpublish_post` | write | Take a post back off the platform. The opposite of `delete_post`, which only removes it from PlugKit and leaves it live. Threads can undo a publication, Instagram and TikTok cannot. Permanent: ask first. |
+| `upload_media` | write | Re-host a file from a URL you already have, and return the PlugKit URL. |
+| `create_media_upload` | write | Get a one-shot upload link — the assistant sends the bytes itself, or hands you the browser page when it has no shell. Any size, no third-party file host. |
+| `check_media_upload` | read | Confirm the file actually landed before publishing. |
+| `list_media` | read | The account's media library — start here when a post needs a photo or a video, and pass the ids to `create_post` as `mediaIds`. |
+| `delete_media` | write | Remove a file from the library. Refused while an unpublished post still uses it. |
+| `open_media_uploader` | read | Show a drop zone in the conversation, so files on the person's machine reach you without leaving the chat. Several at once, and it stays open for more. Use it instead of `create_media_upload` when you cannot run shell commands. |
+
+<Info>
+  WhatsApp and Telegram don't do posts — only messages. `whoami` returns the
+  capability matrix so the assistant can filter targets itself.
+</Info>
+
+## Messaging
+
+| Tool | | What it does |
+| - | - | - |
+| `list_conversations` | read | The unified inbox across Instagram, Facebook, WhatsApp and Telegram. |
+| `get_conversation` | read | One conversation (contact, account, platform). |
+| `list_messages` | read | History of a conversation with direction and delivery status. |
+| `list_instagram_threads` | read | Raw Instagram threads with participant IGSIDs — to find a contact the inbox doesn't know yet. |
+| `send_dm` | write | DM someone by name, @handle or phone number — no conversation id. Returns the matches instead of sending when several contacts fit. |
+| `send_message` | write | Reply in an existing conversation. Immediate and irreversible. |
+| `create_conversation` | write | Open a thread with a contact identified by their platform id. |
+| `sync_conversations` | write | Pull conversations and messages from the platform API when the inbox looks stale. |
+| `send_direct_message` | write | Low-level escape hatch: send straight to a platform identifier, storing nothing in the inbox. |
+
+## Analytics
+
+Reads the collected store — history, comparisons, every account at once, no
+platform call. See [Analytics](/guides/analytics).
+
+| Tool | | What it does |
+| - | - | - |
+| `get_analytics_summary` | read | Headline numbers over a window, each with its change vs the previous period. Start here. |
+| `get_top_posts` | read | Posts ranked by any metric, including ones published outside PlugKit. |
+| `get_analytics_timeseries` | read | One metric by day, week or month, optionally split by platform. |
+| `get_best_times_to_post` | read | Weekday × hour engagement grid — feed it into `scheduledFor` instead of guessing. |
+| `get_follower_stats` | read | Follower history and growth per account. |
+| `get_analytics_by_account` | read | One row per connected account over the window, including the accounts that published nothing. Use it whenever two accounts share a platform. |
+| `sync_analytics` | write | Pull an account's latest posts now instead of waiting for the cycle. Debounced 15s. |
+
+## Comments & live reads
+
+| Tool | | What it does |
+| - | - | - |
+| `get_account_analytics` | read | Live account read: followers, following, post count, reach where exposed. One object, billed on X. |
+| `get_account_media` | read | Recent posts on the account with their metrics and `mediaId`. |
+| `get_post_analytics` | read | Live read of one published post. |
+| `get_comments` | read | Comments on ONE known post, read live. For working through everything that needs answering, use `list_engagement` below. |
+| `reply_to_comment` | write | Reply publicly using PLATFORM ids — threaded on a `commentId`, or on the post itself. |
+
+<Note>
+  `get_*_analytics` query the platform **live**: current value, one object, and
+  a real cost on metered platforms. For anything a dashboard would show — a
+  ranking, a trend, a comparison — the `get_analytics_*` tools above answer in
+  one call and cost nothing.
+</Note>
+
+## Engagement
+
+Comments on your posts, replies, and posts that mention you — Instagram,
+Facebook Pages and Threads, in one feed. These take the engagement `_id` from
+`list_engagement`, not a platform comment id.
+
+| Tool | | What it does |
+| - | - | - |
+| `get_engagement_summary` | read | How much is unanswered, per account. The cheap first call — start here. |
+| `list_engagement` | read | The feed, most recent first. Defaults to what still needs an answer, each row carrying the post it sits under. |
+| `sync_engagement` | write | Pull from the platforms — after an outage, or to reach an older post via `postId`. Webhooks already deliver new comments. |
+| `reply_to_engagement` | write | Publish a PUBLIC reply, signed by the account. Marks the item handled. |
+| `hide_comment` | write | Hide a comment or bring it back. Reversible, author not notified — prefer it to deleting. |
+| `mark_engagement_handled` | write | Clear something that needs no answer. |
+| `delete_comment` | write | Permanently delete a comment on your post. Irreversible. |
+
+<Warning>
+  `reply_to_engagement` and `reply_to_comment` publish **publicly**, under the
+  post, signed by the connected account — they are not DMs, and no platform
+  offers an edit. A mention belongs to its author: it can be replied to, never
+  hidden or deleted.
+</Warning>
+
+## Playbooks
+
+Ready-made setups installed in one call on a connected Instagram or Facebook
+account. The catalog is on [plugkit.co/playbooks](https://www.plugkit.co/playbooks/).
+
+| Tool | | What it does |
+| - | - | - |
+| `list_playbooks` | read | What can be installed: comment-to-DM lead magnet, story lead magnet, waitlist, welcome message. Start here before building a comment automation by hand. |
+| `get_playbook` | read | The full definition: the account slots to fill, every input with its default, and the automations and sequences it will create. Read it before installing. |
+| `install_playbook` | write | Create everything the playbook describes on one account. Live from that moment, real people get real DMs: show the rendered messages first and get an explicit go-ahead. |
+| `list_playbook_installs` | read | What is already installed here, with the automations and sequences each one created and their status. |
+| `remove_playbook_install` | write | Delete what a playbook created. Pass `keepResources` to unlink the install while leaving everything running. |
+
+## Campaigns
+
+| Tool | | What it does |
+| - | - | - |
+| `create_comment_automation` | write | "Comment a keyword, get a DM" on one post or every post of the account. |
+| `list_comment_automations` | read | Automations with their status and counters. |
+| `update_comment_automation` | write | Change keywords, message, button, or pause it. |
+| `delete_comment_automation` | write | Remove an automation. |
+| `get_comment_automation_runs` | read | Trigger log — who commented what, and what was sent. |
+| `preview_broadcast_audience` | read | Count the recipients an audience would reach, **before** sending. |
+| `create_broadcast` | write | Draft or schedule one message to a filtered slice of the inbox. |
+| `list_broadcasts` | read | Broadcasts with status and counts. |
+| `send_broadcast` | write | Queue it for sending. Immediate and irreversible for every recipient. |
+| `cancel_broadcast` | write | Put a scheduled broadcast back to draft. |
+| `delete_broadcast` | write | Delete a broadcast. |
+| `get_broadcast_recipients` | read | Per-recipient delivery log, with the reason for each failure. |
+| `create_sequence` | write | Timed follow-ups, triggered by a new conversation, a comment automation, or a story reply. |
+| `list_sequences` | read | Sequences with their steps and status. |
+| `update_sequence` | write | Edit steps, trigger or status. |
+| `delete_sequence` | write | Remove a sequence. |
+| `enroll_in_sequence` | write | Put a conversation into a sequence by hand. |
+| `get_sequence_enrollments` | read | Who is in it, and at which step. |
+
+## Ads (Meta)
+
+| Tool | | What it does |
+| - | - | - |
+| `get_ad_account` | read | Currency, status and spend of the ad account. Read it before creating anything. |
+| `list_campaigns` / `list_ad_sets` / `list_ads` | read | The hierarchy, at each level. |
+| `create_campaign` | write | Create a campaign. **Paused** unless told otherwise. |
+| `create_ad_set` | write | Audience, budget and schedule. Budgets in minor units (2000 = €20.00). |
+| `create_ad` | write | An ad from an existing creative or an existing Page post. |
+| `update_campaign` / `update_ad_set` / `update_ad` | write | Rename, pause, resume, rebudget. |
+| `boost_post` | write | Promote a published Page post — campaign, ad set and ad in one call. |
+| `get_ads_insights` | read | Spend and performance for the account, a campaign, an ad set or an ad. |
+
+<Warning>
+  Everything is created **paused**, and budgets are in minor units. Setting
+  `status: "ACTIVE"` starts spending real money — the assistant should confirm
+  the amount and the audience with you first.
+</Warning>
+
+## Shopping (Instagram)
+
+| Tool | | What it does |
+| - | - | - |
+| `get_shopping_status` | read | Whether an account can tag products, and if not, exactly what is missing: no permission, an expired one, a shop Meta has not approved, or a shop with no catalog. Tagging needs a second Facebook authorization the user grants themselves, from the account card on the dashboard's Connections page. |
+| `search_shop_products` | read | Search the account's shop catalog by product name or SKU. The ids returned here are the only ones `productTags` accepts, never invent one. A product whose `taggable` is false cannot be tagged, and its Meta review status says why. |
+| `tag_products_on_post` | write | Tag products on an already published post or reel. **Replaces** the existing tags, so send the complete list. At most 20 on a photo, 30 on a reel; coordinates only apply to a photo. Instagram accepts 25 tagged posts per account per 24 hours. |
+
+## Billing
+
+| Tool | | What it does |
+| - | - | - |
+| `get_subscription` | read | Plan, account quota, and current X spend. |
+| `get_usage` | read | Pay-per-call spend for the month, broken down by operation. |
+| `set_x_billing` | write | Turn X background analytics and inbox sync on or off, per account. |
+
+<Note>
+  `get_usage` exists so an assistant can weigh a cost **before** starting a
+  loop, instead of discovering it on the invoice.
+</Note>
+
+## API keys
+
+| Tool | | What it does |
+| - | - | - |
+| `list_api_keys` | read | Keys with prefix, last use and revocation state. Never the secret. |
+| `create_api_key` | write | Create a key. The plaintext is returned **once**, and it lands in the conversation — only use it on request. |
+| `revoke_api_key` | write | Revoke immediately, including the key this connection may be running on. |
+
+## Workflows
+
+Three prompts ship with the server. Clients surface them as commands — in Claude
+Code, `/mcp__plugkit__publish`, `/mcp__plugkit__inbox`, `/mcp__plugkit__report`.
+
+<CardGroup cols={3}>
+  <Card title="publish" icon="paper-plane">
+    Publish one message to every eligible account of a profile, after showing you
+    the targets and the final text.
+  </Card>
+
+  <Card title="inbox" icon="inbox">
+    Sync each messaging account, surface unanswered incoming messages, and draft
+    a reply for each.
+  </Card>
+
+  <Card title="report" icon="chart-line">
+    Published posts, failures and per-account analytics over a period, as a table
+    plus three recommendations.
+  </Card>
+</CardGroup>
+
+## Errors
+
+Tools return the API's own errors as text rather than throwing, so the assistant
+can explain and retry. A `404` means the resource doesn't exist **or** doesn't
+belong to your account — see [Authentication](/authentication).
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

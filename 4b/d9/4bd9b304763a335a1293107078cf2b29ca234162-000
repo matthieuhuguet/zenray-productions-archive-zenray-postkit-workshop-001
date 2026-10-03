@@ -1,0 +1,71 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Update a profile
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json put /v1/profiles/{id}
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/profiles/{id}:
+    put:
+      tags:
+        - profiles
+      summary: Update a profile
+      operationId: ProfilesController_replace
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProfileDto'
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    UpdateProfileDto:
+      type: object
+      properties:
+        name:
+          type: string
+          example: My Brand
+        color:
+          type: string
+          example: '#6366f1'
+        description:
+          type: string
+        isDefault:
+          type: boolean
+          default: false
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

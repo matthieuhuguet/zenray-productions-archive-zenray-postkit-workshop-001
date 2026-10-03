@@ -1,0 +1,73 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# YouTube
+
+> Upload videos to YouTube via the Google Data API.
+
+YouTube is a **video-publishing** integration via Google's YouTube Data API.
+
+<CardGroup cols={2}>
+  <Card title="Publish video" icon="video">Upload a video to a channel.</Card>
+  <Card title="Analytics" icon="chart-line">Views, likes, comments, subscribers.</Card>
+</CardGroup>
+
+## Connect
+
+Google OAuth flow:
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/connect/youtube?profileId=YOUR_PROFILE_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Open the returned `authUrl`, approve on Google's consent screen, and the channel
+is connected after the callback.
+
+## Publish a video
+
+Provide a **public video URL**. YouTube requires a title — pass one explicitly
+with `title` (100 characters max); without it, PlugKit falls back to the start
+of `content`, which is a stopgap:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "profileId": "PROFILE_ID", "accountIds": ["ACCOUNT_ID"],
+        "title": "Episode 1 — how we built it",
+        "content": "Full description here…",
+        "mediaItems": [{ "type": "video", "url": "https://…/video.mp4" }],
+        "privacy": "public", "publishNow": true }'
+```
+
+<Warning>
+  Until your Google/YouTube app is **verified**, uploads land as **`private`**.
+  This is a Google requirement — publish publicly once verification is granted.
+</Warning>
+
+`privacy` accepts `public`, `unlisted` or `private`.
+
+## Analytics
+
+YouTube feeds the [analytics store](/guides/analytics): views, likes and
+comments per video, plus subscriber count measured daily. Videos uploaded
+outside PlugKit are picked up too.
+
+<Note>
+  These are **totals since publication**, not a day-by-day series. Per-day views
+  live in the YouTube Analytics API, which requires a separate Google audit — so
+  the daily series PlugKit shows is the one it records itself, from the day you
+  connect. A channel that hides its subscriber count returns `null`, not `0`.
+</Note>
+
+## Not supported
+
+Messaging and comments aren't exposed.
+
+## Permissions
+
+Scopes: `youtube.upload` (publishing) and `youtube.readonly` (analytics).
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

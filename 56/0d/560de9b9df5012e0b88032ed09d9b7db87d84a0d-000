@@ -1,0 +1,108 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Tag products on a published Instagram post or reel
+
+> Replaces the product tags of an existing media. Up to 20 tags on a photo (each with x/y coordinates between 0 and 1) and 30 on a video or reel, where coordinates do not apply. Instagram allows 25 tagged posts per 24 hours per account.
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json post /v1/shopping/{accountId}/media/{mediaId}/tags
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/shopping/{accountId}/media/{mediaId}/tags:
+    post:
+      tags:
+        - shopping
+      summary: Tag products on a published Instagram post or reel
+      description: >-
+        Replaces the product tags of an existing media. Up to 20 tags on a photo
+        (each with x/y coordinates between 0 and 1) and 30 on a video or reel,
+        where coordinates do not apply. Instagram allows 25 tagged posts per 24
+        hours per account.
+      operationId: ShoppingController_tag
+      parameters:
+        - name: accountId
+          required: true
+          in: path
+          schema:
+            type: string
+        - name: mediaId
+          required: true
+          in: path
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagProductsDto'
+      responses:
+        '201':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    TagProductsDto:
+      type: object
+      properties:
+        productTags:
+          description: >-
+            The tags to put on the media. This REPLACES the tags already there.
+            Up to 20 on a photo, 30 on a video or reel.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductTagDto'
+      required:
+        - productTags
+    ProductTagDto:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: >-
+            Product id from the Instagram shop catalog, as returned by GET
+            /shopping/{accountId}/products.
+        x:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0.5
+          description: >-
+            Horizontal position of the tag on a photo, from 0 (left) to 1
+            (right). Ignored on a video or reel. Defaults to the centre — the
+            creator can move it from the Instagram app.
+        'y':
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0.5
+          description: >-
+            Vertical position of the tag on a photo, from 0 (top) to 1 (bottom).
+            Ignored on a video or reel.
+      required:
+        - productId
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

@@ -1,0 +1,308 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Create a post (draft, scheduled, or published)
+
+> With `publishNow`, the response returns immediately with `status: "publishing"` and publishing runs in the background. Poll GET /posts/:id to follow it.
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json post /v1/posts
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/posts:
+    post:
+      tags:
+        - posts
+      summary: Create a post (draft, scheduled, or published)
+      description: >-
+        With `publishNow`, the response returns immediately with `status:
+        "publishing"` and publishing runs in the background. Poll GET /posts/:id
+        to follow it.
+      operationId: PostsController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePostDto'
+      responses:
+        '201':
+          description: ''
+      security:
+        - api-key: []
+components:
+  schemas:
+    CreatePostDto:
+      type: object
+      properties:
+        profileId:
+          type: string
+          description: Profile that owns the post
+        title:
+          type: string
+          description: >-
+            Title of the post. Required by YouTube (100 characters max) and
+            ignored by platforms that have no title.
+          maxLength: 100
+        content:
+          type: string
+          description: >-
+            Text / caption of the post. REQUIRED, except when `asStory` is set
+            and every target is an Instagram or Facebook account: a story has no
+            caption.
+        accountIds:
+          description: >-
+            Target account ids — the short form. Use `platforms` instead to
+            tailor the content per platform. Exactly one of the two is required.
+          type: array
+          items:
+            type: string
+        platforms:
+          description: >-
+            Targets with per-platform overrides. Exactly one of `platforms` and
+            `accountIds` is required.
+          type: array
+          items:
+            $ref: '#/components/schemas/PostTargetDto'
+        mediaItems:
+          description: >-
+            Media of the post. This is the canonical shape: it carries the type,
+            alt text and thumbnail, which `mediaUrls` cannot.
+          type: array
+          items:
+            $ref: '#/components/schemas/MediaItemDto'
+        mediaUrls:
+          deprecated: true
+          description: >-
+            Legacy shorthand: a list of URLs, converted to `mediaItems` (type
+            inferred from the extension). Ignored when `mediaItems` is provided.
+          type: array
+          items:
+            type: string
+        scheduledFor:
+          type: string
+          description: >-
+            Scheduled date (ISO 8601). Without an offset ("2027-01-01T12:00:00")
+            the time is read in `timezone`; with an offset or a Z it is an
+            absolute instant. The post moves to `scheduled` and is published
+            automatically at that time.
+          example: '2027-01-01T12:00:00'
+        timezone:
+          type: string
+          description: >-
+            IANA timezone `scheduledFor` is expressed in (e.g. "Europe/Paris").
+            Ignored when the date already carries an offset.
+          example: Europe/Paris
+        publishNow:
+          type: boolean
+          default: false
+          description: Publish immediately
+        asDraft:
+          type: boolean
+          default: false
+          description: >-
+            TikTok only: send the video to the creator's inbox as a draft
+            (Content Posting API, `video.upload` scope) instead of publishing it
+            directly. The creator finishes the post in the TikTok app.
+        trialReel:
+          type: boolean
+          default: false
+          description: >-
+            Instagram only: publish the video as a trial reel — shown to
+            NON-followers only, never to your own followers, until you choose to
+            release it from the Instagram app. Requires a video and an account
+            with at least 1,000 followers. Ignored by the other platforms.
+        asStory:
+          type: boolean
+          default: false
+          description: >-
+            Instagram and Facebook Pages: publish to the STORY instead of the
+            feed. A story lasts 24 hours, carries no caption (`content` is
+            ignored, and may be omitted when every target is an Instagram or
+            Facebook account) and takes exactly one media — on Instagram a JPEG
+            image (8 MB max) or an MP4/MOV video of 3 to 60 seconds (100 MB
+            max), on a Facebook Page an image (10 MB max) or an MP4 video of 3
+            to 90 seconds. Cannot be combined with `trialReel`. Ignored by the
+            other platforms, which have no story API: TikTok does not expose
+            one, LinkedIn and YouTube retired theirs.
+        trialGraduation:
+          type: string
+          enum:
+            - MANUAL
+            - SS_PERFORMANCE
+          default: MANUAL
+          description: >-
+            Instagram only, with `trialReel`: how the trial ends. `MANUAL` — you
+            decide in the Instagram app whether to release the reel to your
+            followers. `SS_PERFORMANCE` — Instagram releases it on its own if
+            the trial performs well.
+        shareToFeed:
+          type: boolean
+          default: true
+          description: >-
+            Instagram only, reels: also show the reel in the account feed, not
+            just in the Reels tab.
+        productTags:
+          description: >-
+            Instagram only: products from the account’s Instagram shop to tag on
+            the post — the tiles shown under a photo or in a reel’s "In this
+            reel" panel. Requires product tagging to be enabled on the account
+            (`GET /shopping/{accountId}/status`); product ids come from `GET
+            /shopping/{accountId}/products`. Up to 20 tags on a photo, 30 on a
+            reel; Instagram allows 25 tagged posts per account per 24 hours.
+            Tags are applied right after the post goes live: if Meta refuses
+            them, the post still publishes and the target reports why.
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductTagDto'
+        allowComment:
+          type: boolean
+          default: true
+          description: >-
+            TikTok only: let other users comment on the video. Forced off when
+            the creator's own TikTok settings already disable comments.
+        allowDuet:
+          type: boolean
+          default: true
+          description: >-
+            TikTok only: let other users Duet the video. Forced off when the
+            creator's own TikTok settings already disable duets.
+        allowStitch:
+          type: boolean
+          default: true
+          description: >-
+            TikTok only: let other users Stitch the video. Forced off when the
+            creator's own TikTok settings already disable stitches.
+        privacy:
+          type: string
+          enum:
+            - public
+            - unlisted
+            - private
+          default: public
+          description: >-
+            Visibility of the published video. YouTube maps it directly
+            (`unlisted` = reachable by link but not listed). TikTok has no
+            `unlisted`, so both `unlisted` and `private` publish as SELF_ONLY —
+            visible to the account owner only. The other platforms ignore it.
+        tiktokPrivacyLevel:
+          type: string
+          enum:
+            - PUBLIC_TO_EVERYONE
+            - MUTUAL_FOLLOW_FRIENDS
+            - FOLLOWER_OF_CREATOR
+            - SELF_ONLY
+          description: >-
+            TikTok only: the exact privacy level the creator picked, among those
+            returned by `GET /accounts/{id}/publish-options`. Takes precedence
+            over `privacy`, which only knows three values where TikTok has four.
+            Rejected if the creator is not allowed to use it.
+        promotionalContent:
+          type: boolean
+          default: false
+          description: >-
+            TikTok only: the video promotes the creator's own brand, product or
+            business. TikTok labels it « Promotional content ».
+        paidPartnership:
+          type: boolean
+          default: false
+          description: >-
+            TikTok only: the video promotes a third party as a paid partnership.
+            TikTok labels it « Paid partnership », which wins over « Promotional
+            content » when both are declared. Cannot be combined with a private
+            (SELF_ONLY) visibility.
+      required:
+        - profileId
+    PostTargetDto:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Account to publish to
+        customContent:
+          type: string
+          description: >-
+            Text used on this platform instead of the post content (e.g. a
+            shorter version for X).
+        customMedia:
+          description: Media used on this platform instead of the post media.
+          type: array
+          items:
+            $ref: '#/components/schemas/MediaItemDto'
+      required:
+        - accountId
+    MediaItemDto:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - image
+            - video
+            - gif
+            - document
+          description: Inferred from the URL when omitted.
+        url:
+          type: string
+          example: https://cdn.example.com/photo.jpg
+        altText:
+          type: string
+          description: >-
+            Alternative text (accessibility), applied on every platform that
+            supports it.
+        thumbnail:
+          type: string
+          description: Custom thumbnail / cover image for a video.
+      required:
+        - url
+    ProductTagDto:
+      type: object
+      properties:
+        productId:
+          type: string
+          description: >-
+            Product id from the Instagram shop catalog, as returned by GET
+            /shopping/{accountId}/products.
+        x:
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0.5
+          description: >-
+            Horizontal position of the tag on a photo, from 0 (left) to 1
+            (right). Ignored on a video or reel. Defaults to the centre — the
+            creator can move it from the Instagram app.
+        'y':
+          type: number
+          minimum: 0
+          maximum: 1
+          default: 0.5
+          description: >-
+            Vertical position of the tag on a photo, from 0 (top) to 1 (bottom).
+            Ignored on a video or reel.
+      required:
+        - productId
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

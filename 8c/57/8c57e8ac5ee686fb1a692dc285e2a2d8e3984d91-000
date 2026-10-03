@@ -1,0 +1,66 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Search the products of the account’s Instagram shop
+
+> `q` matches a product name or SKU. Only products Meta has approved can be tagged; the others are returned with their review status so it is clear why they are refused.
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json get /v1/shopping/{accountId}/products
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/shopping/{accountId}/products:
+    get:
+      tags:
+        - shopping
+      summary: Search the products of the account’s Instagram shop
+      description: >-
+        `q` matches a product name or SKU. Only products Meta has approved can
+        be tagged; the others are returned with their review status so it is
+        clear why they are refused.
+      operationId: ShoppingController_products
+      parameters:
+        - name: accountId
+          required: true
+          in: path
+          schema:
+            type: string
+        - name: q
+          required: true
+          in: query
+          schema:
+            type: string
+        - name: limit
+          required: true
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

@@ -1,0 +1,52 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# What the platform requires the creator to choose before publishing (TikTok: nickname, allowed privacy levels, interaction settings)
+
+
+
+## OpenAPI
+
+````yaml /api-reference/openapi.json get /v1/accounts/{id}/publish-options
+openapi: 3.0.0
+info:
+  title: PlugKit API
+  description: >-
+    One API to publish, schedule and message across Instagram, WhatsApp, TikTok,
+    Telegram, YouTube and X.
+  version: 1.0.0
+  contact: {}
+servers: []
+security: []
+tags: []
+paths:
+  /v1/accounts/{id}/publish-options:
+    get:
+      tags:
+        - accounts
+      summary: >-
+        What the platform requires the creator to choose before publishing
+        (TikTok: nickname, allowed privacy levels, interaction settings)
+      operationId: AccountsController_getPublishOptions
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+      security:
+        - api-key: []
+components:
+  securitySchemes:
+    api-key:
+      scheme: bearer
+      bearerFormat: sk_...
+      type: http
+
+````
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.

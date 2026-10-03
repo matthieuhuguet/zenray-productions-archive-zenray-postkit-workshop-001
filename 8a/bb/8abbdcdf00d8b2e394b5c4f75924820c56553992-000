@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/account-analytics-unified-shape-+-raw-platform-payload</loc>
+    <lastmod>2026-09-28T10:04:55.042Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/analytics-for-a-single-post</loc>
+    <lastmod>2026-09-28T10:04:55.092Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/comment-on-a-post</loc>
+    <lastmod>2026-09-28T10:04:55.111Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/comments-on-a-post</loc>
+    <lastmod>2026-09-28T10:04:55.101Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/connect-or-reconnect-a-social-account</loc>
+    <lastmod>2026-09-28T10:04:54.980Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/disconnect-an-account</loc>
+    <lastmod>2026-09-28T10:04:55.011Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/enable-or-disable-the-billable-x-background-work-analytics-inbox-sync-both-are-off-by-default:-x-charges-per-call-so-nothing-polls-until-you-say-so</loc>
+    <lastmod>2026-09-28T10:04:55.071Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/list-connected-accounts</loc>
+    <lastmod>2026-09-28T10:04:54.990Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/list-the-approved-message-templates-of-the-account-whatsapp:-the-only-content-allowed-past-the-24h-window</loc>
+    <lastmod>2026-09-28T10:04:55.061Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/move-everything-attached-to-another-account-onto-this-one-then-delete-it-used-when-a-reconnection-created-a-second-account-for-the-same-real-profile</loc>
+    <lastmod>2026-09-28T10:04:55.020Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/permanently-delete-an-already-disconnected-account-along-with-its-post-targets-and-conversations</loc>
+    <lastmod>2026-09-28T10:04:55.033Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/recent-posts-on-the-account</loc>
+    <lastmod>2026-09-28T10:04:55.081Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/reply-to-a-comment</loc>
+    <lastmod>2026-09-28T10:04:55.120Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/retrieve-an-account</loc>
+    <lastmod>2026-09-28T10:04:54.999Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/send-a-dm-directly-without-a-stored-conversation</loc>
+    <lastmod>2026-09-28T10:04:55.128Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/accounts/what-the-platform-requires-the-creator-to-choose-before-publishing-tiktok:-nickname-allowed-privacy-levels-interaction-settings</loc>
+    <lastmod>2026-09-28T10:04:55.052Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/ads/ad-account-details-currency-status-spend</loc>
+    <lastmod>2026-09-28T10:04:55.137Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/ads/create-a-campaign-paused-unless-stated</loc>
+    <lastmod>2026-09-28T10:04:55.156Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/ads/create-an-ad-from-an-existing-creative-or-an-existing-page-post</loc>
+    <lastmod>2026-09-28T10:04:55.212Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/ads/create-an-ad-set-audience-budget-schedule</loc>
+    <lastmod>2026-09-28T10:04:55.182Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/ads/list-ad-sets</loc>
+    <lastmod>2026-09-28T10:04:55.174Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/ads/list-ads</loc>
+    <lastmod>2026-09-28T10:04:55.202Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/ads/list-campaigns</loc>
+    <lastmod>2026-09-28T10:04:55.147Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/ads/promote-an-existing-page-post:-creates-the-campaign-ad-set-and-ad-in-one-call</loc>
+    <lastmod>2026-09-28T10:04:55.230Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/ads/rename-pause-or-resume-an-ad</loc>
+    <lastmod>2026-09-28T10:04:55.221Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/ads/rename-pause-resume-or-rebudget-a-campaign</loc>
+    <lastmod>2026-09-28T10:04:55.165Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/ads/rename-pause-resume-or-rebudget-an-ad-set</loc>
+    <lastmod>2026-09-28T10:04:55.191Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/ads/spend-and-performance-for-the-account-a-campaign-an-ad-set-or-an-ad</loc>
+    <lastmod>2026-09-28T10:04:55.240Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/analytics/follower-history-and-growth-per-account</loc>
+    <lastmod>2026-09-28T10:04:55.670Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/analytics/headline-metrics-for-a-window-with-change-vs-the-prior-period</loc>
+    <lastmod>2026-09-28T10:04:55.613Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/analytics/how-fast-engagement-accumulates-after-publishing-by-age-bucket</loc>
+    <lastmod>2026-09-28T10:04:55.661Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/analytics/one-metric-over-time-optionally-split-by-platform</loc>
+    <lastmod>2026-09-28T10:04:55.642Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/analytics/one-row-per-platform-over-the-window</loc>
+    <lastmod>2026-09-28T10:04:55.633Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/analytics/post-level-analytics-published-here-or-natively-on-the-platform</loc>
+    <lastmod>2026-09-28T10:04:55.622Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/analytics/refresh-now-instead-of-waiting-for-the-next-cycle-debounced-15s-per-account</loc>
+    <lastmod>2026-09-28T10:04:55.679Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/analytics/weekday-×-hour-engagement-grid-read-in-the-given-timezone</loc>
+    <lastmod>2026-09-28T10:04:55.652Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/api-keys/create-an-api-key-the-plaintext-value-is-returned-once-and-never-again</loc>
+    <lastmod>2026-09-28T10:04:54.858Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/api-keys/list-api-keys-without-the-plaintext-value</loc>
+    <lastmod>2026-09-28T10:04:54.849Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/api-keys/replace-a-key-with-a-new-one-of-the-same-name-and-revoke-the-old-one-the-plaintext-value-is-returned-once</loc>
+    <lastmod>2026-09-08T19:58:13.521Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/api-keys/revoke-an-api-key</loc>
+    <lastmod>2026-09-28T10:04:54.872Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/automations/create-a-comment-to-dm-automation</loc>
+    <lastmod>2026-09-28T10:04:55.698Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/automations/delete-an-automation</loc>
+    <lastmod>2026-09-28T10:04:55.725Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/automations/list-comment-to-dm-automations</loc>
+    <lastmod>2026-09-28T10:04:55.689Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/automations/retrieve-an-automation</loc>
+    <lastmod>2026-09-28T10:04:55.707Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/automations/trigger-log-of-an-automation</loc>
+    <lastmod>2026-09-28T10:04:55.745Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/automations/update-an-automation</loc>
+    <lastmod>2026-09-28T10:04:55.716Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/automations/update-an-automation-1</loc>
+    <lastmod>2026-09-28T10:04:55.735Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/billing/current-plan-account-quota-and-x-spend</loc>
+    <lastmod>2026-09-28T10:04:54.758Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/billing/list-available-plans-and-the-extra-account-bands</loc>
+    <lastmod>2026-09-28T10:04:54.748Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/billing/open-a-whop-checkout-to-subscribe-or-change-plan</loc>
+    <lastmod>2026-09-28T10:04:54.768Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/billing/pay-per-call-usage-for-a-month-defaults-to-current</loc>
+    <lastmod>2026-09-28T10:04:54.786Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/billing/set-or-clear-with-null-the-monthly-cap-on-x-pay-per-call-spend-in-usd</loc>
+    <lastmod>2026-09-28T10:04:54.777Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/billing/whop-webhook-endpoint-signature-verified</loc>
+    <lastmod>2026-09-28T10:04:54.797Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/count-the-recipients-an-audience-would-reach</loc>
+    <lastmod>2026-09-28T10:04:55.777Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/create-a-broadcast</loc>
+    <lastmod>2026-09-28T10:04:55.764Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/create-a-follow-up-sequence</loc>
+    <lastmod>2026-09-28T10:04:55.867Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/delete-a-broadcast</loc>
+    <lastmod>2026-09-28T10:04:55.808Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/delete-a-sequence</loc>
+    <lastmod>2026-09-28T10:04:55.899Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/enrol-a-conversation-by-hand</loc>
+    <lastmod>2026-09-28T10:04:55.937Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/list-broadcasts</loc>
+    <lastmod>2026-09-28T10:04:55.754Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/list-sequences</loc>
+    <lastmod>2026-09-28T10:04:55.858Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/per-recipient-delivery-log</loc>
+    <lastmod>2026-09-28T10:04:55.826Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/put-a-scheduled-broadcast-back-to-draft</loc>
+    <lastmod>2026-09-28T10:04:55.846Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/queue-the-broadcast-for-sending</loc>
+    <lastmod>2026-09-28T10:04:55.837Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/retrieve-a-broadcast</loc>
+    <lastmod>2026-09-28T10:04:55.788Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/retrieve-a-sequence</loc>
+    <lastmod>2026-09-28T10:04:55.877Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/update-a-draft-or-scheduled-broadcast</loc>
+    <lastmod>2026-09-28T10:04:55.798Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/update-a-draft-or-scheduled-broadcast-1</loc>
+    <lastmod>2026-09-28T10:04:55.817Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/update-a-sequence</loc>
+    <lastmod>2026-09-28T10:04:55.886Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/update-a-sequence-1</loc>
+    <lastmod>2026-09-28T10:04:55.916Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/campaigns/who-is-in-the-sequence-and-where</loc>
+    <lastmod>2026-09-28T10:04:55.926Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/connect/connect-a-telegram-bot-with-its-@botfather-token</loc>
+    <lastmod>2026-09-28T10:04:55.313Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/connect/get-the-oauth-authorization-url-to-connect-an-account</loc>
+    <lastmod>2026-09-28T10:04:55.264Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/connect/oauth-callback-called-by-the-platform-after-authorization</loc>
+    <lastmod>2026-09-28T10:04:55.274Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/connect/re-subscribe-a-facebook-page-to-its-webhook-fields-subscribed_apps</loc>
+    <lastmod>2026-09-08T19:58:14.197Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/connect/re-subscribe-a-whatsapp-number-to-its-business-account-webhooks-subscribed_apps</loc>
+    <lastmod>2026-09-28T10:04:55.298Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/connect/subscribe-an-instagram-account-to-webhooks-subscribed_apps</loc>
+    <lastmod>2026-09-28T10:04:55.284Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/engagement/comments-replies-and-mentions-most-recent-first</loc>
+    <lastmod>2026-09-08T19:58:16.196Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/engagement/delete-a-comment-on-one-of-your-posts</loc>
+    <lastmod>2026-09-28T10:04:55.995Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/engagement/hide-or-unhide-a-comment</loc>
+    <lastmod>2026-09-08T19:58:16.263Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/engagement/how-much-is-left-to-handle-per-account</loc>
+    <lastmod>2026-09-28T10:04:55.951Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/engagement/mark-as-handled-or-put-it-back-in-the-pile</loc>
+    <lastmod>2026-09-28T10:04:55.984Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/engagement/pull-comments-and-mentions-from-the-platforms</loc>
+    <lastmod>2026-09-08T19:58:16.228Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/engagement/reply-publicly-to-a-comment-reply-or-mention</loc>
+    <lastmod>2026-09-28T10:04:55.969Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/health/check-that-the-api-responds-unauthenticated</loc>
+    <lastmod>2026-09-28T10:04:54.883Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/list-conversations</loc>
+    <lastmod>2026-09-28T10:04:55.322Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/list-conversations-1</loc>
+    <lastmod>2026-09-28T10:04:55.343Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/list-the-messages-of-a-conversation-most-recent-page-first</loc>
+    <lastmod>2026-09-08T19:58:14.662Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/list-the-messages-of-a-conversation-most-recent-page-first-1</loc>
+    <lastmod>2026-09-08T19:58:14.687Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/mark-a-conversation-as-read</loc>
+    <lastmod>2026-09-28T10:04:55.373Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/mark-a-conversation-as-read-1</loc>
+    <lastmod>2026-09-28T10:04:55.382Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/retrieve-a-conversation</loc>
+    <lastmod>2026-09-28T10:04:55.394Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/retrieve-a-conversation-1</loc>
+    <lastmod>2026-09-28T10:04:55.403Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/send-a-message-in-a-conversation</loc>
+    <lastmod>2026-09-28T10:04:55.418Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/send-a-message-in-a-conversation-1</loc>
+    <lastmod>2026-09-28T10:04:55.433Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/start-or-fetch-a-conversation</loc>
+    <lastmod>2026-09-28T10:04:55.334Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/start-or-fetch-a-conversation-1</loc>
+    <lastmod>2026-09-28T10:04:55.355Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/sync-conversations-from-the-platform-live-api</loc>
+    <lastmod>2026-09-08T19:58:14.312Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/inbox/sync-conversations-from-the-platform-live-api-1</loc>
+    <lastmod>2026-09-08T19:58:14.585Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/media/envoyer-un-fichier-avec-un-lien-denvoi-post</loc>
+    <lastmod>2026-09-28T10:04:55.583Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/media/envoyer-un-fichier-avec-un-lien-denvoi-put</loc>
+    <lastmod>2026-09-28T10:04:55.573Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/media/get-v1mediafile</loc>
+    <lastmod>2026-09-28T10:04:55.602Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/media/lister-les-médias-de-la-bibliothèque</loc>
+    <lastmod>2026-09-28T10:04:55.522Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/media/obtenir-un-lien-denvoi-à-usage-unique-sans-en-tête-dautorisation</loc>
+    <lastmod>2026-09-28T10:04:55.554Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/media/page-de-dépôt-du-billet-navigateur</loc>
+    <lastmod>2026-09-28T10:04:55.564Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/media/post-v1mediaupload</loc>
+    <lastmod>2026-09-28T10:04:55.542Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/media/signaler-la-fin-dun-envoi-direct</loc>
+    <lastmod>2026-09-28T10:04:55.593Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/media/supprimer-un-média-de-la-bibliothèque</loc>
+    <lastmod>2026-09-28T10:04:55.532Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/platforms/platforms-temporarily-closed-to-new-connections-and-why</loc>
+    <lastmod>2026-09-28T10:04:54.893Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/playbooks/install-a-playbook</loc>
+    <lastmod>2026-09-08T19:58:16.354Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/playbooks/list-the-playbook-catalog</loc>
+    <lastmod>2026-09-28T10:04:56.005Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/playbooks/list-the-playbooks-installed-on-this-workspace</loc>
+    <lastmod>2026-09-28T10:04:56.015Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/playbooks/remove-an-installed-playbook</loc>
+    <lastmod>2026-09-08T19:58:16.364Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/playbooks/retrieve-one-playbook-with-its-inputs-and-slots</loc>
+    <lastmod>2026-09-28T10:04:56.030Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/posts/create-a-post-draft-scheduled-or-published</loc>
+    <lastmod>2026-09-08T19:58:14.730Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/posts/delete-a-post-cancels-its-schedule;-does-not-unpublish-anything</loc>
+    <lastmod>2026-09-28T10:04:55.466Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/posts/list-posts</loc>
+    <lastmod>2026-09-28T10:04:55.442Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/posts/publish-an-existing-post-now-scheduled-draft-or-retry-after-a-failure</loc>
+    <lastmod>2026-09-08T19:58:14.788Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/posts/retrieve-a-post</loc>
+    <lastmod>2026-09-28T10:04:55.456Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/posts/update-an-unpublished-post-content-targets-rescheduling;-`scheduledfor:-null`-unschedules-it</loc>
+    <lastmod>2026-09-28T10:04:55.476Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/profiles/create-a-profile</loc>
+    <lastmod>2026-09-28T10:04:54.920Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/profiles/delete-a-profile</loc>
+    <lastmod>2026-09-28T10:04:54.959Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/profiles/list-profiles</loc>
+    <lastmod>2026-09-28T10:04:54.905Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/profiles/retrieve-a-profile</loc>
+    <lastmod>2026-09-28T10:04:54.930Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/profiles/update-a-profile</loc>
+    <lastmod>2026-09-28T10:04:54.945Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/profiles/update-a-profile-1</loc>
+    <lastmod>2026-09-28T10:04:54.969Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/shopping/get-the-facebook-authorization-url-that-enables-product-tagging</loc>
+    <lastmod>2026-09-08T19:58:14.840Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/shopping/oauth-callback-for-the-shopping-authorization</loc>
+    <lastmod>2026-09-28T10:04:55.498Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/shopping/product-tagging-status-of-an-instagram-account</loc>
+    <lastmod>2026-09-08T19:58:14.820Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/shopping/search-the-products-of-the-account’s-instagram-shop</loc>
+    <lastmod>2026-09-08T19:58:14.922Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/shopping/tag-products-on-a-published-instagram-post-or-reel</loc>
+    <lastmod>2026-09-08T19:58:14.941Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/shopping/turn-product-tagging-off-for-an-account</loc>
+    <lastmod>2026-09-08T19:58:14.892Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/webhooks/create-a-webhook-endpoint-the-signing-secret-is-returned-once</loc>
+    <lastmod>2026-09-08T19:58:16.386Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/webhooks/delete-a-webhook-endpoint</loc>
+    <lastmod>2026-09-28T10:04:56.076Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/webhooks/list-webhook-endpoints</loc>
+    <lastmod>2026-09-28T10:04:56.053Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/webhooks/recent-delivery-attempts-for-this-endpoint-debugging</loc>
+    <lastmod>2026-09-28T10:04:56.095Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/webhooks/retrieve-a-webhook-endpoint</loc>
+    <lastmod>2026-09-28T10:04:56.067Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/webhooks/update-a-webhook-endpoint</loc>
+    <lastmod>2026-09-28T10:04:56.086Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/workspaces/invite-someone-to-this-workspace-they-get-access-at-their-next-sign-in-with-that-email</loc>
+    <lastmod>2026-09-28T10:04:54.828Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/workspaces/list-the-people-with-access-to-this-workspace</loc>
+    <lastmod>2026-09-28T10:04:54.818Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/workspaces/list-the-workspaces-you-can-act-in</loc>
+    <lastmod>2026-09-28T10:04:54.807Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/api-reference/workspaces/remove-a-member-or-leave-a-workspace</loc>
+    <lastmod>2026-09-28T10:04:54.839Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/authentication</loc>
+    <lastmod>2026-08-23T16:27:21.784Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/concepts/analytics-collection</loc>
+    <lastmod>2026-08-24T09:53:03.538Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/concepts/billing</loc>
+    <lastmod>2026-09-28T10:04:56.372Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/concepts/profiles-and-accounts</loc>
+    <lastmod>2026-08-23T16:27:21.785Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/guides/analytics</loc>
+    <lastmod>2026-08-23T16:27:21.784Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/guides/campaigns</loc>
+    <lastmod>2026-09-03T10:13:43.091Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/guides/engagement</loc>
+    <lastmod>2026-09-08T19:58:21.337Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/guides/messaging</loc>
+    <lastmod>2026-08-23T16:27:21.773Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/guides/publishing</loc>
+    <lastmod>2026-09-08T19:58:21.421Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/guides/webhooks</loc>
+    <lastmod>2026-08-24T09:53:03.598Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co</loc>
+    <lastmod>2026-08-23T16:27:21.780Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/mcp/clients</loc>
+    <lastmod>2026-09-24T11:28:38.132Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/mcp/overview</loc>
+    <lastmod>2026-09-20T14:40:44.668Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/mcp/tools</loc>
+    <lastmod>2026-09-20T14:40:44.669Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/platforms/facebook</loc>
+    <lastmod>2026-08-23T16:27:21.783Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/platforms/instagram</loc>
+    <lastmod>2026-08-23T16:27:21.782Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/platforms/meta-ads</loc>
+    <lastmod>2026-08-23T16:27:21.793Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/platforms/telegram</loc>
+    <lastmod>2026-08-23T16:27:21.795Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/platforms/tiktok</loc>
+    <lastmod>2026-08-23T16:27:21.787Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/platforms/whatsapp</loc>
+    <lastmod>2026-08-23T16:27:21.787Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/platforms/x</loc>
+    <lastmod>2026-08-24T09:53:03.536Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/platforms/youtube</loc>
+    <lastmod>2026-08-23T16:27:21.794Z</lastmod>
+  </url>
+
+  <url>
+    <loc>https://docs.plugkit.co/quickstart</loc>
+    <lastmod>2026-08-23T16:27:21.794Z</lastmod>
+  </url>
+</urlset>

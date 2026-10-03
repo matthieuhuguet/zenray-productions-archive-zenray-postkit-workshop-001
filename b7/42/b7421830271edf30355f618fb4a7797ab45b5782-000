@@ -1,0 +1,100 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.plugkit.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# TikTok
+
+> Publish videos to TikTok via the official Login Kit + Content Posting API.
+
+TikTok is a **video-publishing** integration via TikTok's Login Kit and Content
+Posting API.
+
+<CardGroup cols={2}>
+  <Card title="Publish video" icon="video">Post a public MP4.</Card>
+  <Card title="Drafts" icon="pen">Send to drafts to finish in-app.</Card>
+  <Card title="Analytics" icon="chart-line">Views, likes, comments, shares.</Card>
+  <Card title="Interactions" icon="sliders">Comments, Duet and Stitch settings.</Card>
+</CardGroup>
+
+## Connect
+
+OAuth flow (Login Kit):
+
+```bash theme={null}
+curl "https://api.plugkit.co/v1/connect/tiktok?profileId=YOUR_PROFILE_ID" \
+  -H "Authorization: Bearer sk_your_key"
+```
+
+Open the returned `authUrl`, approve on TikTok's consent screen, and the account
+is stored after the callback.
+
+## Publish a video
+
+Provide a **public `.mp4` URL** in `mediaUrls`:
+
+```bash theme={null}
+curl -X POST https://api.plugkit.co/v1/posts \
+  -H "Authorization: Bearer sk_your_key" -H "Content-Type: application/json" \
+  -d '{ "profileId": "PROFILE_ID", "accountIds": ["ACCOUNT_ID"],
+        "content": "New drop 🎬", "mediaUrls": ["https://…/video.mp4"], "publishNow": true }'
+```
+
+### Send to drafts
+
+Set `asDraft: true` to push the video into the TikTok app's drafts instead of
+posting — the user finalizes and publishes it from their phone:
+
+```json theme={null}
+{ "profileId": "…", "accountIds": ["…"], "content": "…",
+  "mediaUrls": ["https://…/video.mp4"], "asDraft": true }
+```
+
+### Visibility and interactions
+
+`privacy` maps onto TikTok's privacy level, and three flags control what others
+may do with the video:
+
+```json theme={null}
+{ "profileId": "…", "accountIds": ["…"], "content": "…",
+  "mediaItems": [{ "type": "video", "url": "https://…/video.mp4" }],
+  "privacy": "public",
+  "allowComment": true, "allowDuet": true, "allowStitch": false }
+```
+
+<Note>
+  TikTok has no `unlisted`: both `unlisted` and `private` publish as
+  `SELF_ONLY`. And a creator's own account settings win — if they've disabled
+  Duets, `allowDuet: true` doesn't override it.
+</Note>
+
+## Analytics
+
+TikTok feeds the [analytics store](/guides/analytics): views, likes, comments
+and shares per video, plus follower count measured daily. Videos published
+straight from the TikTok app are picked up too.
+
+<Warning>
+  This needs the `video.list` and `user.info.stats` scopes, which are **not
+  retroactive**. An account connected before they were added keeps publishing
+  fine but returns no analytics at all — reconnect it to fix that. Empty charts,
+  no error.
+</Warning>
+
+<Note>
+  TikTok has no daily history of its own: metrics are read as running totals and
+  PlugKit records the series itself, from the day you connect.
+</Note>
+
+## Not supported
+
+TikTok's API doesn't expose messaging or comments to third-party apps.
+
+## Permissions
+
+Scopes: `user.info.basic`, `video.publish`, `video.upload`, `video.list`,
+`user.info.stats`. The last two are for analytics and must also be enabled in
+your TikTok developer portal — otherwise the authorization goes out without
+them, silently.
+
+
+This documentation is built and hosted on [Mintlify](https://mintlify.com), a developer documentation platform.
