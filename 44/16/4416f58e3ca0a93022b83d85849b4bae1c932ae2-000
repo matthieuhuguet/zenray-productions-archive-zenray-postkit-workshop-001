@@ -1,0 +1,517 @@
+[
+ {
+  "group": "Search",
+  "name": "search",
+  "kind": "read"
+ },
+ {
+  "group": "Search",
+  "name": "fetch",
+  "kind": "read"
+ },
+ {
+  "group": "Profiles",
+  "name": "whoami",
+  "kind": "read"
+ },
+ {
+  "group": "Profiles",
+  "name": "list_profiles",
+  "kind": "read"
+ },
+ {
+  "group": "Profiles",
+  "name": "get_profile",
+  "kind": "read"
+ },
+ {
+  "group": "Profiles",
+  "name": "create_profile",
+  "kind": "write"
+ },
+ {
+  "group": "Profiles",
+  "name": "update_profile",
+  "kind": "write"
+ },
+ {
+  "group": "Profiles",
+  "name": "delete_profile",
+  "kind": "write"
+ },
+ {
+  "group": "Accounts & connections",
+  "name": "list_accounts",
+  "kind": "read"
+ },
+ {
+  "group": "Accounts & connections",
+  "name": "get_account",
+  "kind": "read"
+ },
+ {
+  "group": "Accounts & connections",
+  "name": "get_connect_url",
+  "kind": "write"
+ },
+ {
+  "group": "Accounts & connections",
+  "name": "connect_telegram",
+  "kind": "write"
+ },
+ {
+  "group": "Accounts & connections",
+  "name": "connect_account_manually",
+  "kind": "write"
+ },
+ {
+  "group": "Accounts & connections",
+  "name": "disconnect_account",
+  "kind": "write"
+ },
+ {
+  "group": "Accounts & connections",
+  "name": "subscribe_instagram_webhooks",
+  "kind": "write"
+ },
+ {
+  "group": "Accounts & connections",
+  "name": "list_message_templates",
+  "kind": "read"
+ },
+ {
+  "group": "Accounts & connections",
+  "name": "get_publish_options",
+  "kind": "read"
+ },
+ {
+  "group": "Accounts & connections",
+  "name": "subscribe_facebook_webhooks",
+  "kind": "write"
+ },
+ {
+  "group": "Posts",
+  "name": "list_posts",
+  "kind": "read"
+ },
+ {
+  "group": "Posts",
+  "name": "get_post",
+  "kind": "read"
+ },
+ {
+  "group": "Posts",
+  "name": "create_post",
+  "kind": "write"
+ },
+ {
+  "group": "Posts",
+  "name": "update_post",
+  "kind": "write"
+ },
+ {
+  "group": "Posts",
+  "name": "publish_post",
+  "kind": "write"
+ },
+ {
+  "group": "Posts",
+  "name": "delete_post",
+  "kind": "write"
+ },
+ {
+  "group": "Posts",
+  "name": "unpublish_post",
+  "kind": "write"
+ },
+ {
+  "group": "Posts",
+  "name": "upload_media",
+  "kind": "write"
+ },
+ {
+  "group": "Posts",
+  "name": "create_media_upload",
+  "kind": "write"
+ },
+ {
+  "group": "Posts",
+  "name": "check_media_upload",
+  "kind": "read"
+ },
+ {
+  "group": "Posts",
+  "name": "list_media",
+  "kind": "read"
+ },
+ {
+  "group": "Posts",
+  "name": "delete_media",
+  "kind": "write"
+ },
+ {
+  "group": "Posts",
+  "name": "open_media_uploader",
+  "kind": "read"
+ },
+ {
+  "group": "Messaging",
+  "name": "list_conversations",
+  "kind": "read"
+ },
+ {
+  "group": "Messaging",
+  "name": "get_conversation",
+  "kind": "read"
+ },
+ {
+  "group": "Messaging",
+  "name": "list_messages",
+  "kind": "read"
+ },
+ {
+  "group": "Messaging",
+  "name": "list_instagram_threads",
+  "kind": "read"
+ },
+ {
+  "group": "Messaging",
+  "name": "send_dm",
+  "kind": "write"
+ },
+ {
+  "group": "Messaging",
+  "name": "send_message",
+  "kind": "write"
+ },
+ {
+  "group": "Messaging",
+  "name": "create_conversation",
+  "kind": "write"
+ },
+ {
+  "group": "Messaging",
+  "name": "sync_conversations",
+  "kind": "write"
+ },
+ {
+  "group": "Messaging",
+  "name": "send_direct_message",
+  "kind": "write"
+ },
+ {
+  "group": "Analytics",
+  "name": "get_analytics_summary",
+  "kind": "read"
+ },
+ {
+  "group": "Analytics",
+  "name": "get_top_posts",
+  "kind": "read"
+ },
+ {
+  "group": "Analytics",
+  "name": "get_analytics_timeseries",
+  "kind": "read"
+ },
+ {
+  "group": "Analytics",
+  "name": "get_best_times_to_post",
+  "kind": "read"
+ },
+ {
+  "group": "Analytics",
+  "name": "get_follower_stats",
+  "kind": "read"
+ },
+ {
+  "group": "Analytics",
+  "name": "get_analytics_by_account",
+  "kind": "read"
+ },
+ {
+  "group": "Analytics",
+  "name": "sync_analytics",
+  "kind": "write"
+ },
+ {
+  "group": "Comments & live reads",
+  "name": "get_account_analytics",
+  "kind": "read"
+ },
+ {
+  "group": "Comments & live reads",
+  "name": "get_account_media",
+  "kind": "read"
+ },
+ {
+  "group": "Comments & live reads",
+  "name": "get_post_analytics",
+  "kind": "read"
+ },
+ {
+  "group": "Comments & live reads",
+  "name": "get_comments",
+  "kind": "read"
+ },
+ {
+  "group": "Comments & live reads",
+  "name": "reply_to_comment",
+  "kind": "write"
+ },
+ {
+  "group": "Engagement",
+  "name": "get_engagement_summary",
+  "kind": "read"
+ },
+ {
+  "group": "Engagement",
+  "name": "list_engagement",
+  "kind": "read"
+ },
+ {
+  "group": "Engagement",
+  "name": "sync_engagement",
+  "kind": "write"
+ },
+ {
+  "group": "Engagement",
+  "name": "reply_to_engagement",
+  "kind": "write"
+ },
+ {
+  "group": "Engagement",
+  "name": "hide_comment",
+  "kind": "write"
+ },
+ {
+  "group": "Engagement",
+  "name": "mark_engagement_handled",
+  "kind": "write"
+ },
+ {
+  "group": "Engagement",
+  "name": "delete_comment",
+  "kind": "write"
+ },
+ {
+  "group": "Playbooks",
+  "name": "list_playbooks",
+  "kind": "read"
+ },
+ {
+  "group": "Playbooks",
+  "name": "get_playbook",
+  "kind": "read"
+ },
+ {
+  "group": "Playbooks",
+  "name": "install_playbook",
+  "kind": "write"
+ },
+ {
+  "group": "Playbooks",
+  "name": "list_playbook_installs",
+  "kind": "read"
+ },
+ {
+  "group": "Playbooks",
+  "name": "remove_playbook_install",
+  "kind": "write"
+ },
+ {
+  "group": "Campaigns",
+  "name": "create_comment_automation",
+  "kind": "write"
+ },
+ {
+  "group": "Campaigns",
+  "name": "list_comment_automations",
+  "kind": "read"
+ },
+ {
+  "group": "Campaigns",
+  "name": "update_comment_automation",
+  "kind": "write"
+ },
+ {
+  "group": "Campaigns",
+  "name": "delete_comment_automation",
+  "kind": "write"
+ },
+ {
+  "group": "Campaigns",
+  "name": "get_comment_automation_runs",
+  "kind": "read"
+ },
+ {
+  "group": "Campaigns",
+  "name": "preview_broadcast_audience",
+  "kind": "read"
+ },
+ {
+  "group": "Campaigns",
+  "name": "create_broadcast",
+  "kind": "write"
+ },
+ {
+  "group": "Campaigns",
+  "name": "list_broadcasts",
+  "kind": "read"
+ },
+ {
+  "group": "Campaigns",
+  "name": "send_broadcast",
+  "kind": "write"
+ },
+ {
+  "group": "Campaigns",
+  "name": "cancel_broadcast",
+  "kind": "write"
+ },
+ {
+  "group": "Campaigns",
+  "name": "delete_broadcast",
+  "kind": "write"
+ },
+ {
+  "group": "Campaigns",
+  "name": "get_broadcast_recipients",
+  "kind": "read"
+ },
+ {
+  "group": "Campaigns",
+  "name": "create_sequence",
+  "kind": "write"
+ },
+ {
+  "group": "Campaigns",
+  "name": "list_sequences",
+  "kind": "read"
+ },
+ {
+  "group": "Campaigns",
+  "name": "update_sequence",
+  "kind": "write"
+ },
+ {
+  "group": "Campaigns",
+  "name": "delete_sequence",
+  "kind": "write"
+ },
+ {
+  "group": "Campaigns",
+  "name": "enroll_in_sequence",
+  "kind": "write"
+ },
+ {
+  "group": "Campaigns",
+  "name": "get_sequence_enrollments",
+  "kind": "read"
+ },
+ {
+  "group": "Ads (Meta)",
+  "name": "get_ad_account",
+  "kind": "read"
+ },
+ {
+  "group": "Ads (Meta)",
+  "name": "list_campaigns",
+  "kind": "read"
+ },
+ {
+  "group": "Ads (Meta)",
+  "name": "list_ad_sets",
+  "kind": "read"
+ },
+ {
+  "group": "Ads (Meta)",
+  "name": "list_ads",
+  "kind": "read"
+ },
+ {
+  "group": "Ads (Meta)",
+  "name": "create_campaign",
+  "kind": "write"
+ },
+ {
+  "group": "Ads (Meta)",
+  "name": "create_ad_set",
+  "kind": "write"
+ },
+ {
+  "group": "Ads (Meta)",
+  "name": "create_ad",
+  "kind": "write"
+ },
+ {
+  "group": "Ads (Meta)",
+  "name": "update_campaign",
+  "kind": "write"
+ },
+ {
+  "group": "Ads (Meta)",
+  "name": "update_ad_set",
+  "kind": "write"
+ },
+ {
+  "group": "Ads (Meta)",
+  "name": "update_ad",
+  "kind": "write"
+ },
+ {
+  "group": "Ads (Meta)",
+  "name": "boost_post",
+  "kind": "write"
+ },
+ {
+  "group": "Ads (Meta)",
+  "name": "get_ads_insights",
+  "kind": "read"
+ },
+ {
+  "group": "Shopping (Instagram)",
+  "name": "get_shopping_status",
+  "kind": "read"
+ },
+ {
+  "group": "Shopping (Instagram)",
+  "name": "search_shop_products",
+  "kind": "read"
+ },
+ {
+  "group": "Shopping (Instagram)",
+  "name": "tag_products_on_post",
+  "kind": "write"
+ },
+ {
+  "group": "Billing",
+  "name": "get_subscription",
+  "kind": "read"
+ },
+ {
+  "group": "Billing",
+  "name": "get_usage",
+  "kind": "read"
+ },
+ {
+  "group": "Billing",
+  "name": "set_x_billing",
+  "kind": "write"
+ },
+ {
+  "group": "API keys",
+  "name": "list_api_keys",
+  "kind": "read"
+ },
+ {
+  "group": "API keys",
+  "name": "create_api_key",
+  "kind": "write"
+ },
+ {
+  "group": "API keys",
+  "name": "revoke_api_key",
+  "kind": "write"
+ }
+]
